@@ -39,12 +39,19 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/backbone/backbone.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
+        <script src="scripts/models/book_model.js"></script>
+        <script src="scripts/collections/book_collection.js"></script>
+        <script src="scripts/views/book_list.js"></script>
+        <script src="scripts/views/book_view.js"></script>
+        <script src="scripts/views/add_book.js"></script>
+        <script src="scripts/routes/app_router.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->
 </body>
