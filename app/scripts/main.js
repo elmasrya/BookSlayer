@@ -32,12 +32,12 @@ $('.search').on('click', function(){
         if(item.volumeInfo.pageCount===undefined) {
 
 
-        $('#content').append("<br>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: None " + "<br>");
+        $('#content').append("<br>" + "<button>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: None " + "</button>" + "<br>");
 
 
         } else{
           console.log("giants");
-        $('#content').append("<br>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "<br>");
+        $('#content').append("<br>"+ "<button>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "</button>" + "<br>");
 
 
         }
