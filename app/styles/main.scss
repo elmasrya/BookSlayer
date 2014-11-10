@@ -56,10 +56,32 @@ body{
 }
 
 #content{
+  float:left;
   padding:10px;
   margin-top:20px;
-  margin-left:300px;
+  margin-left:30px;
   border:solid;
-  border-width:1px;
+  border-width:10px;
+  border-radius:10px;
+  border-color:rgb(88, 116, 153);
   width:300px;
+}
+
+
+#mycontent{
+  float:left;
+  margin-left:30px;
+  padding:10px;
+  margin-top:20px;
+  border:solid;
+  border-width:10px;
+  border-radius:10px;
+  border-color:rgb(203, 64, 83);
+  width:300px;
+}
+
+.choices{
+  color:white;
+  background-color:rgb(88, 116, 153);
+  border-radius:10px;
 }
