@@ -22,18 +22,21 @@
     <!-- endbuild -->
   </head>
   <body>
+    <div class="container">
+      <h1>Search for a book</h1>
+      <div class="field">
+          <form id="add" class="inputForm">
 
-    <div id="content"></div>
-    <script>
-      function handleResponse(response) {
-      for (var i = 0; i < response.items.length; i++) {
-        var item = response.items[i];
-        // in production code, item.text should have the HTML entities escaped.
-        document.getElementById("content").innerHTML += "<br>" + item.volumeInfo.title;
-      }
-    }
-    </script>
+        <input class="whatever" type="text" placeholder="drewdog"/>
+        
+        <button class="search">Search</button>
+      </form>
+      </div>
 
+      <div id="content"></div>
+
+
+    </div> <!--end of container-->
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -43,7 +46,6 @@
     <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
-        <script src="https://www.googleapis.com/books/v1/volumes?q=fiction&callback=handleResponse"></script>
         <script src="scripts/models/book_model.js"></script>
         <script src="scripts/collections/book_collection.js"></script>
         <script src="scripts/views/book_list.js"></script>
