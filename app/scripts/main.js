@@ -32,7 +32,7 @@ $('.search').on('click', function(){
         if(item.volumeInfo.pageCount===undefined) {
 
 
-        $('#content').append("<br>" + "<button='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: None " + "</button>" + "<br>" + "<br>");
+        $('#content').append("<br>" + "<button class='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "</button>" + "<br>" + "<br>");
 
 
         } else{
@@ -42,18 +42,18 @@ $('.search').on('click', function(){
 
         }
 
-        var g=item.volumeInfo.title;
-        var b=item.volumeInfo.pageCount;
-        $('.choices').on('click', function(){
-          console.log('click');
-
-          $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
-
-        });
 
 
       }
 
+var g=item.volumeInfo.title;
+var b=item.volumeInfo.pageCount;
+$('.choices').on('click', function(){
+  console.log('click');
+
+  $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
+
+});
 
 
     }/*end of handleResponse*/
