@@ -3,16 +3,63 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
+body{
+  min-width:600px;
+}
+
 .field{
   margin-top: 20px;
   margin-left:300px;
 }
 .top{
+  height:200px;
+  width:100%;
   background-color:rgb(186, 186, 196);
   border:solid;
   border-width:3px;
 }
 .logo{
+  float:left;
   height:180px;
   width:180px;
+}
+
+.title{
+  float:left;
+  margin-left:10%;
+  margin-top:55px;
+  font-size:60px;
+}
+
+.nav{
+  float:left;
+  margin-left:10%;
+  list-style:none;
+  li{
+    margin-bottom:5px;
+    }
+  }
+.links{
+  margin-left:-20px;
+  margin-top:10px;
+  list-style:none;
+  float:left;
+  font-size:20px;
+  li{
+    margin-top:20px;
+  }
+}
+
+
+.contact{
+  margin-left:7.5px;
+}
+
+#content{
+  padding:10px;
+  margin-top:20px;
+  margin-left:300px;
+  border:solid;
+  border-width:1px;
+  width:300px;
 }
