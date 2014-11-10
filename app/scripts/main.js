@@ -32,27 +32,28 @@ $('.search').on('click', function(){
         if(item.volumeInfo.pageCount===undefined) {
 
 
-        $('#content').append("<br>" + "<button='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: None " + "</button>" + "<br>");
+        $('#content').append("<br>" + "<button='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: None " + "</button>" + "<br>" + "<br>");
 
 
         } else{
           console.log("giants");
-        $('#content').append("<br>"+ "<button class='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "</button>" + "<br>");
+        $('#content').append("<br>"+ "<button class='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "</button>" + "<br>" + "<br>");
 
 
         }
 
         var g=item.volumeInfo.title;
         var b=item.volumeInfo.pageCount;
+        $('.choices').on('click', function(){
+          console.log('click');
+
+          $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
+
+        });
 
 
       }
-      $('.choices').on('click', function(){
-        console.log('click');
 
-        $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
-
-      });
 
 
     }/*end of handleResponse*/

@@ -9,7 +9,17 @@ body{
 
 .field{
   margin-top: 20px;
-  margin-left:300px;
+  margin-left:50px;
+}
+
+.searchBar{
+  width:250px;
+  padding:5px;
+}
+
+h1{
+  margin-top:50px;
+  margin-left:50px;
 }
 .top{
   height:200px;
@@ -29,6 +39,13 @@ body{
   margin-left:10%;
   margin-top:55px;
   font-size:60px;
+}
+
+.search{
+  color:white;
+  background-color:black;
+  border-radius:60px;
+  padding:5px;
 }
 
 .nav{
@@ -58,8 +75,8 @@ body{
 #content{
   float:left;
   padding:10px;
-  margin-top:20px;
-  margin-left:30px;
+  margin-top:70px;
+  margin-left:50px;
   border:solid;
   border-width:10px;
   border-radius:10px;
@@ -72,7 +89,7 @@ body{
   float:left;
   margin-left:30px;
   padding:10px;
-  margin-top:20px;
+  margin-top:70px;
   border:solid;
   border-width:10px;
   border-radius:10px;
