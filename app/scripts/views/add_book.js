@@ -1,37 +1,36 @@
-// (function () {
-//
-//   App.Views.AddBook = Backbone.View.extend({
-//
-//     events: {
-//       'submit #addCoffee' : 'addCoffee'
-//     },
-//
-//     initialize: function () {
-//       this.render();
-//
-//       $('#coffeeList').html(this.$el);
-//     },
-//
-//     render: function () {
-//       this.$el.html($('#addTemp').html());
-//     },
-//
-//     addCoffee: function (e) {
-//       e.preventDefault();
-//
-//       var c = new App.Models.Coffee({
-//         name: $('#coffee_name').val(),
-//         brand: $('#coffee_brand').val()
-//       });
-//
-//       App.coffees.add(c).save(null, {
-//         success: function () {
-//           App.router.navigate('', { trigger: true });
-//         }
-//       });
-//
-//     }
-//
-//   });
-//
-// }());
+(function () {
+
+  App.Views.AddBook = Backbone.View.extend({
+
+    events: {
+      'submit #add' : 'addBook'
+    },
+
+    initialize: function () {
+      this.render();
+
+      $('#myList').html(this.$el);
+    },
+
+    render: function () {
+      this.$el.html($('#addTemp').html());
+    },
+
+    addCoffee: function (e) {
+      e.preventDefault();
+
+      var b = new App.Models.Book({
+        title: $('#mycontent').val(),
+      });
+
+      App.books.add(b).save(null, {
+        success: function () {
+          App.router.navigate('', { trigger: true });
+        }
+      });
+
+    }
+
+  });
+
+}());

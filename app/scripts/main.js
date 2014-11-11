@@ -1,7 +1,7 @@
 
 $('.search').on('click', function(){
       event.preventDefault();
-      var inputVal=$('.whatever').val();
+      var inputVal=$('.searchBar').val();
       console.log(inputVal);
 
 
@@ -46,14 +46,29 @@ $('.search').on('click', function(){
 
       }
 
-var g=item.volumeInfo.title;
-var b=item.volumeInfo.pageCount;
-$('.choices').on('click', function(){
-  console.log('click');
+        var g=item.volumeInfo.title;
+        var b=item.volumeInfo.pageCount;
+        $('.choices').on('click', function(){
+        console.log('click');
 
-  $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
+        $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
+        var exit=$('#mycontent').val();
+        console.log(exit);
 
-});
+        });
 
 
     }/*end of handleResponse*/
+
+
+
+
+  // Create Instance of Collection
+  // App.books = new App.Collections.Books();
+  //
+  // // Fetch any server-side coffees
+  // App.books.fetch().done( function () {
+  //
+  // App.router = new App.Routers.AppRouter();
+  //
+  // });
