@@ -42,14 +42,61 @@
 
         </div>
         <div id="content"><h2>Results: <h2></div>
-        <div id="mycontent"><h2>My List: <h2></div>
+        <output id="mycontent"></output>
       </div><!--end of middle-->
 
+          <div id="myList"></div>
 
     </div> <!--end of container-->
+    <script type="text/javascript">
+        window.App = {};
+        App.Models = {};
+        App.Collections = {};
+        App.Views = {};
+        App.Routers = {};
+    </script>
+
+      <script type="text/template" id="addTemp">
+        <form id="addBook">
+        <input type="text" id="coffee_name" placeholder="Coffee Name" />
+        <input type="text" id="coffee_brand" placeholder="Coffee Brand" />
+        <button>Add Coffee</button>
+        </form>
+        <hr />
+    </script>
+
+    <script type="text/template" id="listTemp">
+      <li class="card" id="<%= _id %>">
+        <a href="#/edit/<%= _id %>">
+
+        </a>
+      </li>
+    </script>
+
+    <script type="text/template" id="singleTemp">
+      <li class="card" id="<%= _id %>">
+        <form id="updateCoffee">
+            <div class="card-header">
+              <input type="text" value="<%= name %>" id="update_name" />
+              <input type="text" value="<%= brand %>" id="update_brand" />
+              <textarea id="update_comments"></textarea>
+            </div>
+            <div class="button-group">
+
+            </div>
+            <div class="card-stats">
+              <button>Update Coffee</button>
+              <button id="delete">Delete</button>
+            </div>
+        </form>
+      </li>
+    </script>
+
+
 
     <script src="scripts/vendor.js"></script>
 
         <script src="scripts/main.js"></script>
+
 </body>
 </html>
