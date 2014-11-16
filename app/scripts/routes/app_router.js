@@ -1,36 +1,34 @@
 (function () {
 
-  App.Views.AddCoffee = Backbone.View.extend({
+  App.Routers.AppRouter = Backbone.Router.extend({
 
-    // events: {
-    //   'submit #addCoffee' : 'addCoffee'
-    // },
-    //
-    // initialize: function () {
-    //   this.render();
-    //
-    //   $('#coffeeList').html(this.$el);
-    // },
-    //
-    // render: function () {
-    //   this.$el.html($('#addTemp').html());
-    // },
-    //
-    // addCoffee: function (e) {
-    //   e.preventDefault();
-    //
-    //   var c = new App.Models.Coffee({
-    //     name: $('#coffee_name').val(),
-    //     brand: $('#coffee_brand').val()
-    //   });
-    //
-    //   App.coffees.add(c).save(null, {
-    //     success: function () {
-    //       App.router.navigate('', { trigger: true });
-    //     }
-    //   });
-    //
-    // }
+    initialize: function () {
+      // Light the Fire
+      Backbone.history.start();
+    },
+
+    routes: {
+      '' : 'home',
+      'edit/:coffeeID' : 'editCoffee',
+      'add' : 'addCoffee',
+      'sort/:sortby' : 'home'
+    },
+
+    home: function (sortby) {
+      new App.Views.ListCoffee({ collection: App.coffees, showTwitter: false, sort: sortby });
+    },
+
+    edit: function (coffeeID) {
+
+      var c = App.coffees.get(coffeeID);
+      new App.Views.SingleCoffee({ coffee: c });
+    },
+
+    addCoffee: function () {
+
+      new App.Views.AddCoffee();
+
+    }
 
   });
 

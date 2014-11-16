@@ -41,19 +41,21 @@
       </div>
 
       <div class="middle">
-          <h1 class="heading">Select a book...</h1>
-        <div class="field">
-            <form id="add" class="inputForm">
-              <input class="searchBar" type="text" placeholder="Search for a book..."/>
-              <button class="search">Search</button>
-            </form>
-
-        </div>
-        <div id="content"><h2>Results: <h2></div>
-        <output id="mycontent"></output>
       </div><!--end of middle-->
 
-          <div id="myList"></div>
+      <script type="text/template" id="resultsTemp">
+
+            <h1 class="heading">Select a book...</h1>
+          <div class="field">
+              <form id="add" class="inputForm">
+                <input class="searchBar" type="text" placeholder="Search for a book..."/>
+                <button class="search">Search</button>
+              </form>
+
+          </div>
+          <div id="content"><h2>Results: <h2></div>
+          <output id="mycontent"></output>
+      </script>
 
     </div> <!--end of container-->
     <script type="text/javascript">

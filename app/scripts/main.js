@@ -44,7 +44,7 @@ $('.search').on('click', function(){
 
 
 
-      }
+      }//End of loop
 
         var g=item.volumeInfo.title;
         var b=item.volumeInfo.pageCount;

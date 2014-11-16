@@ -1,6 +1,6 @@
 (function () {
 
-  App.Models.Book = Backbone.Model.extend({
+  App.Models.Favorites = Backbone.Model.extend({
 
     idAttribute: '_id',
 
@@ -10,8 +10,11 @@
     },
 
     initialize: function () {
-      // var t = this.get('');
-      //console.log(t + " has been added");
+
+    },
+
+    render    : function () {
+
     }
 
   });
