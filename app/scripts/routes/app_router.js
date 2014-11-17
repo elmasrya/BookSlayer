@@ -15,7 +15,9 @@
     },
 
     home: function () {
-      // new App.Views.SearchBook();
+      new App.Views.NavBar();
+
+      new App.Views.SearchBook();
 
     }
 

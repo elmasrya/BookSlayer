@@ -22,54 +22,44 @@
     <!-- endbuild -->
   </head>
   <body>
-
-    <div class="container">
-
+    <div id="container">
       <div id="top">
-      <div><!--end of top-->
-
+      </div><!--end of top-->
       <div id="middle">
       </div><!--end of middle-->
-
       <div id="bottom">
-      </div><!--end of middle-->
+      </div><!--end of bottom-->
 
-    </div> <!--end of container-->
+    </div><!--end of contianer-->
+
+
 
 
 <!--These are the all the templates-->
+      <script type="text/template" id="navBarTemp">
+        <img class="logo" src="images/logo.png">
+        <span class="title">Book Slayer</span>
+        <ul class="nav">
+          <li class="homeBtn"><img src=images/home.png><span>Home</span></li>
+          <li class="aboutBtn"><img src=images/about.png><span>About</span></li>
+          <li class="contactBtn"><img class="contact" src=images/contact.png><span>Contact Us</span></li>
+        </ul>
+      </script><!--end of navbar template-->
 
+      <script type="text/template" id="searchBookTemp">
+        <h1 class="heading">Select a book...</h1>
+        <div class="field">
+          <form id="add" class="inputForm">
+            <input class="searchBar" type="text" placeholder="Search for a book..."/>
+            <button class="search">Search</button>
+          </form>
+        </div><!--end of field-->
+        <div id="content"><h2>Results: <h2></div>
+        <output id="mycontent"></output>
+      </script><!--end of navbar template-->
 
-    <script type="text/template" id="navBarTemp">
-      <img class="logo" src="images/logo.png">
-      <span class="title">Book Slayer</span>
-      <ul class="nav">
-        <li><img src=images/home.png></li>
-        <li><img src=images/about.png></li>
-        <li><img class="contact" src=images/contact.png></li>
-      </ul>
-      <ul class="links">
-        <li>Home</li>
-        <li>About</li>
-        <li>Contact Us</li>
-      </ul>
-    </script><!--end of navigation bar-->
-
-    <script type="text/template" id="searchBookTemp">
-      <h1 class="heading">Select a book...</h1>
-      <div class="field">
-        <form id="add" class="inputForm">
-          <input class="searchBar" type="text" placeholder="Search for a book..."/>
-          <button class="search">Search</button>
-        </form><!--end of form-->
-      </div>
-      <div id="content"><h2>Results: <h2></div>
-      <output id="mycontent"></output>
-    </script><!--end of searchbook temp-->
-
-
-
-
+      <script type="text/template" id="footerTemp">
+      </script><!--end of navbar template-->
 
 
     <!-- build:js scripts/vendor.js -->
@@ -92,7 +82,7 @@
         <!-- build:js scripts/main.js -->
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
-
+        <script src="scripts/views/footer.js"></script>
         <script src="scripts/routes/app_router.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->

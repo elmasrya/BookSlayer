@@ -14,8 +14,6 @@
 
 
     initialize: function () {
-      console.log("yes!");
-      this.$el.html(this.template);
 
       this.render();
 
@@ -24,7 +22,8 @@
 
     render: function () {
 
-      new App.Views.NavBar();
+      this.$el.html(this.template);
+
     }
 
 
