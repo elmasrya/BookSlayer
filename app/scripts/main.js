@@ -1,3 +1,8 @@
+App.router = new App.Routers.AppRouter();
+
+
+
+
 
 $('.search').on('click', function(){
       event.preventDefault();
@@ -59,16 +64,3 @@ $('.search').on('click', function(){
 
 
     }/*end of handleResponse*/
-
-
-
-
-  // Create Instance of Collection
-  // App.books = new App.Collections.Books();
-  //
-  // // Fetch any server-side coffees
-  // App.books.fetch().done( function () {
-  //
-  // App.router = new App.Routers.AppRouter();
-  //
-  // });
