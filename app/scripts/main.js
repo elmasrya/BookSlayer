@@ -4,7 +4,7 @@ App.router = new App.Routers.AppRouter();
 
 
 
-$('.search').on('click', function(){
+$('.searchBtn').on('click', function(){
       event.preventDefault();
       var inputVal=$('.searchBar').val();
       console.log(inputVal);
@@ -37,12 +37,12 @@ $('.search').on('click', function(){
         if(item.volumeInfo.pageCount===undefined) {
 
 
-        $('#content').append("<br>" + "<button class='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "</button>" + "<br>" + "<br>");
+        $('.searchResults').append("<br>" + "<button class='choices'> + </button>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "</button>" + "<br>" + "<br>");
 
 
         } else{
           console.log("giants");
-        $('#content').append("<br>"+ "<button class='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "</button>" + "<br>" + "<br>");
+        $('.searchResults').append("<br>"+ "<button class='choices'> + </button>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "</button>" + "<br>" + "<br>");
 
 
         }
@@ -54,10 +54,10 @@ $('.search').on('click', function(){
         var g=item.volumeInfo.title;
         var b=item.volumeInfo.pageCount;
         $('.choices').on('click', function(){
-        console.log('click');
 
-        $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
-        var exit=$('#mycontent').val();
+
+        $('.addBookList').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
+        var exit=$('.addBookList').val();
         console.log(exit);
 
         });

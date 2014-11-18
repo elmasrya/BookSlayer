@@ -3,80 +3,93 @@
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 // Custom Styles
 body{
-  min-width:600px;
 }
+/*color variables*/
+$gray1:rgb(186, 186, 196);
+
+$blue1: rgb(88, 116, 153);
+
+$red1: rgb(203, 64, 83);
+
+/*extenstions*/
 
 #top{
   @include outer-container;
-  background-color:rgb(186, 186, 196);
+  background-color:$gray1;
   border:solid;
   border-width:3px;
+  width:100%;
 
   .logo{
-    @include span-columns(4);
+    float:left;
     height:180px;
     width:180px;
     }/*end of logo*/
 
   .title{
-    @include span-columns(4);
+    margin-top:50px;
+    margin-left:20px;
     font-size:60px;
+    float:left;
     }/*end of title*/
 
   .nav{
-    @include span-columns(4);
-
+    float:left;
     list-style:none;
     }/*end of nav*/
 
-}/*end of top*/
+}/*.........end of top...............*/
+#container{
+  width:100%;
 
+#middle{
+  @include outer-container;
+  width:100%;
+  margin-left:10%;
+  margin-right:10%;
 
-.field{
-  margin-top: 20px;
-  margin-left:50px;
-}
-.searchBar{
-  width:250px;
-  padding:5px;
-}
-h1{
-  margin-top:50px;
-  margin-left:50px;
-}
+  .heading{
+    padding-top:30px;
+    margin-left:33.333%;
+    @include span-columns(12);
+    }
 
-.search{
-  color:white;
-  background-color:black;
-  border-radius:60px;
-  padding:5px;
-}
+  .searchBar{
+    @include span-columns(6);
+    margin-left:25%;
+    padding:5px;
+    border-radius:50px;
+    height:50px;
+    }
 
+  .searchBtnFrame{
+    @include span-columns(6);
+    .searchBtn{
+      margin-left:90%;
+      margin-top:20px;
+      height:80px;
+      width:80px;
+      color:white;
+      background-color:black;
+      border-radius:60px;
+      padding:5px;
+      }
+    }/*end of frame*/
 
-#content{
-  float:left;
-  padding:10px;
-  margin-top:70px;
-  margin-left:50px;
-  border:solid;
-  border-width:10px;
-  border-radius:10px;
-  border-color:rgb(88, 116, 153);
-  width:300px;
-}
-#mycontent{
-  float:left;
-  margin-left:30px;
-  padding:10px;
-  margin-top:70px;
-  border:solid;
-  border-width:10px;
-  border-radius:10px;
-  border-color:rgb(203, 64, 83);
-  width:300px;
-}
-.choices{
-  color:white;
-  background-color:rgb(88, 116, 153);
-  border-radius:10px;
-}
+  .searchResults{
+    @include span-columns(4);
+    margin-left:15%;
+
+    }
+
+  .addBookList{
+    @include span-columns(4);
+    margin-left:15%;
+    }
+
+  .choices{
+
+    }
+}/*end of middle*/
+
+}/*end of container*/
