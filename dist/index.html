@@ -14,87 +14,88 @@
     <script src="scripts/vendor/modernizr.js"></script>
   </head>
   <body>
-    <div class="container">
+    <div id="container">
+      <div id="top">
+      </div><!--end of top-->
+      <div id="middle">
+      </div><!--end of middle-->
+      <div id="bottom">
+      </div><!--end of bottom-->
 
-      <div class="top">
-        <img class="logo" src="images/logo.png">
-        <span class="title">Book Slayer</span>
-        <ul class="nav">
-          <li><img src=images/home.png></li>
-          <li><img src=images/about.png></li>
-          <li><img class="contact" src=images/contact.png></li>
-        </ul>
-        <ul class="links">
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact Us</li>
-        </ul>
+    </div><!--end of contianer-->
 
-      </div>
 
-      <div class="middle">
-          <h1 class="heading">Select a book...</h1>
-        <div class="field">
-            <form id="add" class="inputForm">
-              <input class="searchBar" type="text" placeholder="Search for a book..."/>
-              <button class="search">Search</button>
-            </form>
+
+
+<!--These are the all the templates-->
+      <script type="text/template" id="navBarTemp">
+        <div class="logoFrame">
+          <img class="logo" src="images/logo.png">
+        </div><!--end of logo frame-->
+
+        <div class="titleFrame">
+          <span class="title">BOOK SLAYER</span>
+        </div><!--end of title frame-->
+
+        <div class="navFrame">
+          <ul class="nav">
+            <li class="homeBtn"><img src=images/home.png>Home</li>
+            <li class="aboutBtn"><img src=images/about.png>About</li>
+            <li class="contactBtn"><img class="contact" src=images/contact.png>Contact Us</li>
+            <button class="myList">My Book List</button>
+          </ul>
+        </div><!--end of nav frame-->
+      </script><!--end of navbar template-->
+
+      <script type="text/template" id="searchBookTemp">
+        <h1 class="heading">Search for a Book...</h1>
+
+        <input class="searchBar" type="text" placeholder="Search for a book..."/></input>
+
+        <div class="searchBtnFrame">
+          <button class="searchBtn">Search</button>
+        </div>
+
+        <div class="searchResults">
+          <h2>Your Search Results: <h2>
+        </div>
+
+        <div class="addBookList">
+          <h2 class="listHeading">Books to Add: </h2>
+          <div class="addBookSec">
+          </div>
+          <br>
+          <button class="addBook">Save Book(s)</button>
 
         </div>
-        <div id="content"><h2>Results: <h2></div>
-        <output id="mycontent"></output>
-      </div><!--end of middle-->
 
-          <div id="myList"></div>
+      </script><!--end of search book template-->
 
-    </div> <!--end of container-->
-    <script type="text/javascript">
-        window.App = {};
-        App.Models = {};
-        App.Collections = {};
-        App.Views = {};
-        App.Routers = {};
-    </script>
+      <script type="text/template" id="myBookTemp">
+        <div id="myOwnList"></div>
+        <p>sdfsadfsfsadfsafas
+        asfdfasfasfdasfsa
+        fsadfasf  wdafasd
+         asdfsas
+         aafssasfasfsa
+          asdfas</p>
+      </script><!--end of navbar template-->
 
-      <script type="text/template" id="addTemp">
-        <form id="addBook">
-        <input type="text" id="coffee_name" placeholder="Coffee Name" />
-        <input type="text" id="coffee_brand" placeholder="Coffee Brand" />
-        <button>Add Coffee</button>
-        </form>
-        <hr />
-    </script>
-
-    <script type="text/template" id="listTemp">
-      <li class="card" id="<%= _id %>">
-        <a href="#/edit/<%= _id %>">
-
-        </a>
-      </li>
-    </script>
-
-    <script type="text/template" id="singleTemp">
-      <li class="card" id="<%= _id %>">
-        <form id="updateCoffee">
-            <div class="card-header">
-              <input type="text" value="<%= name %>" id="update_name" />
-              <input type="text" value="<%= brand %>" id="update_brand" />
-              <textarea id="update_comments"></textarea>
-            </div>
-            <div class="button-group">
-
-            </div>
-            <div class="card-stats">
-              <button>Update Coffee</button>
-              <button id="delete">Delete</button>
-            </div>
-        </form>
-      </li>
-    </script>
-
+      <script type="text/template" id="footerTemp">
+        <div class="footer"></div>
+      </script><!--end of navbar template-->
 
 
     <script src="scripts/vendor.js"></script>
+
+
+        <script type="text/javascript">
+            window.App = {};
+            App.Models = {};
+            App.Collections = {};
+            App.Views = {};
+            App.Routers = {};
+        </script>
 
         <script src="scripts/main.js"></script>
 
