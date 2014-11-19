@@ -10,12 +10,17 @@
 
     events: {
 
+      'click .addBook' : 'addBook'
+
     }, // end of events
 
 
-    initialize: function () {
+    initialize: function (options) {
+      this.options = options;
 
       this.render();
+      // this.collection.off();
+      // this.collection.on('sync', this.render, this);
 
 
     },
@@ -24,9 +29,12 @@
 
       this.$el.html(this.template);
 
-    }
+    },
 
 
+    addBook: function () {
+
+        }
 
   });
 

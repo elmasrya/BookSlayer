@@ -1,4 +1,12 @@
 App.router = new App.Routers.AppRouter();
+App.results = new App.Collections.Results();
+
+// App.results.fetch().done( function () {
+//
+//     App.router = new App.Routers.AppRouter();
+//
+//   });
+
 
 
 
@@ -37,28 +45,48 @@ $('.searchBtn').on('click', function(){
         if(item.volumeInfo.pageCount===undefined) {
 
 
-        $('.searchResults').append("<br>" + "<button class='choices'> + </button>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "</button>" + "<br>" + "<br>");
+        $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
+          "<span class='book' id='" + i +"'>" +"Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "<br>" + "<br>"
+          + "</span>");
 
 
         } else{
-          console.log("giants");
-        $('.searchResults').append("<br>"+ "<button class='choices'> + </button>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "</button>" + "<br>" + "<br>");
+
+        $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
+          "<span class='book' id='" +  i +"'>" +"Book Title: " + item.volumeInfo.title +"<br>" + "Pages: " + item.volumeInfo.pageCount
+         + "<br>" + "<br>" + "</span>");
 
 
         }
+
+        // var c = new App.Models.Book({
+        // Title: item.volumeInfo.title,
+        // Page: item.volumeInfo.pageCount
+        // });
+
+        // App.results.add(c).save(null, {
+        //       success: function () {
+        //         // App.router.navigate('', { trigger: true });
+        //       }
+        //     });
 
 
 
       }//End of loop
 
-        var g=item.volumeInfo.title;
-        var b=item.volumeInfo.pageCount;
+
         $('.choices').on('click', function(){
 
+          var elemID = this.id;
+          console.log(elemID);
 
-        $('.addBookList').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
-        var exit=$('.addBookList').val();
-        console.log(exit);
+          var bookInfo = $('.book[id=' + elemID + ']').text();
+          // var =item.volumeInfo.title;
+          // var b=item.volumeInfo.pageCount;
+
+
+        $('.addBookSec').append("<br>" + bookInfo + "<br>");
+        var exit=$('.addBookSec').val();
 
         });
 

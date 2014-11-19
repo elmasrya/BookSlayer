@@ -37,30 +37,60 @@
 
 <!--These are the all the templates-->
       <script type="text/template" id="navBarTemp">
-        <img class="logo" src="images/logo.png">
-        <span class="title">BOOK SLAYER</span>
-        <ul class="nav">
-          <li class="homeBtn"><img src=images/home.png>Home</li>
-          <li class="aboutBtn"><img src=images/about.png>About</li>
-          <li class="contactBtn"><img class="contact" src=images/contact.png>Contact Us</li>
-        </ul>
+        <div class="logoFrame">
+          <img class="logo" src="images/logo.png">
+        </div><!--end of logo frame-->
+
+        <div class="titleFrame">
+          <span class="title">BOOK SLAYER</span>
+        </div><!--end of title frame-->
+
+        <div class="navFrame">
+          <ul class="nav">
+            <li class="homeBtn"><img src=images/home.png>Home</li>
+            <li class="aboutBtn"><img src=images/about.png>About</li>
+            <li class="contactBtn"><img class="contact" src=images/contact.png>Contact Us</li>
+            <button class="myList">My Book List</button>
+          </ul>
+        </div><!--end of nav frame-->
       </script><!--end of navbar template-->
 
       <script type="text/template" id="searchBookTemp">
         <h1 class="heading">Search for a Book...</h1>
+
         <input class="searchBar" type="text" placeholder="Search for a book..."/></input>
+
         <div class="searchBtnFrame">
           <button class="searchBtn">Search</button>
         </div>
+
         <div class="searchResults">
           <h2>Your Search Results: <h2>
         </div>
+
         <div class="addBookList">
-          <h2>Books to Add: <h2>
+          <h2 class="listHeading">Books to Add: </h2>
+          <div class="addBookSec">
+          </div>
+          <br>
+          <button class="addBook">Save Book(s)</button>
+
         </div>
+
       </script><!--end of search book template-->
 
+      <script type="text/template" id="myBookTemp">
+        <div id="myOwnList"></div>
+        <p>sdfsadfsfsadfsafas
+        asfdfasfasfdasfsa
+        fsadfasf  wdafasd
+         asdfsas
+         aafssasfasfsa
+          asdfas</p>
+      </script><!--end of navbar template-->
+
       <script type="text/template" id="footerTemp">
+        <div class="footer"></div>
       </script><!--end of navbar template-->
 
 
@@ -82,9 +112,13 @@
         </script>
 
         <!-- build:js scripts/main.js -->
+
+        <script src="scripts/views/myBook_view.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
         <script src="scripts/views/footer.js"></script>
+        <script src="scripts/collections/results_collection.js"></script>
+        <script src="scripts/models/book_model.js"></script>
         <script src="scripts/routes/app_router.js"></script>
         <script src="scripts/main.js"></script>
         <!-- endbuild -->

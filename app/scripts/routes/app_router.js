@@ -11,13 +11,23 @@
 
     routes: {
       '' : 'home',
+      'myList' : 'myBList',
 
     },
 
     home: function () {
+
+      new App.Views.NavBar();
+      new App.Views.SearchBook({collection: App.results});
+
+
+    },
+
+    myBlist: function () {
       new App.Views.NavBar();
 
-      new App.Views.SearchBook();
+      new App.Views.MyBook();
+
 
     }
 
