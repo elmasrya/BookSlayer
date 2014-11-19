@@ -9,7 +9,10 @@
     template          : _.template($('#navBarTemp').html()),
 
     events: {
-        'click .myList' : 'myList'
+        'click .myList'     : 'myList',
+        'click .homeBtn'    : 'home',
+        'click .aboutBtn'   : 'about',
+        'click .contactBtn' : 'contact'
     }, // end of events
 
 
@@ -31,7 +34,24 @@
       new App.Views.MyBook();
 
 
+    },
+
+    home      : function() {
+
+    },
+
+    about     : function () {
+      App.router.navigate('about', { trigger: true });
+      new App.Views.About();
+
+    },
+
+    contact   : function () {
+
     }
+
+
+
 
 
 

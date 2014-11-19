@@ -10,8 +10,11 @@
     },
 
     routes: {
-      '' : 'home',
-      'myList' : 'myBList',
+      ''        : 'home',
+      'myList'  : 'myList',
+      'about'   : 'about',
+      'contact' : 'contact',
+      'contact' : 'contact',
 
     },
 
@@ -24,10 +27,26 @@
 
     },
 
-    myBlist: function () {
+    myList: function () {
       new App.Views.NavBar();
-
       new App.Views.MyBook();
+      new App.Views.Footer();
+
+
+    },
+
+    contact: function () {
+      new App.Views.NavBar();
+      new App.Views.Contact();
+      new App.Views.Footer();
+
+
+    },
+
+    about: function () {
+      new App.Views.NavBar();
+      new App.Views.About();
+      new App.Views.Footer();
 
 
     }

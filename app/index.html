@@ -43,9 +43,10 @@
         <div class="titleFrame">
           <span class="title">BookSlayer</span>
             <div class="navFrame">
-              <span class="homeBtn navB"><img src=images/home.png></span>
-              <span class="aboutBtn navB"><img src=images/about.png></span>
-              <span class="contactBtn navB"><img class="contact" src=images/contact.png></span>
+              <a href="#/" class="homeBtn navB"><img src=images/home.png></a>
+              <a href="#/about" class="aboutBtn navB"><img src=images/about.png></a>
+              <a href="#/contact" class="contactBtn navB"><img class="contact"
+              src=images/contact.png></a>
             </div><!--end of nav frame-->
         </div><!--end of title frame-->
         <div class="myBookFrame">
@@ -82,6 +83,24 @@
         <p>This is some Text</p>
       </script><!--end of navbar template-->
 
+      <script type="text/template" id="aboutTemp">
+        <div class="aboutInfo">About:
+        <p>This Application is suppose to make you
+        read better. It was created by Andrew El-Masry at the
+        The Iron Yard Academy!!!
+        </p></div>
+      </script><!--end of navbar template-->
+
+      <script type="text/template" id="contactTemp">
+        <ul class="contactInfo">
+          <li>App Creator: Andrew El-Masry</li>
+          <li>E-Mail: andrewelmasry@gmail.com</li>
+          <li>Blog: andrewelmasry.com</li>
+          <li>GitHub: https://github.com/elmasrya</li>
+        </ul>
+      </script><!--end of navbar template-->
+
+
       <script type="text/template" id="footerTemp">
         <div class="footer"></div>
       </script><!--end of navbar template-->
@@ -105,7 +124,8 @@
         </script>
 
         <!-- build:js scripts/main.js -->
-
+        <script src="scripts/views/contact_view.js"></script>
+        <script src="scripts/views/about_view.js"></script>
         <script src="scripts/views/myBook_view.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
