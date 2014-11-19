@@ -1,6 +1,132 @@
 (function () {
 
-  App.Models.Book = Backbone.Model.extend({
+
+  App.Views.MyBook = Backbone.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#myBookTemp').html()),
+
+    events: {
+    }, // end of events
+
+
+    initialize: function () {
+
+
+      this.render();
+
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+    }
+
+
+
+  });
+
+}());
+
+(function () {
+
+
+  App.Views.NavBar = Backbone.View.extend({
+
+
+    el                : '#top',
+
+    template          : _.template($('#navBarTemp').html()),
+
+    events: {
+        'click .myList' : 'myList'
+    }, // end of events
+
+
+    initialize: function () {
+
+
+      this.render();
+
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+    },
+
+    myList: function () {
+      App.router.navigate('myList', { trigger: true });
+      new App.Views.MyBook();
+
+
+    }
+
+
+
+  });
+
+}());
+
+(function () {
+
+
+  App.Views.SearchBook = Backbone.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#searchBookTemp').html()),
+
+    events: {
+
+      'click .addBook' : 'addBook'
+
+    }, // end of events
+
+
+    initialize: function (options) {
+      this.options = options;
+
+      this.render();
+      // this.collection.off();
+      // this.collection.on('sync', this.render, this);
+
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+
+    },
+
+
+    addBook: function () {
+
+        }
+
+  });
+
+}());
+
+
+(function () {
+
+  App.Collections.Results = Backbone.Collection.extend({
+    model: App.Models.Book,
+    url: 'https://tiy-atl-fe-server.herokuapp.com/collections/bookslayer'
+  });
+
+}());
+
+(function () {
+
+  App.Models.Favorites = Backbone.Model.extend({
 
     idAttribute: '_id',
 
@@ -10,8 +136,11 @@
     },
 
     initialize: function () {
-      // var t = this.get('');
-      //console.log(t + " has been added");
+
+    },
+
+    render    : function () {
+
     }
 
   });
@@ -20,43 +149,34 @@
 
 (function () {
 
-  App.Collections.Books = Backbone.Collection.extend({
-    model: App.Models.Book,
-    url: 'https://tiy-atl-fe-server.herokuapp.com/collections/drewdog'
-  });
 
-}());
+  App.Routers.AppRouter = Backbone.Router.extend({
 
-(function () {
-
-  App.Views.AddBook = Backbone.View.extend({
-
-    events: {
-      'submit #add' : 'addBook'
-    },
 
     initialize: function () {
-      this.render();
-
-      $('#myList').html(this.$el);
+      // Light the Fire
+      Backbone.history.start();
     },
 
-    render: function () {
-      this.$el.html($('#addTemp').html());
+    routes: {
+      '' : 'home',
+      'myList' : 'myBList',
+
     },
 
-    addCoffee: function (e) {
-      e.preventDefault();
+    home: function () {
 
-      var b = new App.Models.Book({
-        title: $('#mycontent').val(),
-      });
+      new App.Views.NavBar();
+      new App.Views.SearchBook({collection: App.results});
 
-      App.books.add(b).save(null, {
-        success: function () {
-          App.router.navigate('', { trigger: true });
-        }
-      });
+
+    },
+
+    myBlist: function () {
+      new App.Views.NavBar();
+
+      new App.Views.MyBook();
+
 
     }
 
@@ -64,175 +184,21 @@
 
 }());
 
-(function () {
+App.router = new App.Routers.AppRouter();
+App.results = new App.Collections.Results();
 
-  App.Views.Book_List = Backbone.View.extend({
-
-    // tagName: 'ul',
-    // className: 'allCoffees',
-    //
-    // events: {},
-    //
-    // template: _.template($('#listTemp').html()),
-    //
-    // initialize: function (options) {
-    //
-    //   this.options = options;
-    //
-    //   this.render();
-    //
-    //   this.collection.off();
-    //   this.collection.on('sync', this.render, this);
-    //
-    //   // Get our Element On Our Page
-    //   $('#coffeeList').html(this.$el);
-    //
-    //
-    //
-    // },
-    //
-    // render: function () {
-    //   var self = this;
-    //
-    //   // Empty out
-    //   this.$el.empty();
-    //
-    //   // Sorting On The Fly
-    //   if (this.options.sort != undefined) {
-    //     // Setting up a localized collection to sort by our sort param
-    //     var local_collection = this.collection.sortBy( function (model) {
-    //       return model.get(self.options.sort);
-    //     });
-    //     _.each(local_collection, function (c) {
-    //       self.$el.append(self.template(c.toJSON()));
-    //     })
-    //   } else {
-    //     // Sort from our default comparator in our collection constructor
-    //     this.collection.sort();
-    //     this.collection.each(function (c) {
-    //       self.$el.append(self.template(c.toJSON()));
-    //     });
-    //   }
-    //
-    //
-    //   if (this.options.showTwitter) {
-    //     $('.hero-unit h1 a').html('Twitter');
-    //   } else {
-    //     $('.hero-unit h1 a').html('Coffee Snob');
-    //   }
-    //   return this;
-    // }
-
-  });
-
-}());
-
-(function () {
-
-  App.Views.Book = Backbone.View.extend({
-    //
-    // tagName: 'ul',
-    // className: 'coffeeSingle',
-    //
-    // events: {
-    //   'submit #updateCoffee' : 'updateCoffee',
-    //   'click #delete' : 'deleteCoffee'
-    // },
-    //
-    // template: _.template($('#singleTemp').html()),
-    //
-    // initialize: function (options) {
-    //   this.options = options;
-    //   this.render();
-    //
-    //   $('#coffeeForm').empty();
-    //
-    //   // Get our Element On Our Page
-    //   $('#coffeeList').html(this.$el);
-    // },
-    //
-    // render: function () {
-    //
-    //   this.$el.empty();
-    //
-    //   this.$el.html(this.template(this.options.book.toJSON()));
-    //
-    // },
-    //
-    // updateCoffee: function (e) {
-    //   e.preventDefault();
-    //
-    //   // Update our Model Instance
-    //   this.options.book.set({
-    //     // name: $('#update_name').val(),
-    //     // brand: $('#update_brand').val(),
-    //     // comments: $('#update_comments').val(),
-    //     // rating: $('input[name="rating"]:checked').val()
-    //   });
-    //
-    //   // Save Instance
-    //   this.options.book.save();
-    //
-    //   // TODO - Check on promise
-    //   App.router.navigate('', {trigger: true});
-    //
-    // },
-    //
-    // deleteCoffee: function (e) {
-    //   e.preventDefault();
-    //
-    //   // Remove Coffee
-    //   this.options.book.destroy();
-    //
-    //   // Go home ET
-    //   App.router.navigate('', {trigger: true});
-    //
-    // }
-
-  });
-
-}());
-
-(function () {
-
-  App.Views.AddCoffee = Backbone.View.extend({
-
-    // events: {
-    //   'submit #addCoffee' : 'addCoffee'
-    // },
-    //
-    // initialize: function () {
-    //   this.render();
-    //
-    //   $('#coffeeList').html(this.$el);
-    // },
-    //
-    // render: function () {
-    //   this.$el.html($('#addTemp').html());
-    // },
-    //
-    // addCoffee: function (e) {
-    //   e.preventDefault();
-    //
-    //   var c = new App.Models.Coffee({
-    //     name: $('#coffee_name').val(),
-    //     brand: $('#coffee_brand').val()
-    //   });
-    //
-    //   App.coffees.add(c).save(null, {
-    //     success: function () {
-    //       App.router.navigate('', { trigger: true });
-    //     }
-    //   });
-    //
-    // }
-
-  });
-
-}());
+// App.results.fetch().done( function () {
+//
+//     App.router = new App.Routers.AppRouter();
+//
+//   });
 
 
-$('.search').on('click', function(){
+
+
+
+
+$('.searchBtn').on('click', function(){
       event.preventDefault();
       var inputVal=$('.searchBar').val();
       console.log(inputVal);
@@ -265,43 +231,50 @@ $('.search').on('click', function(){
         if(item.volumeInfo.pageCount===undefined) {
 
 
-        $('#content').append("<br>" + "<button class='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "</button>" + "<br>" + "<br>");
+        $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
+          "<span class='book' id='" + i +"'>" +"Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "<br>" + "<br>"
+          + "</span>");
 
 
         } else{
-          console.log("giants");
-        $('#content').append("<br>"+ "<button class='choices'>" + "Book Title: " + item.volumeInfo.title + "<br>" + "Pages: " + item.volumeInfo.pageCount + "</button>" + "<br>" + "<br>");
+
+        $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
+          "<span class='book' id='" +  i +"'>" +"Book Title: " + item.volumeInfo.title +"<br>" + "Pages: " + item.volumeInfo.pageCount
+         + "<br>" + "<br>" + "</span>");
 
 
         }
 
+        // var c = new App.Models.Book({
+        // Title: item.volumeInfo.title,
+        // Page: item.volumeInfo.pageCount
+        // });
+
+        // App.results.add(c).save(null, {
+        //       success: function () {
+        //         // App.router.navigate('', { trigger: true });
+        //       }
+        //     });
 
 
-      }
 
-        var g=item.volumeInfo.title;
-        var b=item.volumeInfo.pageCount;
+      }//End of loop
+
+
         $('.choices').on('click', function(){
-        console.log('click');
 
-        $('#mycontent').append("Title: " + g + "<br>", "Pages: " + b + "<br>");
-        var exit=$('#mycontent').val();
-        console.log(exit);
+          var elemID = this.id;
+          console.log(elemID);
+
+          var bookInfo = $('.book[id=' + elemID + ']').text();
+          // var =item.volumeInfo.title;
+          // var b=item.volumeInfo.pageCount;
+
+
+        $('.addBookSec').append("<br>" + bookInfo + "<br>");
+        var exit=$('.addBookSec').val();
 
         });
 
 
     }/*end of handleResponse*/
-
-
-
-
-  // Create Instance of Collection
-  // App.books = new App.Collections.Books();
-  //
-  // // Fetch any server-side coffees
-  // App.books.fetch().done( function () {
-  //
-  // App.router = new App.Routers.AppRouter();
-  //
-  // });
