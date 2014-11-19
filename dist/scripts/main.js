@@ -84,7 +84,8 @@
 
     events: {
 
-      'click .addBook' : 'addBook'
+      'submit .addBook' : 'addBook',
+
 
     }, // end of events
 
@@ -110,10 +111,46 @@
 
         }
 
+
+        
+
   });
 
 }());
 
+(function () {
+
+
+  App.Views.Footer = Backbone.View.extend({
+
+
+    el                : '#bottom',
+
+    template          : _.template($('#footerTemp').html()),
+
+    events: {
+
+
+    }, // end of events
+
+
+    initialize: function () {
+
+      this.render();
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+
+    },
+
+
+
+  });
+
+}());
 
 (function () {
 
@@ -168,6 +205,7 @@
 
       new App.Views.NavBar();
       new App.Views.SearchBook({collection: App.results});
+      new App.Views.Footer();
 
 
     },
@@ -200,6 +238,7 @@ App.results = new App.Collections.Results();
 
 $('.searchBtn').on('click', function(){
       event.preventDefault();
+      $('.searchResults').empty();
       var inputVal=$('.searchBar').val();
       console.log(inputVal);
 

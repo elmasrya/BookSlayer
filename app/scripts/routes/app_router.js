@@ -19,6 +19,7 @@
 
       new App.Views.NavBar();
       new App.Views.SearchBook({collection: App.results});
+      new App.Views.Footer();
 
 
     },

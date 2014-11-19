@@ -10,7 +10,8 @@
 
     events: {
 
-      'click .addBook' : 'addBook'
+      'submit .addBook' : 'addBook',
+
 
     }, // end of events
 
@@ -35,6 +36,9 @@
     addBook: function () {
 
         }
+
+
+        
 
   });
 

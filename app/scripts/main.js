@@ -14,6 +14,7 @@ App.results = new App.Collections.Results();
 
 $('.searchBtn').on('click', function(){
       event.preventDefault();
+      $('.searchResults').empty();
       var inputVal=$('.searchBar').val();
       console.log(inputVal);
 
