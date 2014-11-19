@@ -1,6 +1,74 @@
 (function () {
 
 
+  App.Views.Contact = Backbone.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#contactTemp').html()),
+
+    events: {
+
+
+    }, // end of events
+
+
+    initialize: function () {
+
+      this.render();
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+
+    },
+
+
+
+  });
+
+}());
+
+(function () {
+
+
+  App.Views.About = Backbone.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#aboutTemp').html()),
+
+    events: {
+
+
+    }, // end of events
+
+
+    initialize: function () {
+
+      this.render();
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+
+    },
+
+
+
+  });
+
+}());
+
+(function () {
+
+
   App.Views.MyBook = Backbone.View.extend({
 
 
@@ -42,7 +110,10 @@
     template          : _.template($('#navBarTemp').html()),
 
     events: {
-        'click .myList' : 'myList'
+        'click .myList'     : 'myList',
+        'click .homeBtn'    : 'home',
+        'click .aboutBtn'   : 'about',
+        'click .contactBtn' : 'contact'
     }, // end of events
 
 
@@ -64,7 +135,24 @@
       new App.Views.MyBook();
 
 
+    },
+
+    home      : function() {
+
+    },
+
+    about     : function () {
+      App.router.navigate('about', { trigger: true });
+      new App.Views.About();
+
+    },
+
+    contact   : function () {
+
     }
+
+
+
 
 
 
@@ -196,8 +284,11 @@
     },
 
     routes: {
-      '' : 'home',
-      'myList' : 'myBList',
+      ''        : 'home',
+      'myList'  : 'myList',
+      'about'   : 'about',
+      'contact' : 'contact',
+      'contact' : 'contact',
 
     },
 
@@ -210,10 +301,26 @@
 
     },
 
-    myBlist: function () {
+    myList: function () {
       new App.Views.NavBar();
-
       new App.Views.MyBook();
+      new App.Views.Footer();
+
+
+    },
+
+    contact: function () {
+      new App.Views.NavBar();
+      new App.Views.Contact();
+      new App.Views.Footer();
+
+
+    },
+
+    about: function () {
+      new App.Views.NavBar();
+      new App.Views.About();
+      new App.Views.Footer();
 
 
     }
