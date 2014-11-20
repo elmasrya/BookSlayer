@@ -287,9 +287,7 @@
       ''        : 'home',
       'myList'  : 'myList',
       'about'   : 'about',
-      'contact' : 'contact',
-      'contact' : 'contact',
-
+      'contact' : 'contact'
     },
 
     home: function () {
