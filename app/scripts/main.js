@@ -54,7 +54,7 @@ $('.searchBtn').on('click', function(){
         } else{
 
         $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
-          "<span class='book' id='" +  i +"'>" +"Book Title: " + item.volumeInfo.title +"<br>" + "Pages: " + item.volumeInfo.pageCount
+          "<span class='book' id='" +  i +"'>" +"Book Title: " + item.volumeInfo.title + "<br></br>" + "<a href="+ item.volumeInfo.previewLink + ">Preview</a>" +"<img src="+ item.volumeInfo.imageLinks.thumbnail + "/>" +"<br>" + "Pages: " + item.volumeInfo.pageCount
          + "<br>" + "<br>" + "</span>");
 
 
