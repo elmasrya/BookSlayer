@@ -1,7 +1,7 @@
 (function () {
 
 
-  App.Views.MyBook = Backbone.View.extend({
+  App.Views.MyBook = Parse.View.extend({
 
 
     el                : '#middle',

@@ -113,30 +113,21 @@
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
-    <script src="../bower_components/backbone/backbone.js"></script>
+    <script src="../bower_components/parse/parse.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
-
-        <script type="text/javascript">
-            window.App = {};
-            App.Models = {};
-            App.Collections = {};
-            App.Views = {};
-            App.Routers = {};
-        </script>
-
         <!-- build:js scripts/main.js -->
+        <script src="scripts/core/initial.js"></script>
         <script src="scripts/views/contact_view.js"></script>
         <script src="scripts/views/about_view.js"></script>
         <script src="scripts/views/myBook_view.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
         <script src="scripts/views/footer.js"></script>
-        <script src="scripts/collections/results_collection.js"></script>
-        <script src="scripts/models/book_model.js"></script>
         <script src="scripts/routes/app_router.js"></script>
-        <script src="scripts/main.js"></script>
+        <script src="scripts/core/main.js"></script>
+        <script src="scripts/core/search.js"></script>
         <!-- endbuild -->
 
 </body>

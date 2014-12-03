@@ -1,7 +1,7 @@
 (function () {
 
 
-  App.Views.NavBar = Backbone.View.extend({
+  App.Views.NavBar = Parse.View.extend({
 
 
     el                : '#top',

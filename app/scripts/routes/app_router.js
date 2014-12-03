@@ -1,12 +1,11 @@
 (function () {
 
 
-  App.Routers.AppRouter = Backbone.Router.extend({
+  App.Routers.AppRouter = Parse.Router.extend({
 
 
     initialize: function () {
       // Light the Fire
-      Backbone.history.start();
     },
 
     routes: {
@@ -19,7 +18,7 @@
     home: function () {
 
       new App.Views.NavBar();
-      new App.Views.SearchBook({collection: App.results});
+      new App.Views.SearchBook();
       new App.Views.Footer();
 
 

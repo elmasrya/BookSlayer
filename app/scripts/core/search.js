@@ -1,17 +1,3 @@
-App.router = new App.Routers.AppRouter();
-App.results = new App.Collections.Results();
-
-// App.results.fetch().done( function () {
-//
-//     App.router = new App.Routers.AppRouter();
-//
-//   });
-
-
-
-
-
-
 $('.searchBtn').on('click', function(){
       event.preventDefault();
       $('.searchResults').empty();
@@ -60,16 +46,6 @@ $('.searchBtn').on('click', function(){
 
         }
 
-        // var c = new App.Models.Book({
-        // Title: item.volumeInfo.title,
-        // Page: item.volumeInfo.pageCount
-        // });
-
-        // App.results.add(c).save(null, {
-        //       success: function () {
-        //         // App.router.navigate('', { trigger: true });
-        //       }
-        //     });
 
 
 

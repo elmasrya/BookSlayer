@@ -1,7 +1,7 @@
 (function () {
 
 
-  App.Views.SearchBook = Backbone.View.extend({
+  App.Views.SearchBook = Parse.View.extend({
 
 
     el                : '#middle',
@@ -38,7 +38,7 @@
         }
 
 
-        
+
 
   });
 

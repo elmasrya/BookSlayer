@@ -1,7 +1,7 @@
 (function () {
 
 
-  App.Views.Contact = Backbone.View.extend({
+  App.Views.Contact = Parse.View.extend({
 
 
     el                : '#middle',

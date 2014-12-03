@@ -1,7 +1,7 @@
 (function () {
 
 
-  App.Views.About = Backbone.View.extend({
+  App.Views.About = Parse.View.extend({
 
 
     el                : '#middle',
