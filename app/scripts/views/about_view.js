@@ -1,6 +1,6 @@
 (function () {
 
-
+/*parse view*/
   App.Views.About = Parse.View.extend({
 
 
