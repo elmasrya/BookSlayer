@@ -1,3 +1,8 @@
+window.App = {};
+        App.Models = {};
+        App.Collections = {};
+        App.Views = {};
+        App.Routers = {};
 
 (function () {
 
@@ -295,6 +300,15 @@
 
 }());
 
+Parse.initialize("MCSNBPaOJowTLp0LZqcG2hPRLKsPlTqHeKT3CK3P","JRsBK5g0aam1H89lxIcZIqRTSllbuiASaNIkz9G7");
+
+(function() {
+
+  App.router = new App.Routers.AppRouter();
+  Parse.history.start();
+
+}());
+
 $('.searchBtn').on('click', function(){
       event.preventDefault();
       $('.searchResults').empty();
@@ -366,9 +380,3 @@ $('.searchBtn').on('click', function(){
 
 
     }/*end of handleResponse*/
-
-Parse.initialize("MCSNBPaOJowTLp0LZqcG2hPRLKsPlTqHeKT3CK3P","JRsBK5g0aam1H89lxIcZIqRTSllbuiASaNIkz9G7");
-
-
-App.router = new App.Routers.AppRouter();
-App.results = new App.Collections.Results();
