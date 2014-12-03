@@ -61,7 +61,9 @@ $red1: rgb(203, 64, 83);
 
 
 #middle{
-  border:solid;
+  border-top:solid;
+  border-left:solid;
+  border-right:solid;
   @include outer-container;
   width:100%;
 
@@ -119,4 +121,77 @@ $red1: rgb(203, 64, 83);
   border:solid;
   background-color:gray;
 }
+}
+
+.homeContainer{
+  .signUpLink{
+    .signUp{
+      border-radius:10px;
+      background-color:black;
+      color:white;
+      font-size:30px;
+      padding:20px;
+      border:solid;
+      margin-left:30%;
+      margin-top:100px;
+      margin-bottom:100px;
+      float:left;
+    }
+  }
+  .loginLink{
+
+    .login{
+      border-radius:10px;
+      background-color:black;
+      color:white;
+      padding:20px;
+      font-size:30px;
+      margin-right:30%;
+      margin-top:100px;
+      margin-bottom:100px;
+      float:right;
+      border:solid;
+    }
+  }
+}
+
+.loginForm{
+  margin-left:20px;
+  .formTitle{
+
+    }
+  .username{
+    display:block;
+    }
+  .password{
+    margin-top:25px;
+    display:block;
+    }
+  .loginBtn{
+    margin-top:25px;
+    display:block;
+    margin-bottom:25px;
+  }
+}
+
+.signUpForm{
+  margin-left:20px;
+  .formTitle{
+    }
+  .email{
+    display:block;
+  }
+  .createUsername{
+    margin-top:25px;
+    display:block;
+    }
+  .createPassword{
+    margin-top:25px;
+    display:block;
+    }
+  .signUpBtn{
+    margin-top:25px;
+    display:block;
+    margin-bottom:25px;
+  }
 }

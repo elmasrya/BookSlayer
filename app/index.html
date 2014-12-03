@@ -55,6 +55,44 @@
         </div>
       </script><!--end of navbar template-->
 
+      <script type="text/template" id="homeTemp">
+        <div class="homeContainer">
+          <a href="#/signup" class="signUpLink">
+            <div class="signUp">Sign Up
+            </div>
+          </a>
+          <a href="#/login" class="loginLink">
+            <div class="login">
+            Login
+            </div>
+          </a>
+        </div><!--end home container-->
+      </script>
+
+      <script type="text/template" id="signUpTemp">
+        <form class="signUpForm">
+          <h3 class="formTitle">Sign Up</h3>
+          <span class="email">E-Mail: <input class="emailVal" type="text" placeholder="Your E-Mail"></span>
+          <span class="createUsername">Username: <input class="createUsernameVal" type="text" placeholder="Create Username"></span>
+          <span class="createPassword">Password: <input class="createPasswordVal" type="password" placeholder="Create Password"></span>
+          <button class="signUpBtn">Sign Up</button>
+        </form>
+      </script>
+
+      <script type="text/template" id="loginTemp">
+        <form class="loginForm">
+          <h3 class="formTitle">Login</h3>
+          <span class="username">Username: <input class="usernameVal" type="text" placeholder="Username"></span>
+          <span class="password">Password: <input class="passwordVal" type="password" placeholder="Password"></span>
+          <button class="loginBtn">Login</button>
+        </form>
+      </script>
+
+
+      <script type="text/template" id="footerTemp">
+        <div class="footer"></div>
+      </script><!--end of footer template-->
+
       <script type="text/template" id="searchBookTemp">
         <h2 class="heading">Search for a Book...</h2>
         <form class="form">
@@ -104,11 +142,6 @@
       </script><!--end of navbar template-->
 
 
-      <script type="text/template" id="footerTemp">
-        <div class="footer"></div>
-      </script><!--end of navbar template-->
-
-
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -122,6 +155,10 @@
         <script src="scripts/views/contact_view.js"></script>
         <script src="scripts/views/about_view.js"></script>
         <script src="scripts/views/myBook_view.js"></script>
+        <script src="scripts/views/navBar.js"></script>
+        <script src="scripts/views/login_view.js"></script>
+        <script src="scripts/views/signup_view.js"></script>
+        <script src="scripts/views/home_view.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
         <script src="scripts/views/footer.js"></script>
