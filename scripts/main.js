@@ -1,7 +1,8 @@
+
 (function () {
 
 
-  App.Views.Contact = Backbone.View.extend({
+  App.Views.Contact = Parse.View.extend({
 
 
     el                : '#middle',
@@ -35,7 +36,7 @@
 (function () {
 
 
-  App.Views.About = Backbone.View.extend({
+  App.Views.About = Parse.View.extend({
 
 
     el                : '#middle',
@@ -69,7 +70,7 @@
 (function () {
 
 
-  App.Views.MyBook = Backbone.View.extend({
+  App.Views.MyBook = Parse.View.extend({
 
 
     el                : '#middle',
@@ -102,7 +103,7 @@
 (function () {
 
 
-  App.Views.NavBar = Backbone.View.extend({
+  App.Views.NavBar = Parse.View.extend({
 
 
     el                : '#top',
@@ -163,7 +164,7 @@
 (function () {
 
 
-  App.Views.SearchBook = Backbone.View.extend({
+  App.Views.SearchBook = Parse.View.extend({
 
 
     el                : '#middle',
@@ -200,7 +201,7 @@
         }
 
 
-        
+
 
   });
 
@@ -209,7 +210,7 @@
 (function () {
 
 
-  App.Views.Footer = Backbone.View.extend({
+  App.Views.Footer = Parse.View.extend({
 
 
     el                : '#bottom',
@@ -242,45 +243,12 @@
 
 (function () {
 
-  App.Collections.Results = Backbone.Collection.extend({
-    model: App.Models.Book,
-    url: 'https://tiy-atl-fe-server.herokuapp.com/collections/bookslayer'
-  });
 
-}());
-
-(function () {
-
-  App.Models.Favorites = Backbone.Model.extend({
-
-    idAttribute: '_id',
-
-    defaults: {
-      Title: '',
-      Page: '',
-    },
-
-    initialize: function () {
-
-    },
-
-    render    : function () {
-
-    }
-
-  });
-
-}());
-
-(function () {
-
-
-  App.Routers.AppRouter = Backbone.Router.extend({
+  App.Routers.AppRouter = Parse.Router.extend({
 
 
     initialize: function () {
       // Light the Fire
-      Backbone.history.start();
     },
 
     routes: {
@@ -293,7 +261,7 @@
     home: function () {
 
       new App.Views.NavBar();
-      new App.Views.SearchBook({collection: App.results});
+      new App.Views.SearchBook();
       new App.Views.Footer();
 
 
@@ -326,20 +294,6 @@
   });
 
 }());
-
-App.router = new App.Routers.AppRouter();
-App.results = new App.Collections.Results();
-
-// App.results.fetch().done( function () {
-//
-//     App.router = new App.Routers.AppRouter();
-//
-//   });
-
-
-
-
-
 
 $('.searchBtn').on('click', function(){
       event.preventDefault();
@@ -389,16 +343,6 @@ $('.searchBtn').on('click', function(){
 
         }
 
-        // var c = new App.Models.Book({
-        // Title: item.volumeInfo.title,
-        // Page: item.volumeInfo.pageCount
-        // });
-
-        // App.results.add(c).save(null, {
-        //       success: function () {
-        //         // App.router.navigate('', { trigger: true });
-        //       }
-        //     });
 
 
 
@@ -422,3 +366,9 @@ $('.searchBtn').on('click', function(){
 
 
     }/*end of handleResponse*/
+
+Parse.initialize("MCSNBPaOJowTLp0LZqcG2hPRLKsPlTqHeKT3CK3P","JRsBK5g0aam1H89lxIcZIqRTSllbuiASaNIkz9G7");
+
+
+App.router = new App.Routers.AppRouter();
+App.results = new App.Collections.Results();
