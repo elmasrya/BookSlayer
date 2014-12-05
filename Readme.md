@@ -11,9 +11,7 @@ Libraries Used:
 
 jQuery
 Underscore
-Mocha
-Chai
-Handlebars
-Authors:
+backbone
 
-Richard Daniel and Andrew El-Masry
+Author:
+Andrew El-Masry
