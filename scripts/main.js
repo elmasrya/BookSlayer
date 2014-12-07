@@ -6,6 +6,38 @@ window.App = {};
 
 (function () {
 
+  App.Views.Profile = Parse.View.extend({
+
+    el                      : '#middle',
+
+    events: {
+      'click .searchLink' : 'search'
+    }, // end of events
+
+    template                : _.template($('#profileTemp').html()),
+
+    initialize              : function () {
+
+      this.render();
+    }, // end of initialize
+
+    render                  : function () {
+      this.$el.html(this.template);
+
+    },
+
+    search                  : function () {
+    App.router.navigate('search', { trigger: true });
+    new App.Views.Search();
+    }
+
+  }); // end of view
+
+
+}()); // end of IIF
+
+(function () {
+
 
   App.Views.Contact = Parse.View.extend({
 
@@ -40,7 +72,7 @@ window.App = {};
 
 (function () {
 
-
+/*parse view*/
   App.Views.About = Parse.View.extend({
 
 
@@ -119,7 +151,8 @@ window.App = {};
         'click .myList'     : 'myList',
         'click .homeBtn'    : 'home',
         'click .aboutBtn'   : 'about',
-        'click .contactBtn' : 'contact'
+        'click .contactBtn' : 'contact',
+        'click .userAccount': 'account'
     }, // end of events
 
 
@@ -155,6 +188,11 @@ window.App = {};
 
     contact   : function () {
 
+    },
+
+    account : function () {
+      App.router.navigate('profile', { trigger: true });
+
     }
 
 
@@ -169,7 +207,227 @@ window.App = {};
 (function () {
 
 
-  App.Views.SearchBook = Parse.View.extend({
+  App.Views.Login = Parse.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#loginTemp').html()),
+
+    events: {
+      'click .loginBtn' : 'goToAccount'
+    }, // end of events
+
+
+    initialize: function () {
+
+
+      this.render();
+
+
+    },
+
+    render: function () {
+      this.$el.html(this.template);
+    },
+
+    goToAccount : function () {
+      // Log User into account
+      var username = $('.usernameVal').val();
+      var password = $('.passwordVal').val();
+      Parse.User.logIn(username, password, {
+        success: function () {
+          console.log('Login successful');
+          App.router.navigate('profile', {trigger: true});
+        },
+        error: function (user, error) {
+          console.log('wrong');
+        }
+      }); // end of logIn
+    } // end of go to account
+
+  });
+
+
+}());
+
+(function () {
+
+
+  App.Views.SignUp = Parse.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#signUpTemp').html()),
+
+    events: {
+      'click .signUpBtn' : 'creatingProfile'
+    }, // end of events
+
+
+    initialize: function () {
+
+
+      this.render();
+
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+    },
+
+    creatingProfile: function(e) {
+      e.preventDefault();
+      // New User Creation
+      // Send New User to Server
+      var user = new Parse.User({
+        username: $('.createUsernameVal').val(),
+        password: $('.createPasswordVal').val(),
+        email: $('.emailVal').val()
+      });
+      user.signUp(null, {
+        success: function(user) {
+          console.log('Account created');
+          $('#middle').empty();
+          App.router.navigate('', { trigger: true });
+        },
+        error: function(user, error) {
+          alert('Error');
+          App.router.navigate('', { trigger: true });
+        }
+
+      })
+
+    }
+
+
+
+  });
+
+}());
+
+(function () {
+
+
+  App.Views.Home = Parse.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#homeTemp').html()),
+
+    events: {
+        'click .signUpLink' : 'signUp',
+        'click .loginLink'  : 'login'
+    }, // end of events
+
+
+    initialize: function () {
+
+
+      this.render();
+
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+    },
+
+    signUp              : function () {
+      App.router.navigate('signUp', { trigger: true });
+      new App.Views.SignUp();
+
+
+    },
+
+    login     : function () {
+      App.router.navigate('login', { trigger: true });
+      new App.Views.Login();
+
+    }
+
+
+
+  });
+
+}());
+
+(function () {
+
+
+  App.Views.NavBar = Parse.View.extend({
+
+
+    el                : '#top',
+
+    template          : _.template($('#navBarTemp').html()),
+
+    events: {
+        'click .myList'     : 'myList',
+        'click .homeBtn'    : 'home',
+        'click .aboutBtn'   : 'about',
+        'click .contactBtn' : 'contact',
+        'click .userAccount': 'account'
+    }, // end of events
+
+
+    initialize: function () {
+
+
+      this.render();
+
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+    },
+
+    myList: function () {
+      App.router.navigate('myList', { trigger: true });
+      new App.Views.MyBook();
+
+
+    },
+
+    home      : function() {
+
+    },
+
+    about     : function () {
+      App.router.navigate('about', { trigger: true });
+      new App.Views.About();
+
+    },
+
+    contact   : function () {
+
+    },
+
+    account : function () {
+      App.router.navigate('profile', { trigger: true });
+
+    }
+
+
+
+
+
+
+  });
+
+}());
+
+(function () {
+
+
+  App.Views.Search = Parse.View.extend({
 
 
     el                : '#middle',
@@ -178,18 +436,15 @@ window.App = {};
 
     events: {
 
-      'submit .addBook' : 'addBook',
-
 
     }, // end of events
 
 
-    initialize: function (options) {
-      this.options = options;
+    initialize: function () {
+
 
       this.render();
-      // this.collection.off();
-      // this.collection.on('sync', this.render, this);
+
 
 
     },
@@ -198,12 +453,7 @@ window.App = {};
 
       this.$el.html(this.template);
 
-    },
-
-
-    addBook: function () {
-
-        }
+    }
 
 
 
@@ -253,20 +503,22 @@ window.App = {};
 
 
     initialize: function () {
-      // Light the Fire
     },
 
     routes: {
       ''        : 'home',
       'myList'  : 'myList',
       'about'   : 'about',
-      'contact' : 'contact'
+      'contact' : 'contact',
+      'signup'  : 'signup',
+      'login'   : 'login',
+      'profile' : 'profile',
+      'search'  : 'search'
     },
 
     home: function () {
-
       new App.Views.NavBar();
-      new App.Views.SearchBook();
+      new App.Views.Home();
       new App.Views.Footer();
 
 
@@ -276,25 +528,47 @@ window.App = {};
       new App.Views.NavBar();
       new App.Views.MyBook();
       new App.Views.Footer();
-
-
     },
 
     contact: function () {
       new App.Views.NavBar();
       new App.Views.Contact();
       new App.Views.Footer();
-
-
     },
 
     about: function () {
       new App.Views.NavBar();
       new App.Views.About();
       new App.Views.Footer();
+    },
 
+    signup: function () {
+      new App.Views.NavBar();
+      new App.Views.SignUp();
+      new App.Views.Footer();
+    },
+
+    login: function () {
+      new App.Views.NavBar();
+      new App.Views.Login();
+      new App.Views.Footer();
+    },
+
+    profile: function () {
+      new App.Views.NavBar();
+      new App.Views.Profile();
+      new App.Views.Footer();
+
+    },
+
+    search: function () {
+      new App.Views.NavBar();
+      new App.Views.Search();
+      new App.Views.Footer();
 
     }
+
+
 
   });
 
