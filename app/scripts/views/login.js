@@ -13,7 +13,9 @@
     }, // end of events
 
 
-    initialize: function () {
+    initialize: function (options) {
+
+      this.options=options;
 
 
       this.render();

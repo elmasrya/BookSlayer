@@ -52,12 +52,30 @@
           <a class="myList" href="#/profile">
             <img class="bookImg" src=images/book.png>
           </a>
-          <button class="logout">Log Out</button>
+            <% if(App.user !== null){ %>
+            <button class="logout">Log Out</button>
+            <a class="addBookLink" href="#/addBook">Add a book</a>
+            <a class="searchLink" href="#/search">Search for a book</a>
+          <% } else { %>
+            <% } %>
         </div>
       </script><!--end of navbar template-->
 
       <script type="text/template" id="homeTemp">
         <div class="homeContainer">
+        <% if(App.user !== null){ %>
+        <h2>New York Times Best Seller List</h2>
+          <li>HOPE TO DIE, by James Patterson</li>
+          <li>THE ESCAPE, by David Baldacci</li>
+          <li>GONE GIRL, by Gillian Flynn</li>
+          <li>RAY MOUNTAIN, by John Grisham</li>
+          <li>THE BURNING ROOM, by Michael Connelly</li>
+          <li>UNBROKEN, by Laura Hillenbrand</li>
+          <li>KILLING PATTON, by Bill O'Reilly and Martin Dugard</li>
+          <li>41, by George W. Bush</li>
+          <li>YES PLEASE, by Amy Poehler</li>
+          <li>WILD, by Cheryl Strayed</li>
+      <% } else { %>
           <a href="#/signup" class="signUpLink">
             <div class="signUp">Sign Up
             </div>
@@ -67,6 +85,7 @@
             Login
             </div>
           </a>
+          <% } %>
         </div><!--end home container-->
       </script>
 
@@ -77,6 +96,8 @@
           <span class="createUsername">Username: <input class="createUsernameVal" type="text" placeholder="Create Username"></span>
           <span class="createPassword">Password: <input class="createPasswordVal" type="password" placeholder="Create Password"></span>
           <button class="signUpBtn">Sign Up</button>
+          <span>If you are alreadly registered, click <a href="#/login">Log In</a><span>
+
         </form>
       </script>
 
@@ -86,6 +107,7 @@
           <span class="username">Username: <input class="usernameVal" type="text" placeholder="Username"></span>
           <span class="password">Password: <input class="passwordVal" type="password" placeholder="Password"></span>
           <button class="loginBtn">Login</button>
+          <span>If you are not registered, click <a href="#/signup">Sign Up</a><span>
         </form>
       </script>
 
@@ -95,11 +117,13 @@
       </script><!--end of footer template-->
 
       <script type="text/template" id="profileTemp">
-
-        <div class="bookList"></div>
-          <a class="addBookLink" href="#/addBook">Add a book</a>
-          <a class="searchLink" href="#/search">Search for a book</a>
-
+          <ul class="bookList">
+            <li><%=title%></li>
+            <li><%=pageCount%></li>
+            <li><%=readingLevel%></li>
+            <li><%=duration%></li>
+          </ul>
+          <br>
       </script>
 
       <script type="text/template" id="searchBookTemp">
@@ -184,13 +208,23 @@
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
     <script src="../bower_components/parse/parse.min.js"></script>
+    <script src="../bower_components/moment/moment.js"></script>
+
     <!-- endbower -->
     <!-- endbuild -->
 
+      <script type="text/javascript">
+        window.App = {};
+        App.Models = {};
+        App.Collections = {};
+        App.Views = {};
+        App.Routers = {};
+        </script>
+
         <!-- build:js scripts/main.js -->
-        <script src="scripts/core/initial.js"></script>
         <script src="scripts/models/book.js"></script>
         <script src="scripts/collections/books.js"></script>
+        <script src="scripts/routes/app_router.js"></script>
         <script src="scripts/views/addBook.js"></script>
         <script src="scripts/views/profile.js"></script>
         <script src="scripts/views/contact.js"></script>
@@ -202,7 +236,6 @@
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
         <script src="scripts/views/footer.js"></script>
-        <script src="scripts/routes/app_router.js"></script>
         <script src="scripts/core/main.js"></script>
         <script src="scripts/core/search.js"></script>
         <!-- endbuild -->

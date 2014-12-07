@@ -2,7 +2,6 @@
 
   App.Views.Profile = Parse.View.extend({
 
-    el                      : '#middle',
 
     tagName: 'ul',
     className: 'allBooks',
@@ -15,10 +14,12 @@
     initialize              : function (options) {
       this.options = options;
       this.render();
+      $("#middle").html(this.$el);
+
     }, // end of initialize
 
     render                  : function () {
-      this.$el.html(this.template);
+      $("#middle").html(this.$el);
       var self = this;
 
       var myBook_query = new Parse.Query(App.Models.Book);

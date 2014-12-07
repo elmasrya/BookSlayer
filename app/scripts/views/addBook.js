@@ -30,7 +30,7 @@
       e.preventDefault();
 
       if($('.bookTitle').val() === ""){
-        alert('Please create add book Title.');
+        alert('Please add a book title.');
       }
       else if($('.readingLevel option:selected').val() === ""){
         alert("Please select a reading level");
@@ -44,11 +44,11 @@
       else{
 
         var b = new App.Models.Book({
-          user: App.user,
           title: $('.bookTitle').val(),
           readingLevel: $('.readingLevel option:selected').val(),
           pageCount: $('.pageCount').val(),
-          duration: $('.duration').val()
+          duration: $('.duration').val(),
+          user: App.user,
         });
 
         // Set Access Control List

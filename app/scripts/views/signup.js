@@ -38,12 +38,12 @@
       user.signUp(null, {
         success: function(user) {
           console.log('Account created');
-          $('#middle').empty();
-          App.router.navigate('', { trigger: true });
+          new App.Views.Login({user: App.user});
+
         },
         error: function(user, error) {
           alert('Error');
-          App.router.navigate('', { trigger: true });
+          new App.Views.Home();
         }
 
       })

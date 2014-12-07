@@ -3,6 +3,7 @@
 
   App.Views.NavBar = Parse.View.extend({
 
+    tagName: 'nav',
 
     el                : '#top',
 
@@ -13,9 +14,9 @@
     }, // end of events
 
 
-    initialize: function () {
+    initialize: function (options) {
 
-
+      this.options=options;
       this.render();
 
 
@@ -26,33 +27,13 @@
       this.$el.html(this.template);
     },
 
-    userStatus : function(){
 
-      App.user = Parse.User.current();
-
-      if(App.user === null){
-        $('.logout').css('display');
-      }
-      else {
-        $('#navLogin').text('Login');
-      }
-
-    },
-
-      logout: function(e){
+    logout: function(){
 
       var current = this.options;
-
       Parse.User.logOut();
-
-      this.userStatus();
-
-      this.initialize();
-
-      App.router.navigate('', {trigger: true});
-
-      // this.updateUser();
-
+      App.user=null;
+      new App.Views.Home();
     }
 
 
