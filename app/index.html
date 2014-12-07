@@ -23,10 +23,14 @@
   </head>
   <body>
     <div id="container">
+
       <div id="top">
       </div><!--end of top-->
+
       <div id="middle">
+
       </div><!--end of middle-->
+
       <div id="bottom">
       </div><!--end of bottom-->
 
@@ -54,8 +58,6 @@
           </a>
             <% if(App.user !== null){ %>
             <button class="logout">Log Out</button>
-            <a class="addBookLink" href="#/addBook">Add a book</a>
-            <a class="searchLink" href="#/search">Search for a book</a>
           <% } else { %>
             <% } %>
         </div>
@@ -75,6 +77,9 @@
           <li>41, by George W. Bush</li>
           <li>YES PLEASE, by Amy Poehler</li>
           <li>WILD, by Cheryl Strayed</li>
+          <br>
+          <span>Go to <a href="#/profile">My Profile</a></span>
+          <br></br>
       <% } else { %>
           <a href="#/signup" class="signUpLink">
             <div class="signUp">Sign Up
@@ -97,7 +102,6 @@
           <span class="createPassword">Password: <input class="createPasswordVal" type="password" placeholder="Create Password"></span>
           <button class="signUpBtn">Sign Up</button>
           <span>If you are alreadly registered, click <a href="#/login">Log In</a><span>
-
         </form>
       </script>
 
@@ -116,15 +120,33 @@
         <div class="footer"></div>
       </script><!--end of footer template-->
 
+
       <script type="text/template" id="profileTemp">
-          <ul class="bookList">
-            <li><%=title%></li>
-            <li><%=pageCount%></li>
-            <li><%=readingLevel%></li>
-            <li><%=duration%></li>
-          </ul>
-          <br>
+        <ul class="bookList">
+          <li>Book Title: <%=title%></li>
+          <li>Pages: <%=pageCount%></li>
+          <li>Reading Level: <%=readingLevel%></li>
+          <li>Duration: <%=duration%> days</li>
+        </ul>
+        <br>
+        <% if(App.router.navigate('profile', { trigger: true }))
+{ %>
+        <a class="addBookLink" href="#/addBook">Add a book</a>
+        <a class="searchLink" href="#/search">Search for a book</a>
+
+
+      <% } else { %>
+          <h2>Hey</h2>
+          <% } %>
+
+
+
+
       </script>
+
+
+
+
 
       <script type="text/template" id="searchBookTemp">
         <h2 class="heading">Search for a Book...</h2>

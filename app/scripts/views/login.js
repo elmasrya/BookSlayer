@@ -36,7 +36,7 @@
         success: function (user) {
           App.user=user;
           console.log('Login successful');
-          App.router.navigate('profile', {trigger: true});
+            App.router.navigate('', {trigger: true});
         },
         error: function (user, error) {
           alert('Invalid user login');

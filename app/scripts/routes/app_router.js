@@ -15,7 +15,7 @@
       'login'             : 'login',
       'profile'           : 'profile',
       'search'            : 'search',
-      'addBook'   : 'addBook'
+      'addBook'           : 'addBook'
     },
 
     home: function () {

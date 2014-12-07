@@ -198,3 +198,12 @@ $red1: rgb(203, 64, 83);
 .bookList{
   list-style:none;
 }
+
+
+#subMiddle{
+  border-top:solid;
+  border-left:solid;
+  border-right:solid;
+  @include outer-container;
+  width:100%;
+}

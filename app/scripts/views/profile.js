@@ -14,12 +14,15 @@
     initialize              : function (options) {
       this.options = options;
       this.render();
-      $("#middle").html(this.$el);
+
+      $('#middle').html(this.$el);
+
 
     }, // end of initialize
 
     render                  : function () {
-      $("#middle").html(this.$el);
+      $('#middle').html(this.$el);
+
       var self = this;
 
       var myBook_query = new Parse.Query(App.Models.Book);
