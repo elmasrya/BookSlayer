@@ -9,10 +9,7 @@
     template          : _.template($('#navBarTemp').html()),
 
     events: {
-        'click .myList'     : 'myList',
-        'click .homeBtn'    : 'home',
-        'click .aboutBtn'   : 'about',
-        'click .contactBtn' : 'contact'
+      'click .logout' : 'logout'
     }, // end of events
 
 
@@ -29,27 +26,34 @@
       this.$el.html(this.template);
     },
 
-    myList: function () {
-      App.router.navigate('myList', { trigger: true });
-      new App.Views.MyBook();
+    userStatus : function(){
 
+      App.user = Parse.User.current();
 
-    },
-
-    home      : function() {
-
-    },
-
-    about     : function () {
-      App.router.navigate('about', { trigger: true });
-      new App.Views.About();
+      if(App.user === null){
+        $('.logout').css('display');
+      }
+      else {
+        $('#navLogin').text('Login');
+      }
 
     },
 
-    contact   : function () {
+      logout: function(e){
+
+      var current = this.options;
+
+      Parse.User.logOut();
+
+      this.userStatus();
+
+      this.initialize();
+
+      App.router.navigate('', {trigger: true});
+
+      // this.updateUser();
 
     }
-
 
 
 

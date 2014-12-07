@@ -1,7 +1,7 @@
 (function () {
 
 
-  App.Views.SearchBook = Parse.View.extend({
+  App.Views.Search = Parse.View.extend({
 
 
     el                : '#middle',
@@ -10,18 +10,15 @@
 
     events: {
 
-      'submit .addBook' : 'addBook',
-
 
     }, // end of events
 
 
-    initialize: function (options) {
-      this.options = options;
+    initialize: function () {
+
 
       this.render();
-      // this.collection.off();
-      // this.collection.on('sync', this.render, this);
+
 
 
     },
@@ -30,12 +27,7 @@
 
       this.$el.html(this.template);
 
-    },
-
-
-    addBook: function () {
-
-        }
+    }
 
 
 

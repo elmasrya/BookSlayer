@@ -49,9 +49,10 @@
             </div><!--end of nav frame-->
         </div><!--end of title frame-->
         <div class="myBookFrame">
-          <a class="myList" href="#/myList">
+          <a class="myList" href="#/profile">
             <img class="bookImg" src=images/book.png>
           </a>
+          <button class="logout">Log Out</button>
         </div>
       </script><!--end of navbar template-->
 
@@ -93,6 +94,14 @@
         <div class="footer"></div>
       </script><!--end of footer template-->
 
+      <script type="text/template" id="profileTemp">
+
+        <div class="bookList"></div>
+          <a class="addBookLink" href="#/addBook">Add a book</a>
+          <a class="searchLink" href="#/search">Search for a book</a>
+
+      </script>
+
       <script type="text/template" id="searchBookTemp">
         <h2 class="heading">Search for a Book...</h2>
         <form class="form">
@@ -115,10 +124,38 @@
         </div>
       </script><!--end of search book template-->
 
-      <script type="text/template" id="myBookTemp">
-        <div id="myOwnList"></div>
-        <p>This is some Text</p>
-      </script><!--end of navbar template-->
+      <script type="text/template" id="addBookTemp">
+        <div>
+          <form class="bookForm">
+            <span class="bookTitleLabel">Book Title:</span>
+            <input class="bookTitle" placeholder="Book Title"/>
+            <br></br>
+            <span class="readingLevelLabel">Reading Level:</span>
+            <select class="readingLevel" id="addlevel">
+              <option value="firstG" selected>1st Grade</option>
+              <option value="secondG" selected>2nd Grade</option>
+              <option value="thirdG" selected>3rd Grade</option>
+              <option value="fourthG" selected>4th Grade</option>
+              <option value="fifthG" selected>5th Grade</option>
+              <option value="sixthG" selected>6th Grade</option>
+              <option value="seventhG" selected>7th Grade</option>
+              <option value="eighthG" selected>8th Grade</option>
+              <option value="ninthG" selected>9thGrade</option>
+              <option value="tenthG"  selected>10th Grade</option>
+              <option value="elevethG" selected>11thGrade</option>
+              <option value="twelthG"  selected>12th Grade</option>
+            </select>
+            <br></br>
+            <span class="question1"> How many pages are in the book?</span>
+            <input class="pageCount" placeholder="Page Count"/>
+            <br></br>
+            <span class="question2">How many days do you want this book finished by?</span>
+            <input class="duration" placeholder="How many days?" />
+            <br></br>
+            <button class="addBookBtn">Add Book</button>
+          </form>
+        </div>
+      </script>
 
       <script type="text/template" id="aboutTemp">
         <div class="aboutInfo">About:
@@ -152,13 +189,16 @@
 
         <!-- build:js scripts/main.js -->
         <script src="scripts/core/initial.js"></script>
-        <script src="scripts/views/contact_view.js"></script>
-        <script src="scripts/views/about_view.js"></script>
-        <script src="scripts/views/myBook_view.js"></script>
+        <script src="scripts/models/book.js"></script>
+        <script src="scripts/collections/books.js"></script>
+        <script src="scripts/views/addBook.js"></script>
+        <script src="scripts/views/profile.js"></script>
+        <script src="scripts/views/contact.js"></script>
+        <script src="scripts/views/about.js"></script>
         <script src="scripts/views/navBar.js"></script>
-        <script src="scripts/views/login_view.js"></script>
-        <script src="scripts/views/signup_view.js"></script>
-        <script src="scripts/views/home_view.js"></script>
+        <script src="scripts/views/login.js"></script>
+        <script src="scripts/views/signup.js"></script>
+        <script src="scripts/views/home.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
         <script src="scripts/views/footer.js"></script>

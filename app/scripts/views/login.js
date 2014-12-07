@@ -22,7 +22,6 @@
     },
 
     render: function () {
-
       this.$el.html(this.template);
     },
 
@@ -30,17 +29,15 @@
       // Log User into account
       var username = $('.usernameVal').val();
       var password = $('.passwordVal').val();
+
       Parse.User.logIn(username, password, {
-        success: function () {
+        success: function (user) {
+          App.user=user;
           console.log('Login successful');
-          // Route back to home page
-          $('#upperRegion').empty();
-          $('#middleRegion').empty();
-          new App.Views.Home();
-          App.router.navigate('', {trigger: true});
+          App.router.navigate('profile', {trigger: true});
         },
         error: function (user, error) {
-          console.log('wrong');
+          alert('Invalid user login');
         }
       }); // end of logIn
     } // end of go to account

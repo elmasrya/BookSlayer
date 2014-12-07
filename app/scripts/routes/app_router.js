@@ -9,24 +9,18 @@
 
     routes: {
       ''        : 'home',
-      'myList'  : 'myList',
       'about'   : 'about',
       'contact' : 'contact',
       'signup'  : 'signup',
-      'login'   : 'login'
+      'login'   : 'login',
+      'profile'      : 'profile',
+      'search'  : 'search',
+      'addBook' : 'addBook'
     },
 
     home: function () {
       new App.Views.NavBar();
       new App.Views.Home();
-      new App.Views.Footer();
-
-
-    },
-
-    myList: function () {
-      new App.Views.NavBar();
-      new App.Views.MyBook();
       new App.Views.Footer();
     },
 
@@ -52,8 +46,28 @@
       new App.Views.NavBar();
       new App.Views.Login();
       new App.Views.Footer();
-    }
+    },
 
+    addBook: function () {
+      new App.Views.NavBar();
+      new App.Views.AddBook();
+      new App.Views.Footer();
+
+    },
+    profile: function () {
+      new App.Views.NavBar();
+      new App.Views.Profile({user: App.user});
+      new App.Views.Footer();
+
+    },
+
+
+    search: function () {
+      new App.Views.NavBar();
+      new App.Views.Search();
+      new App.Views.Footer();
+
+    }
 
 
   });
