@@ -15,10 +15,19 @@
   </head>
   <body>
     <div id="container">
+
       <div id="top">
       </div><!--end of top-->
+
+      <div id="tools">
+      </div>
+
       <div id="middle">
       </div><!--end of middle-->
+
+      <div id="profileTools">
+      </div>
+
       <div id="bottom">
       </div><!--end of bottom-->
 
@@ -41,15 +50,34 @@
             </div><!--end of nav frame-->
         </div><!--end of title frame-->
         <div class="myBookFrame">
-          <a class="myList" href="#/myList">
+          <a class="myList" href="#/profile">
             <img class="bookImg" src=images/book.png>
           </a>
-          <span class="userAccount">My Account<span>
+            <% if(App.user !== null){ %>
+            <button class="logout">Log Out</button>
+          <% } else { %>
+            <% } %>
         </div>
       </script><!--end of navbar template-->
 
       <script type="text/template" id="homeTemp">
         <div class="homeContainer">
+        <% if(App.user !== null){ %>
+        <h2>New York Times Best Seller List</h2>
+          <li>HOPE TO DIE, by James Patterson</li>
+          <li>THE ESCAPE, by David Baldacci</li>
+          <li>GONE GIRL, by Gillian Flynn</li>
+          <li>RAY MOUNTAIN, by John Grisham</li>
+          <li>THE BURNING ROOM, by Michael Connelly</li>
+          <li>UNBROKEN, by Laura Hillenbrand</li>
+          <li>KILLING PATTON, by Bill O'Reilly and Martin Dugard</li>
+          <li>41, by George W. Bush</li>
+          <li>YES PLEASE, by Amy Poehler</li>
+          <li>WILD, by Cheryl Strayed</li>
+          <br>
+          <span>Go to <a href="#/profile">My Profile</a></span>
+          <br></br>
+      <% } else { %>
           <a href="#/signup" class="signUpLink">
             <div class="signUp">Sign Up
             </div>
@@ -59,6 +87,7 @@
             Login
             </div>
           </a>
+          <% } %>
         </div><!--end home container-->
       </script>
 
@@ -69,6 +98,7 @@
           <span class="createUsername">Username: <input class="createUsernameVal" type="text" placeholder="Create Username"></span>
           <span class="createPassword">Password: <input class="createPasswordVal" type="password" placeholder="Create Password"></span>
           <button class="signUpBtn">Sign Up</button>
+          <span>If you are alreadly registered, click <a href="#/login">Log In</a><span>
         </form>
       </script>
 
@@ -78,6 +108,7 @@
           <span class="username">Username: <input class="usernameVal" type="text" placeholder="Username"></span>
           <span class="password">Password: <input class="passwordVal" type="password" placeholder="Password"></span>
           <button class="loginBtn">Login</button>
+          <span>If you are not registered, click <a href="#/signup">Sign Up</a><span>
         </form>
       </script>
 
@@ -86,21 +117,25 @@
         <div class="footer"></div>
       </script><!--end of footer template-->
 
+
       <script type="text/template" id="profileTemp">
-        <div class="profileContainer">
-          <h3>Welcome</h3>
-          <p>This is your profile</p>
-          <ul class="bookList">
-            <h4>This is your Book List</h4>
-            <li>Lord of the Rings</li>
-            <li>Narnia: The Lion, The Witch, and the Wardrobe</li>
-            <li>The Hobbit</li>
-          </ul>
-          <a class="searchLink" href="#/search">Search for a book</a>
-        </div>
+        <ul class="bookList">
+          <a href="#/single/<%=objectId %>"><li>Book Title: <%=title%></li><a>
+          <li>Pages: <%=pageCount%></li>
+          <li>Reading Level: <%=readingLevel%></li>
+          <li>Duration: <%=duration%> days</li>
+        </ul>
+        <br>
+      </script>
+
+      <script type="text/template" id="toolsTemp">
+        <a class="addBookLink" href="#/addBook">Add a book</a>
+        <a class="searchLink" href="#/search">Search for a book</a>
+        <a class="testLink" href="#/test">Take the reading Test</a>
       </script>
 
       <script type="text/template" id="searchBookTemp">
+        <span>Go back to <a href="#/profile">My Profile</a></span>
         <h2 class="heading">Search for a Book...</h2>
         <form class="form">
           <input class="searchBar" type="text" placeholder="Search for a book..."/></input>
@@ -122,10 +157,49 @@
         </div>
       </script><!--end of search book template-->
 
-      <script type="text/template" id="myBookTemp">
-        <div id="myOwnList"></div>
-        <p>This is some Text</p>
-      </script><!--end of navbar template-->
+      <script type="text/template" id="addBookTemp">
+        <div>
+          <form class="bookForm">
+            <span class="bookTitleLabel">Book Title:</span>
+            <input class="bookTitle" placeholder="Book Title"/>
+            <br></br>
+            <span class="readingLevelLabel">Reading Level:</span>
+            <select class="readingLevel" id="addlevel">
+              <option value="firstG" selected>1st Grade</option>
+              <option value="secondG" selected>2nd Grade</option>
+              <option value="thirdG" selected>3rd Grade</option>
+              <option value="fourthG" selected>4th Grade</option>
+              <option value="fifthG" selected>5th Grade</option>
+              <option value="sixthG" selected>6th Grade</option>
+              <option value="seventhG" selected>7th Grade</option>
+              <option value="eighthG" selected>8th Grade</option>
+              <option value="ninthG" selected>9thGrade</option>
+              <option value="tenthG"  selected>10th Grade</option>
+              <option value="elevethG" selected>11thGrade</option>
+              <option value="twelthG"  selected>12th Grade</option>
+            </select>
+            <br></br>
+            <span class="question1"> How many pages are in the book?</span>
+            <input class="pageCount" placeholder="Page Count"/>
+            <br></br>
+            <span class="question2">How many days do you want this book finished by?</span>
+            <input class="duration" placeholder="How many days?" />
+            <br></br>
+            <button class="addBookBtn">Add Book</button>
+          </form>
+        </div>
+      </script>
+
+      <script type="text/template" id="testTemp">
+          Take a test
+      </script>
+
+      <script type="text/template" id="singleTemp">
+        <li class="singleBookTitle">Book Title: <%=title%></li>
+        <li class="singlePageCount">Pages: <%=pageCount%></li>
+        <li class="singleRadingLevel">Reading Level: <%=readingLevel%></li>
+        <li class="singleDuration">Duration: <%= duration%> days</li>
+    </script>
 
       <script type="text/template" id="aboutTemp">
         <div class="aboutInfo">About:
@@ -150,6 +224,14 @@
 
 
     <script src="scripts/vendor.js"></script>
+
+      <script type="text/javascript">
+        window.App = {};
+        App.Models = {};
+        App.Collections = {};
+        App.Views = {};
+        App.Routers = {};
+        </script>
 
         <script src="scripts/main.js"></script>
 
