@@ -17,7 +17,7 @@
       'search'            : 'search',
       'addBook'           : 'addBook',
       'test'              : 'test',
-      'single:objectId'   : 'single'
+      'single/:objectId'   : 'single'
     },
 
     home: function () {
