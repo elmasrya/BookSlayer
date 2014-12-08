@@ -43,7 +43,11 @@
 
 
 
-    }
+    },
+
+    delete : function () {
+
+    },
 
 
 

@@ -220,3 +220,28 @@ $red1: rgb(203, 64, 83);
   margin-left:100px;
 
 }
+
+.deleteBtn{
+  padding:5px;
+  border:solid;
+  background-color:red;
+  color:white;
+  border-radius:10px;
+}
+
+.editBtn{
+  padding:5px;
+  border:solid;
+  width:65px;
+  background-color:blue;
+  color:white;
+  border-radius:10px;
+}
+
+.calcBtn{
+  padding:5px;
+  border:solid;
+  background-color:green;
+  color:white;
+  border-radius:10px;
+}
