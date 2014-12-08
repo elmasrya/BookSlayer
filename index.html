@@ -195,10 +195,18 @@
       </script>
 
       <script type="text/template" id="singleTemp">
-        <li class="singleBookTitle">Book Title: <%=title%></li>
-        <li class="singlePageCount">Pages: <%=pageCount%></li>
-        <li class="singleRadingLevel">Reading Level: <%=readingLevel%></li>
-        <li class="singleDuration">Duration: <%= duration%> days</li>
+        <br></br>
+        <span>Go back to <a href="#/profile">My Profile</a></span>
+        <br></br>
+        <button class=editBtn>Edit</button>
+        <button class=deleteBtn>Delete</button>
+        <br></br>
+        <li class="singleBookTitle"> Book Title: <%=title%> </li>
+        <li class="singlePageCount"> Pages: <%=pageCount%> </li>
+        <li class="singleRadingLevel"> Reading Level: <%=readingLevel%> </li>
+        <li class="singleDuration"> Duration: <%= duration%> days </li>
+        <br></br>
+        <button class=calcBtn>Calculate</button>
     </script>
 
       <script type="text/template" id="aboutTemp">
@@ -211,13 +219,13 @@
 
       <script type="text/template" id="contactTemp">
         <ul class="contactInfo">
-          <li>App Creator: Andrew El-Masry</li>
+          <li class="creator">App Creator: Andrew El-Masry</li>
           <br></br>
-          <li>E-Mail: andrewelmasry@gmail.com</li>
+          <li class="appEmail">E-Mail: andrewelmasry@gmail.com</li>
           <br></br>
-          <li>Blog: andrewelmasry.com</li>
+          <li class="blog">Blog: andrewelmasry.com</li>
           <br></br>
-          <li>GitHub: https://github.com/elmasrya</li>
+          <li="github">GitHub: https://github.com/elmasrya</li>
           <br></br>
         </ul>
       </script><!--end of navbar template-->
