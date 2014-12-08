@@ -1,12 +1,12 @@
 (function () {
 
+/*parse view*/
+  App.Views.ProfileTools = Parse.View.extend({
 
-  App.Views.Contact = Parse.View.extend({
 
+    el                : '#tools',
 
-    el                : '#middle',
-
-    template          : _.template($('#contactTemp').html()),
+    template          : _.template($('#toolsTemp').html()),
 
     events: {
 
@@ -15,6 +15,7 @@
 
 
     initialize: function () {
+
       this.render();
 
     },

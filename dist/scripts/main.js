@@ -1,35 +1,345 @@
-window.App = {};
-        App.Models = {};
-        App.Collections = {};
-        App.Views = {};
-        App.Routers = {};
+(function () {
+  App.Models.Book = Parse.Object.extend({
+    className: 'Book',
+
+    idAttribute: 'objectId',
+
+    defaults: {
+      title: '',
+      readingLevel:'',
+      pageCount: '',
+      user: '',
+      duration:''
+    },
+
+    initialize : function () {
+
+    }
+
+
+
+
+  })
+
+}());
+
+(function () {
+  App.Collections.Books = Parse.Collection.extend({
+
+    model: App.Models.Book
+
+  });
+
+}());
+
+(function () {
+
+
+  App.Routers.AppRouter = Parse.Router.extend({
+
+
+    initialize: function () {
+    },
+
+    routes: {
+      ''                  : 'home',
+      'about'             : 'about',
+      'contact'           : 'contact',
+      'signup'            : 'signup',
+      'login'             : 'login',
+      'profile'           : 'profile',
+      'search'            : 'search',
+      'addBook'           : 'addBook',
+      'test'              : 'test',
+      'single:objectId'   : 'single'
+    },
+
+    home: function () {
+      $('#tools').empty();
+      new App.Views.Home();
+      new App.Views.Footer();
+      },
+
+    contact: function () {
+      $('#tools').empty();
+      new App.Views.Contact();
+      new App.Views.Footer();
+      },
+
+    about: function () {
+      $('#tools').empty();
+      new App.Views.About();
+      new App.Views.Footer();
+      },
+
+    signup: function () {
+      $('#tools').empty();
+      new App.Views.SignUp();
+      new App.Views.Footer();
+      },
+
+    login: function () {
+      $('#tools').empty();
+      new App.Views.Login({user: App.user});
+      new App.Views.Footer();
+      },
+
+    addBook: function () {
+      $('#tools').empty();
+      new App.Views.AddBook();
+      new App.Views.Footer();
+      },
+
+    profile: function () {
+      new App.Views.Profile({user: App.user});
+      new App.Views.Footer();
+
+    },
+
+    search: function () {
+      $('#tools').empty();
+      new App.Views.Search();
+      new App.Views.Footer();
+    },
+
+    test: function () {
+      $('#tools').empty();
+      new App.Views.Test();
+      new App.Views.Footer();
+    },
+
+    single: function (objectId) {
+      $('#tools').empty();
+      var singleBook = App.books.get(objectId);
+      new App.Views.SingleBook({book: singleBook, collection: App.books});
+      new App.Views.Footer();
+    }
+
+
+
+  });
+
+}());
+
+(function () {
+
+/*parse view*/
+  App.Views.SingleBook = Parse.View.extend({
+
+events: {
+
+
+}, // end of events
+
+
+    template          : _.template($('#singleTemp').html()),
+
+
+
+    initialize: function (options) {
+      this.options=options;
+      this.render();
+      console.log(options);
+      $("#middle").html(this.$el);
+    },
+
+    render: function () {
+      var self = this;
+
+      // $("#middle").empty();
+      //
+      // this.$el.empty();
+
+      this.$el.html(this.template(this.options.book.toJSON()));
+
+    }
+
+
+
+  });
+
+}());
+
+(function () {
+
+/*parse view*/
+  App.Views.Test = Parse.View.extend({
+
+
+    el                : '#middle',
+
+    template          : _.template($('#testTemp').html()),
+
+    events: {
+
+
+    }, // end of events
+
+
+    initialize: function () {
+
+
+      this.render();
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+
+    },
+
+
+
+  });
+
+}());
+
+(function(){
+
+  App.Views.AddBook = Parse.View.extend({
+
+    el             : '#middle',
+
+    tagName: 'ul',
+    className: 'bookItem',
+
+
+    template        : _.template($('#addBookTemp').html()),
+
+    events: {
+      'click .addBookBtn': 'addBook',
+
+    },
+
+    initialize   : function () {
+      this.render();
+    },
+
+    render  : function () {
+      this.$el.html(this.template);
+
+    },
+
+    addBook : function (e) {
+
+      e.preventDefault();
+
+      if($('.bookTitle').val() === ""){
+        alert('Please add a book title.');
+      }
+      else if($('.readingLevel option:selected').val() === ""){
+        alert("Please select a reading level");
+      }
+      else if($('.pageCount').val() === ""){
+        alert("please put in page count");
+      }
+      else if($('.duration').val() === ""){
+        alert("please put in how many days");
+      }
+      else{
+
+        var b = new App.Models.Book({
+          title: $('.bookTitle').val(),
+          readingLevel: $('.readingLevel option:selected').val(),
+          pageCount: $('.pageCount').val(),
+          duration: $('.duration').val(),
+          user: App.user,
+        });
+
+        // Set Access Control List
+        var bookACL = new Parse.ACL(App.user);
+        bookACL.setPublicReadAccess(true);
+        b.setACL(bookACL);
+
+        b.save(null, {
+          success: function () {
+            App.books.add(b);
+            App.router.navigate('profile', { trigger: true });
+          }
+        });
+
+      }
+
+    }/*end of add book*/
+
+  });
+
+}());
+
+(function () {
+
+/*parse view*/
+  App.Views.ProfileTools = Parse.View.extend({
+
+
+    el                : '#tools',
+
+    template          : _.template($('#toolsTemp').html()),
+
+    events: {
+
+
+    }, // end of events
+
+
+    initialize: function () {
+
+      this.render();
+
+    },
+
+    render: function () {
+
+      this.$el.html(this.template);
+
+    },
+
+
+
+  });
+
+}());
 
 (function () {
 
   App.Views.Profile = Parse.View.extend({
 
-    el                      : '#middle',
+
+    tagName: 'ul',
+    className: 'allBooks',
 
     events: {
-      'click .searchLink' : 'search'
     }, // end of events
 
     template                : _.template($('#profileTemp').html()),
 
-    initialize              : function () {
-
+    initialize              : function (options) {
+      this.options = options;
       this.render();
+      $('#middle').html(this.$el);
+
+
+
     }, // end of initialize
 
     render                  : function () {
-      this.$el.html(this.template);
+      $('#middle').html(this.$el);
+      new App.Views.ProfileTools();
 
+      var self = this;
+
+      var myBook_query = new Parse.Query(App.Models.Book);
+      myBook_query.equalTo('user', this.options.user);
+      myBook_query.descending("updatedAt");
+      myBook_query.find({
+        success: function(books){
+          _.each(books, function(b) {
+            self.$el.append(self.template(b.toJSON()));
+          });
+        }
+      });
     },
-
-    search                  : function () {
-    App.router.navigate('search', { trigger: true });
-    new App.Views.Search();
-    }
 
   }); // end of view
 
@@ -53,7 +363,6 @@ window.App = {};
 
 
     initialize: function () {
-
       this.render();
 
     },
@@ -88,6 +397,7 @@ window.App = {};
 
     initialize: function () {
 
+
       this.render();
 
     },
@@ -97,39 +407,6 @@ window.App = {};
       this.$el.html(this.template);
 
     },
-
-
-
-  });
-
-}());
-
-(function () {
-
-
-  App.Views.MyBook = Parse.View.extend({
-
-
-    el                : '#middle',
-
-    template          : _.template($('#myBookTemp').html()),
-
-    events: {
-    }, // end of events
-
-
-    initialize: function () {
-
-
-      this.render();
-
-
-    },
-
-    render: function () {
-
-      this.$el.html(this.template);
-    }
 
 
 
@@ -142,23 +419,20 @@ window.App = {};
 
   App.Views.NavBar = Parse.View.extend({
 
+    tagName: 'nav',
 
     el                : '#top',
 
     template          : _.template($('#navBarTemp').html()),
 
     events: {
-        'click .myList'     : 'myList',
-        'click .homeBtn'    : 'home',
-        'click .aboutBtn'   : 'about',
-        'click .contactBtn' : 'contact',
-        'click .userAccount': 'account'
+      'click .logout' : 'logout'
     }, // end of events
 
 
-    initialize: function () {
+    initialize: function (options) {
 
-
+      this.options=options;
       this.render();
 
 
@@ -169,32 +443,14 @@ window.App = {};
       this.$el.html(this.template);
     },
 
-    myList: function () {
-      App.router.navigate('myList', { trigger: true });
-      new App.Views.MyBook();
 
+    logout: function(){
 
-    },
-
-    home      : function() {
-
-    },
-
-    about     : function () {
-      App.router.navigate('about', { trigger: true });
-      new App.Views.About();
-
-    },
-
-    contact   : function () {
-
-    },
-
-    account : function () {
-      App.router.navigate('profile', { trigger: true });
-
+      var current = this.options;
+      Parse.User.logOut();
+      App.user=null;
+      new App.Views.Home();
     }
-
 
 
 
@@ -219,7 +475,8 @@ window.App = {};
     }, // end of events
 
 
-    initialize: function () {
+    initialize: function (options) {
+      this.options=options;
 
 
       this.render();
@@ -235,13 +492,15 @@ window.App = {};
       // Log User into account
       var username = $('.usernameVal').val();
       var password = $('.passwordVal').val();
+
       Parse.User.logIn(username, password, {
-        success: function () {
+        success: function (user) {
+          App.user=user;
           console.log('Login successful');
-          App.router.navigate('profile', {trigger: true});
+            App.router.navigate('', {trigger: true});
         },
         error: function (user, error) {
-          console.log('wrong');
+          alert('Invalid user login');
         }
       }); // end of logIn
     } // end of go to account
@@ -267,8 +526,6 @@ window.App = {};
 
 
     initialize: function () {
-
-
       this.render();
 
 
@@ -291,12 +548,12 @@ window.App = {};
       user.signUp(null, {
         success: function(user) {
           console.log('Account created');
-          $('#middle').empty();
-          App.router.navigate('', { trigger: true });
+          new App.Views.Login({user: App.user});
+
         },
         error: function(user, error) {
           alert('Error');
-          App.router.navigate('', { trigger: true });
+          new App.Views.Home();
         }
 
       })
@@ -327,7 +584,7 @@ window.App = {};
 
     initialize: function () {
 
-
+      
       this.render();
 
 
@@ -362,23 +619,20 @@ window.App = {};
 
   App.Views.NavBar = Parse.View.extend({
 
+    tagName: 'nav',
 
     el                : '#top',
 
     template          : _.template($('#navBarTemp').html()),
 
     events: {
-        'click .myList'     : 'myList',
-        'click .homeBtn'    : 'home',
-        'click .aboutBtn'   : 'about',
-        'click .contactBtn' : 'contact',
-        'click .userAccount': 'account'
+      'click .logout' : 'logout'
     }, // end of events
 
 
-    initialize: function () {
+    initialize: function (options) {
 
-
+      this.options=options;
       this.render();
 
 
@@ -389,32 +643,14 @@ window.App = {};
       this.$el.html(this.template);
     },
 
-    myList: function () {
-      App.router.navigate('myList', { trigger: true });
-      new App.Views.MyBook();
 
+    logout: function(){
 
-    },
-
-    home      : function() {
-
-    },
-
-    about     : function () {
-      App.router.navigate('about', { trigger: true });
-      new App.Views.About();
-
-    },
-
-    contact   : function () {
-
-    },
-
-    account : function () {
-      App.router.navigate('profile', { trigger: true });
-
+      var current = this.options;
+      Parse.User.logOut();
+      App.user=null;
+      new App.Views.Home();
     }
-
 
 
 
@@ -435,13 +671,12 @@ window.App = {};
     template          : _.template($('#searchBookTemp').html()),
 
     events: {
-
+        'click .searchBtn' : 'searchBook'
 
     }, // end of events
 
 
     initialize: function () {
-
 
       this.render();
 
@@ -452,6 +687,68 @@ window.App = {};
     render: function () {
 
       this.$el.html(this.template);
+
+    },
+
+    searchBook : function (e) {
+
+      e.preventDefault();
+      $('.searchResults').empty();
+      var inputVal=$('.searchBar').val();
+      console.log(inputVal);
+
+      var googleApi="https://www.googleapis.com/books/v1/volumes?q="+inputVal+"&callback=handleResponse";
+      $.ajax({
+        type: 'GET',
+        url: googleApi
+      });
+
+      function handleResponse(response) {
+
+        for (var i = 0; i < response.items.length; i++) {
+          var item = response.items[i];
+          // in production code, item.text should have the HTML entities escaped.
+
+          if(item.volumeInfo.pageCount===undefined) {
+
+
+          $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
+            "<span class='book' id='" + i +"'>" +"Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "<br>" + "<br>"
+            + "</span>");
+
+
+          } else{
+
+          $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
+            "<span class='book' id='" +  i +"'>" +"Book Title: " + item.volumeInfo.title + "<br></br>" + "<a href="+ item.volumeInfo.previewLink + ">Preview</a>" +"<img src="+ item.volumeInfo.imageLinks.thumbnail + "/>" +"<br>" + "Pages: " + item.volumeInfo.pageCount
+           + "<br>" + "<br>" + "</span>");
+
+
+          }
+
+
+
+
+        }//End of loop
+
+
+          $('.choices').on('click', function(){
+
+            var elemID = this.id;
+            console.log(elemID);
+
+            var bookInfo = $('.book[id=' + elemID + ']').text();
+            // var =item.volumeInfo.title;
+            // var b=item.volumeInfo.pageCount;
+
+
+          $('.addBookSec').append("<br>" + bookInfo + "<br>");
+          var exit=$('.addBookSec').val();
+
+          });
+
+      }
+
 
     }
 
@@ -479,7 +776,6 @@ window.App = {};
 
 
     initialize: function () {
-
       this.render();
 
     },
@@ -496,161 +792,18 @@ window.App = {};
 
 }());
 
-(function () {
-
-
-  App.Routers.AppRouter = Parse.Router.extend({
-
-
-    initialize: function () {
-    },
-
-    routes: {
-      ''        : 'home',
-      'myList'  : 'myList',
-      'about'   : 'about',
-      'contact' : 'contact',
-      'signup'  : 'signup',
-      'login'   : 'login',
-      'profile' : 'profile',
-      'search'  : 'search'
-    },
-
-    home: function () {
-      new App.Views.NavBar();
-      new App.Views.Home();
-      new App.Views.Footer();
-
-
-    },
-
-    myList: function () {
-      new App.Views.NavBar();
-      new App.Views.MyBook();
-      new App.Views.Footer();
-    },
-
-    contact: function () {
-      new App.Views.NavBar();
-      new App.Views.Contact();
-      new App.Views.Footer();
-    },
-
-    about: function () {
-      new App.Views.NavBar();
-      new App.Views.About();
-      new App.Views.Footer();
-    },
-
-    signup: function () {
-      new App.Views.NavBar();
-      new App.Views.SignUp();
-      new App.Views.Footer();
-    },
-
-    login: function () {
-      new App.Views.NavBar();
-      new App.Views.Login();
-      new App.Views.Footer();
-    },
-
-    profile: function () {
-      new App.Views.NavBar();
-      new App.Views.Profile();
-      new App.Views.Footer();
-
-    },
-
-    search: function () {
-      new App.Views.NavBar();
-      new App.Views.Search();
-      new App.Views.Footer();
-
-    }
-
-
-
-  });
-
-}());
-
 Parse.initialize("MCSNBPaOJowTLp0LZqcG2hPRLKsPlTqHeKT3CK3P","JRsBK5g0aam1H89lxIcZIqRTSllbuiASaNIkz9G7");
 
 (function() {
+  App.books = new App.Collections.Books();
 
-  App.router = new App.Routers.AppRouter();
-  Parse.history.start();
+  App.user = Parse.User.current();
 
-}());
+  new App.Views.NavBar({user: App.user});
 
-$('.searchBtn').on('click', function(){
-      event.preventDefault();
-      $('.searchResults').empty();
-      var inputVal=$('.searchBar').val();
-      console.log(inputVal);
-
-
-  var googleApi="https://www.googleapis.com/books/v1/volumes?q="+inputVal+"&callback=handleResponse";
-
-
-
-
-
-
-
-
-  // Send item to server
-  $.ajax({
-    type: 'GET',
-    url: googleApi
-
-
+  App.books.fetch().done(function () {
+      App.router = new App.Routers.AppRouter();
+      Parse.history.start();
   });
 
-});
-
-    function handleResponse(response) {
-      for (var i = 0; i < response.items.length; i++) {
-        var item = response.items[i];
-        // in production code, item.text should have the HTML entities escaped.
-
-        if(item.volumeInfo.pageCount===undefined) {
-
-
-        $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
-          "<span class='book' id='" + i +"'>" +"Book Title: " + item.volumeInfo.title + "<br>" + "Pages: Not Available " + "<br>" + "<br>"
-          + "</span>");
-
-
-        } else{
-
-        $('.searchResults').append("<br>" + "<button class='choices' id='"+ i + "'> + </button>" +
-          "<span class='book' id='" +  i +"'>" +"Book Title: " + item.volumeInfo.title + "<br></br>" + "<a href="+ item.volumeInfo.previewLink + ">Preview</a>" +"<img src="+ item.volumeInfo.imageLinks.thumbnail + "/>" +"<br>" + "Pages: " + item.volumeInfo.pageCount
-         + "<br>" + "<br>" + "</span>");
-
-
-        }
-
-
-
-
-      }//End of loop
-
-
-        $('.choices').on('click', function(){
-
-          var elemID = this.id;
-          console.log(elemID);
-
-          var bookInfo = $('.book[id=' + elemID + ']').text();
-          // var =item.volumeInfo.title;
-          // var b=item.volumeInfo.pageCount;
-
-
-        $('.addBookSec').append("<br>" + bookInfo + "<br>");
-        var exit=$('.addBookSec').val();
-
-        });
-
-
-    }/*end of handleResponse*/
+}());

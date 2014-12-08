@@ -28,12 +28,14 @@
     },
 
 
-    logout: function(){
+    logout: function(e){
 
       var current = this.options;
       Parse.User.logOut();
       App.user=null;
+      App.router.navigate('', { trigger: true });
       new App.Views.Home();
+      location.reload();
     }
 
 

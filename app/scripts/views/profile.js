@@ -14,14 +14,15 @@
     initialize              : function (options) {
       this.options = options;
       this.render();
-
       $('#middle').html(this.$el);
+
 
 
     }, // end of initialize
 
     render                  : function () {
       $('#middle').html(this.$el);
+      new App.Views.ProfileTools();
 
       var self = this;
 

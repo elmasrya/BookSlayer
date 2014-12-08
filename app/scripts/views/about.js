@@ -16,6 +16,7 @@
 
     initialize: function () {
 
+
       this.render();
 
     },

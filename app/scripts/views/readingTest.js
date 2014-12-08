@@ -1,12 +1,12 @@
 (function () {
 
-
-  App.Views.Contact = Parse.View.extend({
+/*parse view*/
+  App.Views.Test = Parse.View.extend({
 
 
     el                : '#middle',
 
-    template          : _.template($('#contactTemp').html()),
+    template          : _.template($('#testTemp').html()),
 
     events: {
 
@@ -15,6 +15,8 @@
 
 
     initialize: function () {
+
+
       this.render();
 
     },

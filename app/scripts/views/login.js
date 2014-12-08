@@ -14,7 +14,6 @@
 
 
     initialize: function (options) {
-
       this.options=options;
 
 
@@ -29,16 +28,20 @@
 
     goToAccount : function () {
       // Log User into account
+
       var username = $('.usernameVal').val();
       var password = $('.passwordVal').val();
 
       Parse.User.logIn(username, password, {
         success: function (user) {
           App.user=user;
+          location.reload();
           console.log('Login successful');
             App.router.navigate('', {trigger: true});
+
         },
         error: function (user, error) {
+          location.reload();
           alert('Invalid user login');
         }
       }); // end of logIn

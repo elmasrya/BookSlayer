@@ -27,9 +27,14 @@
       <div id="top">
       </div><!--end of top-->
 
-      <div id="middle">
+      <div id="tools">
+      </div>
 
+      <div id="middle">
       </div><!--end of middle-->
+
+      <div id="profileTools">
+      </div>
 
       <div id="bottom">
       </div><!--end of bottom-->
@@ -123,32 +128,22 @@
 
       <script type="text/template" id="profileTemp">
         <ul class="bookList">
-          <li>Book Title: <%=title%></li>
+          <a href="#/single/<%=objectId %>"><li>Book Title: <%=title%></li><a>
           <li>Pages: <%=pageCount%></li>
           <li>Reading Level: <%=readingLevel%></li>
           <li>Duration: <%=duration%> days</li>
         </ul>
         <br>
-        <% if(App.router.navigate('profile', { trigger: true }))
-{ %>
-        <a class="addBookLink" href="#/addBook">Add a book</a>
-        <a class="searchLink" href="#/search">Search for a book</a>
-
-
-      <% } else { %>
-          <h2>Hey</h2>
-          <% } %>
-
-
-
-
       </script>
 
-
-
-
+      <script type="text/template" id="toolsTemp">
+        <a class="addBookLink" href="#/addBook">Add a book</a>
+        <a class="searchLink" href="#/search">Search for a book</a>
+        <a class="testLink" href="#/test">Take the reading Test</a>
+      </script>
 
       <script type="text/template" id="searchBookTemp">
+        <span>Go back to <a href="#/profile">My Profile</a></span>
         <h2 class="heading">Search for a Book...</h2>
         <form class="form">
           <input class="searchBar" type="text" placeholder="Search for a book..."/></input>
@@ -203,6 +198,17 @@
         </div>
       </script>
 
+      <script type="text/template" id="testTemp">
+          Take a test
+      </script>
+
+      <script type="text/template" id="singleTemp">
+        <li class="singleBookTitle"> Book Title: <%=title%> </li>
+        <li class="singlePageCount"> Pages: <%=pageCount%> </li>
+        <li class="singleRadingLevel"> Reading Level: <%=readingLevel%> </li>
+        <li class="singleDuration"> Duration: <%= duration%> days </li>
+    </script>
+
       <script type="text/template" id="aboutTemp">
         <div class="aboutInfo">About:
         <p>This Application is suppose to make you
@@ -247,7 +253,11 @@
         <script src="scripts/models/book.js"></script>
         <script src="scripts/collections/books.js"></script>
         <script src="scripts/routes/app_router.js"></script>
+        <script src="scripts/views/navBar.js"></script>
+        <script src="scripts/views/singleBook.js"></script>
+        <script src="scripts/views/readingTest.js"></script>
         <script src="scripts/views/addBook.js"></script>
+        <script src="scripts/views/profileTools.js"></script>
         <script src="scripts/views/profile.js"></script>
         <script src="scripts/views/contact.js"></script>
         <script src="scripts/views/about.js"></script>
@@ -255,11 +265,9 @@
         <script src="scripts/views/login.js"></script>
         <script src="scripts/views/signup.js"></script>
         <script src="scripts/views/home.js"></script>
-        <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/searchBook.js"></script>
         <script src="scripts/views/footer.js"></script>
         <script src="scripts/core/main.js"></script>
-        <script src="scripts/core/search.js"></script>
         <!-- endbuild -->
 
 </body>
