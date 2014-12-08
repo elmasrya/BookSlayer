@@ -22,6 +22,9 @@ events: {
     render: function () {
       var self = this;
 
+      $("#middle").empty();
+
+      this.$el.empty();
 
       this.$el.html(this.template(this.options.book.toJSON()));
 

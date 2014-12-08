@@ -3,7 +3,6 @@
 
   App.Views.NavBar = Parse.View.extend({
 
-    tagName: 'nav',
 
     el                : '#top',
 
