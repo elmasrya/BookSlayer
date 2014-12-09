@@ -17,7 +17,8 @@
       'search'            : 'search',
       'addBook'           : 'addBook',
       'test'              : 'test',
-      'single/:objectId'   : 'single'
+      'single/:objectId'  : 'single',
+      'edit/:objectId'    : 'editBook',
     },
 
     home: function () {
@@ -77,6 +78,12 @@
     single: function (objectId) {
       var singleBook = App.books.get(objectId);
       new App.Views.SingleBook({book: singleBook, collection: App.books, user: App.user});
+      new App.Views.Footer();
+    },
+
+    editBook: function(objectId){
+      var updateBook= App.books.get(objectId);
+      new App.Views.EditBook({objectId: objectId, book: updateBook});
       new App.Views.Footer();
     }
 

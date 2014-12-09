@@ -44,6 +44,10 @@
 
 
 <!--These are the all the templates-->
+
+
+
+
       <script type="text/template" id="navBarTemp">
         <div class="logoFrame">
           <img class="logo" src="images/logo.png">
@@ -67,6 +71,9 @@
             <% } %>
         </div>
       </script><!--end of navbar template-->
+
+
+
 
       <script type="text/template" id="homeTemp">
         <div class="homeContainer">
@@ -99,6 +106,9 @@
         </div><!--end home container-->
       </script>
 
+
+
+
       <script type="text/template" id="signUpTemp">
         <form class="signUpForm">
           <h3 class="formTitle">Sign Up</h3>
@@ -109,6 +119,9 @@
           <span>If you are alreadly registered, click <a href="#/login">Log In</a><span>
         </form>
       </script>
+
+
+
 
       <script type="text/template" id="loginTemp">
         <form class="loginForm">
@@ -121,9 +134,13 @@
       </script>
 
 
+
+
       <script type="text/template" id="footerTemp">
         <div class="footer"></div>
       </script><!--end of footer template-->
+
+
 
 
       <script type="text/template" id="profileTemp">
@@ -136,11 +153,17 @@
         <br>
       </script>
 
+
+
+
       <script type="text/template" id="toolsTemp">
         <a class="addBookLink" href="#/addBook">Add a book</a>
         <a class="searchLink" href="#/search">Search for a book</a>
         <a class="testLink" href="#/test">Take the reading Test</a>
       </script>
+
+
+
 
       <script type="text/template" id="searchBookTemp">
         <span>Go back to <a href="#/profile">My Profile</a></span>
@@ -164,6 +187,9 @@
           <button class="addBook">Save Book(s)</button>
         </div>
       </script><!--end of search book template-->
+
+
+
 
       <script type="text/template" id="addBookTemp">
         <div>
@@ -198,15 +224,23 @@
         </div>
       </script>
 
+
+
+
       <script type="text/template" id="testTemp">
           Take a test
       </script>
+
+
+
 
       <script type="text/template" id="singleTemp">
         <br></br>
         <span>Go back to <a href="#/profile">My Profile</a></span>
         <br></br>
-        <button class=editBtn>Edit</button>
+        <a href="#/edit/<%=objectId %>" class="editLink">
+          <button class=editBtn>Edit</button>
+        </a>
         <button class=deleteBtn>Delete</button>
         <br></br>
         <li class="singleBookTitle"> Book Title: <%=title%> </li>
@@ -217,13 +251,55 @@
         <button class=calcBtn>Calculate</button>
     </script>
 
-      <script type="text/template" id="aboutTemp">
-        <div class="aboutInfo">About:
-        <p>This Application is suppose to make you
-        read better. It was created by Andrew El-Masry at the
-        The Iron Yard Academy!!!
-        </p></div>
-      </script><!--end of navbar template-->
+
+
+
+    <script type="text/template" id="editTemp">
+      <div>
+        <form class="bookForm">
+          <span class="bookTitleLabel">Book Title:</span>
+          <input type="text" class="bookTitle" value="<%=title%>"/>
+          <br></br>
+          <span class="readingLevelLabel">Reading Level:</span>
+          <select class="readingLevel" id="addlevel">
+            <option value="firstG" selected>1st Grade</option>
+            <option value="secondG" selected>2nd Grade</option>
+            <option value="thirdG" selected>3rd Grade</option>
+            <option value="fourthG" selected>4th Grade</option>
+            <option value="fifthG" selected>5th Grade</option>
+            <option value="sixthG" selected>6th Grade</option>
+            <option value="seventhG" selected>7th Grade</option>
+            <option value="eighthG" selected>8th Grade</option>
+            <option value="ninthG" selected>9thGrade</option>
+            <option value="tenthG"  selected>10th Grade</option>
+            <option value="elevethG" selected>11thGrade</option>
+            <option value="twelthG"  selected>12th Grade</option>
+          </select>
+          <br></br>
+          <span class="question1"> How many pages are in the book?</span>
+          <input class="pageCount" value="<%=pageCount%>"/>
+          <br></br>
+          <span class="question2">How many days do you want this book finished by?</span>
+          <input class="duration" value="<%=duration%>" />
+          <br></br>
+        </form>
+      </div>
+      <button class="saveEdit">Save</button>
+      <a class="cancelLink" href="#/profile">
+        <button class="cancelEdit">Cancel</button>
+      </a>
+    </script>
+
+
+
+
+    <script type="text/template" id="aboutTemp">
+      <div class="aboutInfo">About:
+      <p>This Application is suppose to make you
+      read better. It was created by Andrew El-Masry at the
+      The Iron Yard Academy!!!
+      </p></div>
+    </script><!--end of navbar template-->
 
       <script type="text/template" id="contactTemp">
         <ul class="contactInfo">
@@ -261,6 +337,7 @@
         <script src="scripts/models/book.js"></script>
         <script src="scripts/collections/books.js"></script>
         <script src="scripts/routes/app_router.js"></script>
+        <script src="scripts/views/editBook.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/singleBook.js"></script>
         <script src="scripts/views/readingTest.js"></script>
