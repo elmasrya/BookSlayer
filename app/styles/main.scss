@@ -198,7 +198,20 @@ $red1: rgb(203, 64, 83);
   }
 }
 .bookList{
-  list-style:none;
+  height:155px;
+  width:140px;
+  background-image:url("../images/smallBook.png");
+  background-repeat: no-repeat;
+  display:inline-block;
+  margin-left:20px;
+}
+
+.bookListTitle{
+  width:100px;
+  color:white;
+  float:left;
+  margin-top:40px;
+  margin-left:15px;
 }
 
 
@@ -224,6 +237,7 @@ $red1: rgb(203, 64, 83);
 }
 
 .deleteBtn{
+  margin-left:10px;
   padding:5px;
   border:solid;
   background-color:red;
@@ -232,6 +246,7 @@ $red1: rgb(203, 64, 83);
 }
 
 .editBtn{
+  margin-left:10px;
   padding:5px;
   border:solid;
   width:65px;
@@ -240,10 +255,68 @@ $red1: rgb(203, 64, 83);
   border-radius:10px;
 }
 
+.editWord{
+  color:white;
+  text-decoration:none;
+}
+
 .calcBtn{
   padding:5px;
   border:solid;
   background-color:green;
   color:white;
   border-radius:10px;
+}
+
+.slayBtn{
+  margin-left:10px;
+  margin-top:50px;
+  padding:5px;
+  border:solid;
+  width:65px;
+  background-color:black;
+  color:white;
+  border-radius:10px;
+
+  display:inline;
+  float:left;
+}
+
+.singleBookContainer{
+  margin-left:20px;
+}
+
+.slayImage{
+  margin-left:20px;
+  display:inline;
+  float:left;
+  margin-top:40px;
+}
+
+.slayBook{
+  height:300px;
+  width:200px;
+  background-image:url("../images/smallBook.png");
+  background-repeat: no-repeat;
+  display:inline-block;
+  margin-left:20px;
+}
+.singleBookItems{
+  list-style:none;
+}
+
+.slayTitle{
+  width:100px;
+  color:red;
+  float:left;
+  margin-top:40px;
+  margin-left:15px;
+}
+
+#middleLeft{
+  float:left;
+}
+
+#middleRight{
+  float:right;
 }

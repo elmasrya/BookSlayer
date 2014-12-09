@@ -4,7 +4,8 @@
   App.Views.SingleBook = Parse.View.extend({
 
 events: {
-
+    'click .deleteBtn' : 'delete',
+    'click .slayBtn'   : 'slay'
 
 }, // end of events
 
@@ -27,6 +28,21 @@ events: {
       this.$el.empty();
 
       this.$el.html(this.template(this.options.book.toJSON()));
+
+    },
+
+    delete : function (e) {
+       e.preventDefault();
+
+      // Remove Coffee
+      this.options.book.destroy();
+
+      // Go home ET
+      App.router.navigate('profile', {trigger: true});
+
+    },
+
+    slay : function () {
 
     }
 

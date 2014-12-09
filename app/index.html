@@ -31,6 +31,12 @@
       </div>
 
       <div id="middle">
+
+        <div id="middleLeft">
+        </div>
+
+        <div id="middleRight">
+        </div>
       </div><!--end of middle-->
 
       <div id="profileTools">
@@ -144,13 +150,9 @@
 
 
       <script type="text/template" id="profileTemp">
-        <ul class="bookList">
-          <a href="#/single/<%=objectId %>"><li>Book Title: <%=title%></li><a>
-          <li>Pages: <%=pageCount%></li>
-          <li>Reading Level: <%=readingLevel%></li>
-          <li>Duration: <%=duration%> days</li>
-        </ul>
-        <br>
+            <div style="cursor: pointer;" onclick="window.location='#/single/<%=objectId %>';" class="bookList">
+              <span class="bookListTitle"><%=title%></span>
+            </div>
       </script>
 
 
@@ -235,20 +237,24 @@
 
 
       <script type="text/template" id="singleTemp">
-        <br></br>
-        <span>Go back to <a href="#/profile">My Profile</a></span>
-        <br></br>
-        <a href="#/edit/<%=objectId %>" class="editLink">
-          <button class=editBtn>Edit</button>
-        </a>
-        <button class=deleteBtn>Delete</button>
-        <br></br>
-        <li class="singleBookTitle"> Book Title: <%=title%> </li>
-        <li class="singlePageCount"> Pages: <%=pageCount%> </li>
-        <li class="singleRadingLevel"> Reading Level: <%=readingLevel%> </li>
-        <li class="singleDuration"> Duration: <%= duration%> days </li>
-        <br></br>
-        <button class=calcBtn>Calculate</button>
+        <div class="singleBookContainer">
+          <br></br>
+          <span>Go back to <a href="#/profile">My Profile</a></span>
+          <br></br>
+          <button class="editBtn" onclick="location.href='#/edit/<%=objectId %>'">Edit</button>
+          <button class="deleteBtn">Delete</button>
+          <br></br>
+          <ul class="singleBookItems">
+            <li class="singleBookTitle"> Book Title: <%=title%> </li>
+            <li class="singlePageCount"> Pages: <%=pageCount%> </li>
+            <li class="singleRadingLevel"> Reading Level: <%=readingLevel%> </li>
+            <li class="singleDuration"> Duration: <%= duration%> days </li>
+          </ul>
+            <br></br>
+            <div class="instructions">Click the slay button to calculate your reading plan!</div>
+          <button class="slayBtn">Slay</button><img class="slayImage" text="hi" src="images/slay.png">
+          <div class="slayBook"><span class="slayTitle"><%=title%></span></div>
+        </div>
     </script>
 
 
@@ -285,9 +291,8 @@
         </form>
       </div>
       <button class="saveEdit">Save</button>
-      <a class="cancelLink" href="#/profile">
-        <button class="cancelEdit">Cancel</button>
-      </a>
+      <button class="cancleBtn" onclick="location.href='#/single/<%=objectId %>'">Cancel</button>
+
     </script>
 
 
