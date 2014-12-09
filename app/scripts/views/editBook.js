@@ -33,7 +33,6 @@
     edit: function(e){
       e.preventDefault();
 
-      e.preventDefault();
 
       if($('.bookTitle').val() === ""){
         alert('Please add a book title.');
@@ -51,7 +50,7 @@
 
         this.options.book.set({
           title: $('.bookTitle').val(),
-          readingLevel: $('.readingLevel option:selected').val(),
+          readingLevel: $('.readingLevel').val(),
           pageCount: $('.pageCount').val(),
           duration: $('.duration').val(),
           user: App.user,

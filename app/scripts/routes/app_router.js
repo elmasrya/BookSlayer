@@ -16,6 +16,7 @@
       'profile'           : 'profile',
       'search'            : 'search',
       'addBook'           : 'addBook',
+      'addFromSearch'     : 'addFromSearch',
       'test'              : 'test',
       'single/:objectId'  : 'single',
       'edit/:objectId'    : 'editBook',
@@ -84,6 +85,12 @@
     editBook: function(objectId){
       var updateBook= App.books.get(objectId);
       new App.Views.EditBook({objectId: objectId, book: updateBook});
+      new App.Views.Footer();
+    },
+
+    addFromSearch: function() {
+      $('#tools').empty();
+      new App.Views.AddFromSearch();
       new App.Views.Footer();
     }
 

@@ -207,11 +207,12 @@ $red1: rgb(203, 64, 83);
 }
 
 .bookListTitle{
-  width:100px;
+  text-align:center;
+  width:90px;
   color:white;
   float:left;
   margin-top:40px;
-  margin-left:15px;
+  margin-left:12px;
 }
 
 
@@ -294,8 +295,8 @@ $red1: rgb(203, 64, 83);
 }
 
 .slayBook{
-  height:300px;
-  width:200px;
+  height:150px;
+  width:140px;
   background-image:url("../images/smallBook.png");
   background-repeat: no-repeat;
   display:inline-block;
@@ -306,11 +307,12 @@ $red1: rgb(203, 64, 83);
 }
 
 .slayTitle{
-  width:100px;
+  text-align:center;
+  width:90px;
   color:red;
   float:left;
   margin-top:40px;
-  margin-left:15px;
+  margin-left:12px;
 }
 
 #middleLeft{

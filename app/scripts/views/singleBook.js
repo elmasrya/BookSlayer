@@ -43,6 +43,7 @@ events: {
     },
 
     slay : function () {
+      $('.slayMessage').empty();
 
       var bookTitle=$('.singleBookTitle').text();
       console.log(bookTitle);
@@ -72,7 +73,7 @@ events: {
         var hrs = Math.floor(this)
         var min = Math.round(this%1*60)
         min = min<10 ? "0"+min : min.toString();
-        return hrs+":"+min+" minutes";
+        return hrs+"h : "+min+"m";
       }
 
 

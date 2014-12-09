@@ -177,7 +177,7 @@
           </div><!--end of search button frame-->
         </form><!--end of form-->
         <div class="searchBox">
-          <h2>Your Search Results: </h2>
+          <h2>Your Search Results: </h2>  x
           <div class="searchResults">
           </div>
         </div><!--end of search box-->
@@ -216,6 +216,29 @@
 
 
 
+      <script type="text/template" id="addSearchTemp">
+        <div>
+          <form class="bookForm">
+            <span class="bookTitleLabel">Book Title:</span>
+            <div class="searchTitle"/></div>
+            <br></br>
+            <span class="questionLevel"> You can read </span>
+            <input class="readingLevel" type="number" placeholder="Number of words"/> per minute
+            <br></br>
+            <span class="question1"> How many pages are in the book?</span>
+            <input class="pageCount" type="number"placeholder="Page Count"/>
+            <br></br>
+            <span class="question2">How many days do you want this book finished by?</span>
+            <input class="duration" type="number" placeholder="How many days?" />
+            <br></br>
+            <button class="addBookBtn">Add Book</button>
+          </form>
+        </div>
+      </script>
+
+
+
+
       <script type="text/template" id="testTemp">
           Take a test
       </script>
@@ -234,14 +257,16 @@
           <ul class="singleBookItems">
             <div>Book Title: <span class="singleBookTitle"><%=title%> </span></div>
             <div>Pages: <span class="singlePageCount"><%=pageCount%> </span></div>
-            <div>Reading Level: <li class="singleRadingLevel"><%=readingLevel%> </span> words/minute</div>
-            <div>Duration: <li class="singleDuration"><%= duration%> days </span></div>
+            <div>Reading Rate: <span class="singleRadingLevel"><%=readingLevel%> </span> words/minute</div>
+            <div>Duration: <span class="singleDuration"><%= duration%> days </span></div>
           </ul>
-            <br></br>
+          <br></br>
+          <div class="bottomFrame">
             <div class="instructions">Click the slay button to calculate your reading plan!</div>
-          <button class="slayBtn">Slay</button><img class="slayImage" text="hi" src="images/slay.png">
-          <div class="slayBook"><span class="slayTitle"><%=title%></span></div>
-          <div class="slayMessage"></div>
+            <button class="slayBtn">Slay</button><img class="slayImage" text="hi" src="images/slay.png">
+            <div class="slayBook"><span class="slayTitle"><%=title%></span></div>
+            <div class="slayMessage"></div>
+          </div>
         </div>
     </script>
 
@@ -258,10 +283,10 @@
           <input class="readingLevel" type="number" value="<%=readingLevel%>"/> per minute
           <br></br>
           <span class="question1"> How many pages are in the book?</span>
-          <input class="pageCount" type="number" value="<%=pageCount%>"/>
+          <input class="pageCount" type="number" value="<%=pageCount%>"/> pages
           <br></br>
           <span class="question2">How many days do you want this book finished by?</span>
-          <input class="duration" type="number" value="<%=duration%>" />
+          <input class="duration" type="number" value="<%=duration%>" /> days
           <br></br>
         </form>
       </div>
@@ -317,6 +342,7 @@
         <script src="scripts/models/book.js"></script>
         <script src="scripts/collections/books.js"></script>
         <script src="scripts/routes/app_router.js"></script>
+        <script src="scripts/views/addFromSearch.js"></script>
         <script src="scripts/views/editBook.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/singleBook.js"></script>
