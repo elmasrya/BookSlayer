@@ -199,27 +199,14 @@
             <span class="bookTitleLabel">Book Title:</span>
             <input class="bookTitle" placeholder="Book Title"/>
             <br></br>
-            <span class="readingLevelLabel">Reading Level:</span>
-            <select class="readingLevel" id="addlevel">
-              <option value="firstG" selected>1st Grade</option>
-              <option value="secondG" selected>2nd Grade</option>
-              <option value="thirdG" selected>3rd Grade</option>
-              <option value="fourthG" selected>4th Grade</option>
-              <option value="fifthG" selected>5th Grade</option>
-              <option value="sixthG" selected>6th Grade</option>
-              <option value="seventhG" selected>7th Grade</option>
-              <option value="eighthG" selected>8th Grade</option>
-              <option value="ninthG" selected>9thGrade</option>
-              <option value="tenthG"  selected>10th Grade</option>
-              <option value="elevethG" selected>11thGrade</option>
-              <option value="twelthG"  selected>12th Grade</option>
-            </select>
+            <span class="questionLevel"> You can read </span>
+            <input class="readingLevel" type="number" placeholder="Number of words"/> per minute
             <br></br>
             <span class="question1"> How many pages are in the book?</span>
-            <input class="pageCount" placeholder="Page Count"/>
+            <input class="pageCount" type="number"placeholder="Page Count"/>
             <br></br>
             <span class="question2">How many days do you want this book finished by?</span>
-            <input class="duration" placeholder="How many days?" />
+            <input class="duration" type="number" placeholder="How many days?" />
             <br></br>
             <button class="addBookBtn">Add Book</button>
           </form>
@@ -245,15 +232,16 @@
           <button class="deleteBtn">Delete</button>
           <br></br>
           <ul class="singleBookItems">
-            <li class="singleBookTitle"> Book Title: <%=title%> </li>
-            <li class="singlePageCount"> Pages: <%=pageCount%> </li>
-            <li class="singleRadingLevel"> Reading Level: <%=readingLevel%> </li>
-            <li class="singleDuration"> Duration: <%= duration%> days </li>
+            <div>Book Title: <span class="singleBookTitle"><%=title%> </span></div>
+            <div>Pages: <span class="singlePageCount"><%=pageCount%> </span></div>
+            <div>Reading Level: <li class="singleRadingLevel"><%=readingLevel%> </span> words/minute</div>
+            <div>Duration: <li class="singleDuration"><%= duration%> days </span></div>
           </ul>
             <br></br>
             <div class="instructions">Click the slay button to calculate your reading plan!</div>
           <button class="slayBtn">Slay</button><img class="slayImage" text="hi" src="images/slay.png">
           <div class="slayBook"><span class="slayTitle"><%=title%></span></div>
+          <div class="slayMessage"></div>
         </div>
     </script>
 
@@ -266,27 +254,14 @@
           <span class="bookTitleLabel">Book Title:</span>
           <input type="text" class="bookTitle" value="<%=title%>"/>
           <br></br>
-          <span class="readingLevelLabel">Reading Level:</span>
-          <select class="readingLevel" id="addlevel">
-            <option value="firstG" selected>1st Grade</option>
-            <option value="secondG" selected>2nd Grade</option>
-            <option value="thirdG" selected>3rd Grade</option>
-            <option value="fourthG" selected>4th Grade</option>
-            <option value="fifthG" selected>5th Grade</option>
-            <option value="sixthG" selected>6th Grade</option>
-            <option value="seventhG" selected>7th Grade</option>
-            <option value="eighthG" selected>8th Grade</option>
-            <option value="ninthG" selected>9thGrade</option>
-            <option value="tenthG"  selected>10th Grade</option>
-            <option value="elevethG" selected>11thGrade</option>
-            <option value="twelthG"  selected>12th Grade</option>
-          </select>
+          <span class="questionLevel"> You can read </span>
+          <input class="readingLevel" type="number" value="<%=readingLevel%>"/> per minute
           <br></br>
           <span class="question1"> How many pages are in the book?</span>
-          <input class="pageCount" value="<%=pageCount%>"/>
+          <input class="pageCount" type="number" value="<%=pageCount%>"/>
           <br></br>
           <span class="question2">How many days do you want this book finished by?</span>
-          <input class="duration" value="<%=duration%>" />
+          <input class="duration" type="number" value="<%=duration%>" />
           <br></br>
         </form>
       </div>

@@ -33,20 +33,20 @@
       if($('.bookTitle').val() === ""){
         alert('Please add a book title.');
       }
-      else if($('.readingLevel option:selected').val() === ""){
-        alert("Please select a reading level");
+      else if($('.readingLevel').val() === ""){
+        alert("Please put in a number for words per minute");
       }
       else if($('.pageCount').val() === ""){
-        alert("please put in page count");
+        alert("please put in a number for pages");
       }
       else if($('.duration').val() === ""){
-        alert("please put in how many days");
+        alert("please put in a number for days");
       }
       else{
 
         var b = new App.Models.Book({
           title: $('.bookTitle').val(),
-          readingLevel: $('.readingLevel option:selected').val(),
+          readingLevel: $('.readingLevel').val(),
           pageCount: $('.pageCount').val(),
           duration: $('.duration').val(),
           user: App.user,
