@@ -177,7 +177,7 @@
           </div><!--end of search button frame-->
         </form><!--end of form-->
         <div class="searchBox">
-          <h2>Your Search Results: </h2>  x
+          <h2>Your Search Results: </h2>
           <div class="searchResults">
           </div>
         </div><!--end of search box-->
@@ -217,19 +217,19 @@
 
 
       <script type="text/template" id="addSearchTemp">
-        <div>
-          <form class="bookForm">
-            <span class="bookTitleLabel">Book Title:</span>
-            <div class="searchTitle"/></div>
+        <div class="addSearch">
+          <form class="searchBookForm">
+            <span class="searchTitleLabel">Book Title:
+            </span>
             <br></br>
             <span class="questionLevel"> You can read </span>
-            <input class="readingLevel" type="number" placeholder="Number of words"/> per minute
+            <input class="readingLevelSearch" type="number" placeholder="Number of words"/> per minute
             <br></br>
-            <span class="question1"> How many pages are in the book?</span>
-            <input class="pageCount" type="number"placeholder="Page Count"/>
+            <span class="questionOneLabel"> How many pages are in the book?
+            </span>
             <br></br>
-            <span class="question2">How many days do you want this book finished by?</span>
-            <input class="duration" type="number" placeholder="How many days?" />
+            <span class="questionTwoLabel">How many days do you want this book finished by?</span>
+            <input class="durationSearch" type="number" placeholder="How many days?" />
             <br></br>
             <button class="addBookBtn">Add Book</button>
           </form>
@@ -240,7 +240,44 @@
 
 
       <script type="text/template" id="testTemp">
-          Take a test
+          <center><h1>Take the Test</h1>
+            <table class="formatted">
+            <caption>Table 8.1. Average rates for reading with understanding for students in Grades 2-12
+            </caption>
+            <tr>
+            <th style="text-align: center;"><strong>Grade equivalent</strong></th>
+            <th style="text-align: center;"><strong>Standard words per minute</strong></th>
+            </tr>
+            <tr>
+            <td valign="top"><div align="center">2.5<br />
+              3.5<br />
+              4.5<br />
+              5.5<br />
+              6.5<br />
+              7.5<br />
+              8.5<br />
+              9.5<br />
+              10.5<br />
+              11.5<br />
+              12.5</div></td>
+            <td valign="top"><div align="center">121<br />
+              135<br />
+              149<br />
+              163<br />
+              177<br />
+              191<br />
+              205<br />
+              219<br />
+              233<br />
+              247<br />
+              261</div></td>
+            </tr>
+            <tr>
+            <td colspan="2" valign="top"><p class="pagenote">Source: Carver (1990). A standard word is six letter spaces including punctuation and spacing.</p></td>
+            </tr>
+          </table>
+          </center>
+
       </script>
 
 

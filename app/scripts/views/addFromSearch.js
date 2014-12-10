@@ -30,25 +30,25 @@
 
       e.preventDefault();
 
-      if($('.bookTitle').val() === ""){
+      if($('.searchTitle').val() === ""){
         alert('Please add a book title.');
       }
-      else if($('.readingLevel').val() === ""){
+      else if($('.readingLevelSearch').val() === ""){
         alert("Please put in a number for words per minute");
       }
-      else if($('.pageCount').val() === ""){
+      else if($('.pageCountSearch').val() === ""){
         alert("please put in a number for pages");
       }
-      else if($('.duration').val() === ""){
+      else if($('.durationSearch').val() === ""){
         alert("please put in a number for days");
       }
       else{
 
         var b = new App.Models.Book({
-          title: $('.bookTitle').val(),
-          readingLevel: $('.readingLevel').val(),
-          pageCount: $('.pageCount').val(),
-          duration: $('.duration').val(),
+          title: $('.searchTitle').val(),
+          readingLevel: $('.readingLevelSearch').val(),
+          pageCount: $('.pageCountSearch').val(),
+          duration: $('.durationSearch').val(),
           user: App.user,
         });
 

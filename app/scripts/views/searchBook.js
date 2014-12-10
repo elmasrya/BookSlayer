@@ -41,60 +41,61 @@
         url: googleApi
       });
 
-      App.handleResponse = function (response) {
-        console.log("working");
-        for (var i = 0; i < response.items.length; i++) {
-          var item = response.items[i];
-          // in production code, item.text should have the HTML entities escaped.
+    App.handleResponse = function (response) {
+      console.log("working");
+      for (var i = 0; i < response.items.length; i++) {
+        var item = response.items[i];
+        // in production code, item.text should have the HTML entities escaped.
 
-          if(item.volumeInfo.pageCount===undefined) {
+        if(item.volumeInfo.pageCount===undefined) {
 
-        $('.searchResults').append
-            ("<br>" + "<button class='choices' id='"+ i + "'> + </button>"
-             + "<span class='googleBookTitle' id='" +  i +"'>" + "Book Title: "
-             + item.volumeInfo.title +"</span>" + "<br></br>" + "<a href="
-             + item.volumeInfo.previewLink + ">Preview</a>"
-             +"<img src="+ item.volumeInfo.imageLinks.thumbnail
-             + "/>" +"<br>"  + "<span class='googlePageCountSearch' id='" +  i +"'>" + "Pages: Not Available "
-             + "<br>" + "<br>" + "</span>");
-
-          } else{
-
-          $('.searchResults').append
+      $('.searchResults').append
           ("<br>" + "<button class='choices' id='"+ i + "'> + </button>"
            + "<span class='googleBookTitle' id='" +  i +"'>"
            + item.volumeInfo.title +"</span>" + "<br></br>" + "<a href="
            + item.volumeInfo.previewLink + ">Preview</a>"
            +"<img src="+ item.volumeInfo.imageLinks.thumbnail
-           + "/>" +"<br>"  + "<span class='googlePageCountSearch' id='" +  i +"'>" +  item.volumeInfo.pageCount
+           + "/>" +"<br>"  + "<span class='googlePageCountSearch' id='" +  i +"'>" + "Not Available "
            + "<br>" + "<br>" + "</span>");
 
+        } else{
 
-          }
-
-
-
-
-        }//End of loop
-
-
-          $('.choices').on('click', function(){
-
-            var elemID = this.id;
-            console.log(elemID);
-
-            var bookTitleSearch = $('.googleBookTitle[id=' + elemID + ']').text();
-            var bookPageSearch = $('.googlePageCountSearch[id=' + elemID + ']').text();
-
-            $('.searchTitle').append("<input class='searchBookTitle' value='bookTitleSearch'>" + bookTitleSearch + "<br>" + bookPageSearch);
-          var exit=$('.addBookSec').val();
-
-          // App.router.navigate('addFromSearch', { trigger: true });
+        $('.searchResults').append
+        ("<br>" + "<button class='choices' id='"+ i + "'> + </button>"
+         + "<span class='googleBookTitle' id='" +  i +"'>"
+         + item.volumeInfo.title +"</span>" + "<br></br>" + "<a href="
+         + item.volumeInfo.previewLink + ">Preview</a>"
+         +"<img src="+ item.volumeInfo.imageLinks.thumbnail
+         + "/>" +"<br>"  + "<span class='googlePageCountSearch' id='" +  i +"'>" +  item.volumeInfo.pageCount
+         + "<br>" + "<br>" + "</span>");
 
 
-          });
+        }
 
-      }/*End of handle response*/
+
+
+
+      }//End of loop
+
+
+        $('.choices').on('click', function(){
+
+          var elemID = this.id;
+          console.log(elemID);
+
+          var bookTitleSearch = $('.googleBookTitle[id=' + elemID + ']').text();
+          var bookPageSearch = $('.googlePageCountSearch[id=' + elemID + ']').text();
+          // $('.searchTitle').append("<input class='searchTitle'>"+bookTitleSearch);
+          console.log(bookTitleSearch);
+          /*If you dont instantiate elements may repaeat or pile up based up user*/
+          new App.Views.AddFromSearch();
+
+          App.router.navigate('addFromSearch', { trigger: true });
+            $('.searchTitleLabel').append("<input class='searchTitle' type='text' value='"+ bookTitleSearch + "'>");
+            $('.questionOneLabel').append("<input class='pageCountSearch' type='number' value='"+ bookPageSearch + "'>");
+        });
+
+    }/*End of handle response*/
 
 
 
