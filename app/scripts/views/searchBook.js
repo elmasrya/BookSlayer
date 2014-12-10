@@ -47,31 +47,12 @@
         var item = response.items[i];
         // in production code, item.text should have the HTML entities escaped.
 
-        if(item.volumeInfo.pageCount===undefined) {
-
       $('.searchResults').append
-          ("<br>" + "<button class='choices' id='"+ i + "'> + </button>"
-           + "<span class='googleBookTitle' id='" +  i +"'>"
-           + item.volumeInfo.title +"</span>" + "<br></br>" + "<a href="
-           + item.volumeInfo.previewLink + ">Preview</a>"
-           +"<img src="+ item.volumeInfo.imageLinks.thumbnail
-           + "/>" +"<br>"  + "<span class='googlePageCountSearch' id='" +  i +"'>" + "Not Available "
-           + "<br>" + "<br>" + "</span>");
-
-        } else{
-
-        $('.searchResults').append
-        ("<br>" + "<button class='choices' id='"+ i + "'> + </button>"
-         + "<span class='googleBookTitle' id='" +  i +"'>"
-         + item.volumeInfo.title +"</span>" + "<br></br>" + "<a href="
-         + item.volumeInfo.previewLink + ">Preview</a>"
-         +"<img src="+ item.volumeInfo.imageLinks.thumbnail
-         + "/>" +"<br>"  + "<span class='googlePageCountSearch' id='" +  i +"'>" +  item.volumeInfo.pageCount
-         + "<br>" + "<br>" + "</span>");
-
-
-        }
-
+          ("<div class='resultsFrame'>"+ "<button class='choices' id='"+ i + "'> + </button>"
+           + "<span class='googleBookTitle' id='" +  i +"'>" + item.volumeInfo.title +"</span>"
+           + "<center>" + "<img class='searchPic' src="+ item.volumeInfo.imageLinks.thumbnail + "/>"+ "</center>"
+           +"<div class='preview'>" + "<a class='previewlink' href="+ item.volumeInfo.previewLink + ">Preview Book</a>" + "</div>"
+           + "<span class='googlePageCountSearch' id='" +  i +"'>" + item.volumeInfo.pageCount + "</span>"+"</div>");
 
 
 
@@ -85,7 +66,6 @@
 
           var bookTitleSearch = $('.googleBookTitle[id=' + elemID + ']').text();
           var bookPageSearch = $('.googlePageCountSearch[id=' + elemID + ']').text();
-          // $('.searchTitle').append("<input class='searchTitle'>"+bookTitleSearch);
           console.log(bookTitleSearch);
           /*If you dont instantiate elements may repaeat or pile up based up user*/
           new App.Views.AddFromSearch();
@@ -99,11 +79,7 @@
 
 
 
-    },
-
-    delete : function () {
-
-    },
+  }/*end of search function*/
 
 
 

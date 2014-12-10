@@ -100,19 +100,42 @@ $red1: rgb(203, 64, 83);
         border-radius:60px;
         padding:5px;
         }
-      }/*end of frame*/
+      }/*end of search button frame*/
+    }/*end of form for the search*/
+
+    .searchResults{
+      @include outer-container;
+
+      .resultsFrame{
+        @include span-columns(3.2);
+        @include omega();
+        text-align:center;
+        height:300px;
+        }
+
+      .choices{
+        float:left;
+        }
+
+      .googleBookTitle{
+        float:left;
+        }
+
+      .searchPic{
+        clear:left;
+        display:block;
+        }
+
+      .preview{
+
+        }
+
+      .googlePageCountSearch{
+        clear:left;
+        }
     }
-  .searchBox{
-    @include span-columns(4);
 
-    margin-left:15%;
-    }/*end of search results*/
 
-  .addBookList{
-    @include span-columns(4);
-    margin-left:15%;
-    @include outer-container;
-    }/*end of add book list*/
 
 }/*end of middle*/
 
@@ -313,6 +336,11 @@ $red1: rgb(203, 64, 83);
   float:left;
   margin-top:40px;
   margin-left:12px;
+}
+
+.slayMessage{
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
 #middleLeft{
