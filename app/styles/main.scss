@@ -13,13 +13,11 @@ $red1: rgb(203, 64, 83);
 
 /*extenstions*/
 #container{
-  margin:auto;
-  min-width:500px;
+  // margin:auto;
+  // min-width:500px;
 #top{
   @include outer-container;
   background-color:$gray1;
-  border:solid;
-  border-width:3px;
   width:100%;
   .logoFrame{
     @include span-columns(2.75);
@@ -63,9 +61,6 @@ $red1: rgb(203, 64, 83);
 #middle{
   // background-image:url("../images/logo.png");
   // background-repeat: no-repeat;
-  border-top:solid;
-  border-left:solid;
-  border-right:solid;
   @include outer-container;
   width:100%;
 
@@ -102,12 +97,15 @@ $red1: rgb(203, 64, 83);
         }
       }/*end of search button frame*/
     }/*end of form for the search*/
-
+    .searchHeading{
+      margin-left:20px;
+    }
     .searchResults{
+      padding-left:20px;
       @include outer-container;
 
       .resultsFrame{
-        @include span-columns(3.2);
+        @include span-columns(3.1);
         @include omega();
         text-align:center;
         height:300px;
@@ -143,7 +141,6 @@ $red1: rgb(203, 64, 83);
   @include outer-container;
   width:100%;
   height:100px;
-  border:solid;
   background-color:rgb(186, 186, 196);
 }
 }
@@ -240,9 +237,7 @@ $red1: rgb(203, 64, 83);
 
 
 #tools{
-  border-top:solid;
-  border-left:solid;
-  border-right:solid;
+
   @include outer-container;
   width:100%;
 }
@@ -343,10 +338,73 @@ $red1: rgb(203, 64, 83);
   margin-bottom:20px;
 }
 
-#middleLeft{
-  float:left;
+.addBookFrame{
+  margin-top:40px;
 }
 
-#middleRight{
-  float:right;
+.bookTitleLabel{
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.bookTitle{
+  margin-top:10px;
+  display:block;
+  margin-left:20px;
+  margin-bottom:20px;
+}
+
+.question1{
+  display:block;
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.pageCount{
+  margin-left:20px;
+  margin-bottom:30px;
+}
+
+.questionLevel{
+  display:block;
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.readingLevel{
+  margin-left:20px;
+  margin-bottom:30px;
+}
+
+.question2{
+  display:block;
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.duration{
+  margin-left:20px;
+  margin-bottom:30px;
+}
+
+.addBookBtn{
+  margin-left:20px;
+  margin-bottom:30px;
+}
+
+.truncate {
+  list-style:none;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.readingTest{
+  display:none;
+}
+.readingTemplate{
+  border:solid;
+  border-radius:10px;
+  margin:30px;
+  padding:20px;
 }

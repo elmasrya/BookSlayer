@@ -56,11 +56,11 @@
           user: App.user,
         });
 
-
+        var editedBook=this.options.book.id;
 
         this.options.book.save(null, {
           success: function () {
-            App.router.navigate('profile', { trigger: true });
+            App.router.navigate('single/'+ editedBook, { trigger: true });
           }
         });
       }

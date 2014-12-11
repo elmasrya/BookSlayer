@@ -34,7 +34,8 @@
       $('.searchResults').empty();
       var inputVal=$('.searchBar').val();
       console.log(inputVal);
-
+      $('.searchHeading').empty();
+      $('.searchHeading').append("Your Search Results:");
       var googleApi="https://www.googleapis.com/books/v1/volumes?q="+inputVal+"&callback=App.handleResponse";
       $.ajax({
         type: 'GET',
@@ -49,7 +50,7 @@
 
       $('.searchResults').append
           ("<div class='resultsFrame'>"+ "<button class='choices' id='"+ i + "'> + </button>"
-           + "<span class='googleBookTitle' id='" +  i +"'>" + item.volumeInfo.title +"</span>"
+           + "<span class='googleBookTitle truncate' id='" +  i +"'>" + item.volumeInfo.title +"</span>"
            + "<center>" + "<img class='searchPic' src="+ item.volumeInfo.imageLinks.thumbnail + "/>"+ "</center>"
            +"<div class='preview'>" + "<a class='previewlink' href="+ item.volumeInfo.previewLink + ">Preview Book</a>" + "</div>"
            + "<span class='googlePageCountSearch' id='" +  i +"'>" + item.volumeInfo.pageCount + "</span>"+"</div>");
@@ -80,17 +81,19 @@
           $('.readingLevel').remove();
           $('.question2').remove();
           $('.duration').remove();
-          $('.b1').remove();
+          $('.unitDays').remove();
+          $('.unitMin').remove();
+          $('.unit').remove();
 
             $('.addBookFrame').append
             ("<span class='bookTitleLabel'>Book Title: " + "</span>"
-             + "<input class='bookTitle' type='text' value='"+ bookTitleSearch + "'>" + "<br>"
+             + "<input class='bookTitle' type='text' value='"+ bookTitleSearch + "'>"
              + "<span class='question1'>How many pages are in the book? " + "</span>"
-             + "<input class='pageCount' type='number' value='"+ bookPageSearch + "'>"+ "<br>"
-             + "<span class='questionLevel'>You can read " + "</span>"
-             + "<input class='readingLevel' type='number' placeholder='Number of words'/>" + " per minute" + "<br>"
+             + "<input class='pageCount' type='number' value='"+ bookPageSearch + "'>"  + "<span class='unit'>" + " pages" + "</span>"
+             + "<span class='questionLevel'>Reading Rate: " + "</span>"
+             + "<input class='readingLevel' type='number' placeholder='Number of words'/>" + "<span class='unitMin'>" + " per minute" + "</span>"
              + "<span class='question2'>How many days do you want this book finished by? " + "</span>"
-             + "<input class='duration' type='number' placeholder='How many days?' />" + "<br>");
+             + "<input class='duration' type='number' placeholder='How many days?' />" + "<span class='unitDays'>" + " days" + "</span>");
 
         });
 

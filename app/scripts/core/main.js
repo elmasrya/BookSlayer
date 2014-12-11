@@ -6,6 +6,7 @@ Parse.initialize("MCSNBPaOJowTLp0LZqcG2hPRLKsPlTqHeKT3CK3P","JRsBK5g0aam1H89lxIc
 
   App.user = Parse.User.current();
 
+
   new App.Views.NavBar({user: App.user});
 
   App.books.fetch().done(function () {

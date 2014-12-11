@@ -35,15 +35,20 @@
       Parse.User.logIn(username, password, {
         success: function (user) {
           App.user=user;
-          location.reload();
+          $('.logOutFrame').text('Logout');
+
           console.log('Login successful');
+            new App.Views.NavBar();
+            new App.Views.Home();
             App.router.navigate('', {trigger: true});
 
+
         },
+
         error: function (user, error) {
-          location.reload();
           alert('Invalid user login');
         }
+
       }); // end of logIn
     } // end of go to account
 

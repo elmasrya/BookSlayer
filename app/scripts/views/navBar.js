@@ -9,7 +9,7 @@
     template          : _.template($('#navBarTemp').html()),
 
     events: {
-      'click .logout' : 'logout'
+      'click .logOutFrame' : 'logout'
     }, // end of events
 
 
@@ -26,16 +26,32 @@
       this.$el.html(this.template);
     },
 
+    updateUser: function(){
+
+      App.user = Parse.User.current();
+
+      if(App.user !== null){
+        $('.logOutFrame').text('Logout');
+      }
+      else {
+        $('.logOutFrame').remove();
+      }
+
+    },
+
 
     logout: function(e){
-
       var current = this.options;
+
+      $('.logOutFrame').remove();
       Parse.User.logOut();
-      App.user=null;
-      App.router.navigate('', { trigger: true });
+      this.updateUser();
+      this.initialize();
       new App.Views.Home();
-      location.reload();
+
+
     }
+
 
 
 
