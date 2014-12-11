@@ -26,27 +26,32 @@
 
     creatingProfile: function(e) {
       e.preventDefault();
-      // New User Creation
-      // Send New User to Server
-      var user = new Parse.User({
+
+      var newUser = new Parse.User({
         username: $('.createUsernameVal').val(),
         password: $('.createPasswordVal').val(),
         email: $('.emailVal').val()
       });
-      user.signUp(null, {
-        success: function(user) {
-          console.log('Account created');
-          new App.Views.Login({user: App.user});
 
-        },
-        error: function(user, error) {
-          alert('Error');
-          new App.Views.Home();
+      var l = $('.createUsernameVal').val();
+      var p = $('.createPasswordVal').val();
+
+      newUser.signUp(null, {
+        success: function(){
+          Parse.User.logIn(l, p, {
+            success: function (user) {
+              App.user = user;
+              App.router.navigate('#/', {trigger: true});
+            },
+            error: function (user) {
+              alert("Sign-in Not Valid.");
+            }
+          });
         }
-
-      })
+      });
 
     }
+
 
 
 

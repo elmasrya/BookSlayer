@@ -4,7 +4,8 @@
   App.Views.Search = Parse.View.extend({
 
 
-    el                : '#middle',
+    tagName: 'ul',
+    className: 'allSearch',
 
     template          : _.template($('#searchBookTemp').html()),
 
@@ -17,14 +18,15 @@
     initialize: function () {
 
       this.render();
-
+      $('#middle').html(this.$el);
 
 
     },
 
     render: function () {
+      $("#middle").empty();
 
-      this.$el.html(this.template);
+      this.$el.html(this.template());
 
     },
 
@@ -69,10 +71,9 @@
           var bookPageSearch = $('.googlePageCountSearch[id=' + elemID + ']').text();
           console.log(bookTitleSearch);
           /*If you dont instantiate elements may repaeat or pile up based up user*/
-          // new App.Views.AddFromSearch();
 
-          App.router.navigate('addBook', { trigger: true });
           new App.Views.AddBook();
+          App.router.navigate('addBook', { trigger: true });
           $('.bookTitleLabel').remove();
           $('.bookTitle').remove();
           $('.question1').remove();

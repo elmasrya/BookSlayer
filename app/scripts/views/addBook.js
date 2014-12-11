@@ -20,7 +20,7 @@
     },
 
     render  : function () {
-      $("#middle").empty();
+    $("#middle").empty();
 
       this.$el.html(this.template());
 
