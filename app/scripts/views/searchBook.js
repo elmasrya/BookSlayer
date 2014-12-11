@@ -68,11 +68,30 @@
           var bookPageSearch = $('.googlePageCountSearch[id=' + elemID + ']').text();
           console.log(bookTitleSearch);
           /*If you dont instantiate elements may repaeat or pile up based up user*/
-          new App.Views.AddFromSearch();
+          // new App.Views.AddFromSearch();
 
-          App.router.navigate('addFromSearch', { trigger: true });
-            $('.searchTitleLabel').append("<input class='searchTitle' type='text' value='"+ bookTitleSearch + "'>");
-            $('.questionOneLabel').append("<input class='pageCountSearch' type='number' value='"+ bookPageSearch + "'>");
+          App.router.navigate('addBook', { trigger: true });
+          new App.Views.AddBook();
+          $('.bookTitleLabel').remove();
+          $('.bookTitle').remove();
+          $('.question1').remove();
+          $('.pageCount').remove();
+          $('.questionLevel').remove();
+          $('.readingLevel').remove();
+          $('.question2').remove();
+          $('.duration').remove();
+          $('.b1').remove();
+
+            $('.addBookFrame').append
+            ("<span class='bookTitleLabel'>Book Title: " + "</span>"
+             + "<input class='bookTitle' type='text' value='"+ bookTitleSearch + "'>" + "<br>"
+             + "<span class='question1'>How many pages are in the book? " + "</span>"
+             + "<input class='pageCount' type='number' value='"+ bookPageSearch + "'>"+ "<br>"
+             + "<span class='questionLevel'>You can read " + "</span>"
+             + "<input class='readingLevel' type='number' placeholder='Number of words'/>" + " per minute" + "<br>"
+             + "<span class='question2'>How many days do you want this book finished by? " + "</span>"
+             + "<input class='duration' type='number' placeholder='How many days?' />" + "<br>");
+
         });
 
     }/*End of handle response*/

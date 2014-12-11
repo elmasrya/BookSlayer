@@ -189,19 +189,22 @@
       <script type="text/template" id="addBookTemp">
         <div>
           <form class="bookForm">
-            <span class="bookTitleLabel">Book Title:</span>
-            <input class="bookTitle" placeholder="Book Title"/>
-            <br></br>
-            <span class="questionLevel"> You can read </span>
-            <input class="readingLevel" type="number" placeholder="Number of words"/> per minute
-            <br></br>
-            <span class="question1"> How many pages are in the book?</span>
-            <input class="pageCount" type="number"placeholder="Page Count"/>
-            <br></br>
-            <span class="question2">How many days do you want this book finished by?</span>
-            <input class="duration" type="number" placeholder="How many days?" />
-            <br></br>
-            <button class="addBookBtn">Add Book</button>
+            <div class="addBookFrame">
+
+              <span class="bookTitleLabel">Book Title:</span>
+              <input class="bookTitle" placeholder="Book Title"/>
+              <br class="b1">
+              <span class="question1">How many pages are in the book?</span>
+              <input class="pageCount" type="number"placeholder="Page Count"/>
+              <br class="b1">
+              <span class="questionLevel"> You can read </span>
+              <input class="readingLevel" type="number" placeholder="Number of words"/> per minute
+              <br class="b1">
+              <span class="question2">How many days do you want this book finished by?</span>
+              <input class="duration" type="number" placeholder="How many days?" />
+              <br class="b1">
+            </div>
+              <button class="addBookBtn">Add Book</button>
           </form>
         </div>
       </script>
@@ -209,25 +212,6 @@
 
 
 
-      <script type="text/template" id="addSearchTemp">
-        <div class="addSearch">
-          <form class="searchBookForm">
-            <span class="searchTitleLabel">Book Title:
-            </span>
-            <br></br>
-            <span class="questionLevel"> You can read </span>
-            <input class="readingLevelSearch" type="number" placeholder="Number of words"/> per minute
-            <br></br>
-            <span class="questionOneLabel"> How many pages are in the book?
-            </span>
-            <br></br>
-            <span class="questionTwoLabel">How many days do you want this book finished by?</span>
-            <input class="durationSearch" type="number" placeholder="How many days?" />
-            <br></br>
-            <button class="addBookBtn">Add Book</button>
-          </form>
-        </div>
-      </script>
 
 
 
@@ -386,7 +370,6 @@
         <script src="scripts/models/book.js"></script>
         <script src="scripts/collections/books.js"></script>
         <script src="scripts/routes/app_router.js"></script>
-        <script src="scripts/views/addFromSearch.js"></script>
         <script src="scripts/views/editBook.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/singleBook.js"></script>
