@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="styles/vendor.css">
 
+    <link href='http://fonts.googleapis.com/css?family=Kreon:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="styles/main.css">
 
     <script src="scripts/vendor/modernizr.js"></script>
@@ -23,6 +24,7 @@
       </div>
 
       <div id="middle">
+        <div id="middleLeft"></div>
       </div><!--end of middle-->
 
       <div id="profileTools">
@@ -36,6 +38,10 @@
 
 
 <!--These are the all the templates-->
+
+
+
+
       <script type="text/template" id="navBarTemp">
         <div class="logoFrame">
           <img class="logo" src="images/logo.png">
@@ -50,15 +56,32 @@
             </div><!--end of nav frame-->
         </div><!--end of title frame-->
         <div class="myBookFrame">
-          <a class="myList" href="#/profile">
-            <img class="bookImg" src=images/book.png>
-          </a>
-            <% if(App.user !== null){ %>
-            <button class="logout">Log Out</button>
-          <% } else { %>
-            <% } %>
+
+            <% if(App.user === null){ %>
+            <img class="bookImg" src=images/logo.png>
+          <% } else if(App.user !== null){ %>
+            <a class="myList" href="#/profile">
+              <img class="bookImg" src=images/book.png>
+            </a>
+            <div class="logOutFrame">Log Out</div>
+          <% } %>
+
+
         </div>
       </script><!--end of navbar template-->
+
+
+      <script type="text/template" id="threeTemps">
+        <div id="middleLeft">
+          <div id="upperL"></div>
+          <div id="lowerL"></div>
+        </div>
+
+        <div id="middleRight">
+        <center><h2 class="mybl">My Book List:</h2></center>
+        </div>
+      </script>
+
 
       <script type="text/template" id="homeTemp">
         <div class="homeContainer">
@@ -91,6 +114,9 @@
         </div><!--end home container-->
       </script>
 
+
+
+
       <script type="text/template" id="signUpTemp">
         <form class="signUpForm">
           <h3 class="formTitle">Sign Up</h3>
@@ -101,6 +127,9 @@
           <span>If you are alreadly registered, click <a href="#/login">Log In</a><span>
         </form>
       </script>
+
+
+
 
       <script type="text/template" id="loginTemp">
         <form class="loginForm">
@@ -113,26 +142,60 @@
       </script>
 
 
+
+
       <script type="text/template" id="footerTemp">
         <div class="footer"></div>
       </script><!--end of footer template-->
 
 
-      <script type="text/template" id="profileTemp">
-        <ul class="bookList">
-          <a href="#/single/<%=objectId %>"><li>Book Title: <%=title%></li><a>
-          <li>Pages: <%=pageCount%></li>
-          <li>Reading Level: <%=readingLevel%></li>
-          <li>Duration: <%=duration%> days</li>
-        </ul>
-        <br>
+
+
+      <script type="text/template" id="profileUpLeftTemp">
+        <% if(App.user.attributes.wmp === undefined){ %>
+        <h3>You don't have a test score</h3>
+        <% } else { %>
+          <h2>Reading Test Score:</h2>
+          <h3>You can read at a rate of <%=App.user.attributes.wmp%> words per minute</h3>
+          <% } %>
+
       </script>
 
-      <script type="text/template" id="toolsTemp">
-        <a class="addBookLink" href="#/addBook">Add a book</a>
-        <a class="searchLink" href="#/search">Search for a book</a>
-        <a class="testLink" href="#/test">Take the reading Test</a>
+      <script type="text/template" id="profileLowLeftTemp">
+          <h2>Slayer Logistics:</h3>
+          <h3>You've Slayed: </h3>
+          <h3><%=App.user.attributes.c%> out of </h3>
+           <h3> <%=App.user.attributes.t%> Books attempted</h3>
+          </script>
+
+
+
+
+      <script type="text/template" id="profileRightTemp">
+          <div style="cursor: pointer;" onclick="window.location='#/single/<%=objectId %>';" class="bookList">
+            <span class="bookListTitle"><%=title%></span>
+            <span class="status"> <%= status %> </span>
+          </div>
       </script>
+
+
+
+
+
+
+
+
+      <script type="text/template" id="toolsTemp">
+        <div class="toolsFrame">
+          <a class="addBookLink" href="#/addBook"><img src="../images/bookPlus.png"></a>
+          <a class="searchLink" href="#/search"><img src="../images/searchB.png"></a>
+          <a class="testLink" href="#/test"><img src="../images/test.png"></a>
+        </div>
+      </script>
+
+
+
+
 
       <script type="text/template" id="searchBookTemp">
         <span>Go back to <a href="#/profile">My Profile</a></span>
@@ -144,78 +207,260 @@
           </div><!--end of search button frame-->
         </form><!--end of form-->
         <div class="searchBox">
-          <h2>Your Search Results: </h2>
+          <h2 class="searchHeading"></h2>
           <div class="searchResults">
           </div>
         </div><!--end of search box-->
-        <div class="addBookList">
-          <h2 class="listHeading">Books to Add: </h2>
-          <div class="addBookSec">
-          </div>
-          <br>
-          <button class="addBook">Save Book(s)</button>
-        </div>
       </script><!--end of search book template-->
+
+
+
 
       <script type="text/template" id="addBookTemp">
         <div>
           <form class="bookForm">
-            <span class="bookTitleLabel">Book Title:</span>
-            <input class="bookTitle" placeholder="Book Title"/>
-            <br></br>
-            <span class="readingLevelLabel">Reading Level:</span>
-            <select class="readingLevel" id="addlevel">
-              <option value="firstG" selected>1st Grade</option>
-              <option value="secondG" selected>2nd Grade</option>
-              <option value="thirdG" selected>3rd Grade</option>
-              <option value="fourthG" selected>4th Grade</option>
-              <option value="fifthG" selected>5th Grade</option>
-              <option value="sixthG" selected>6th Grade</option>
-              <option value="seventhG" selected>7th Grade</option>
-              <option value="eighthG" selected>8th Grade</option>
-              <option value="ninthG" selected>9thGrade</option>
-              <option value="tenthG"  selected>10th Grade</option>
-              <option value="elevethG" selected>11thGrade</option>
-              <option value="twelthG"  selected>12th Grade</option>
-            </select>
-            <br></br>
-            <span class="question1"> How many pages are in the book?</span>
-            <input class="pageCount" placeholder="Page Count"/>
-            <br></br>
-            <span class="question2">How many days do you want this book finished by?</span>
-            <input class="duration" placeholder="How many days?" />
-            <br></br>
-            <button class="addBookBtn">Add Book</button>
+            <div class="addBookFrame">
+
+              <span class="bookTitleLabel">Book Title:</span>
+              <input class="bookTitle" placeholder="Book Title"/>
+
+              <span class="question1">How many pages are in the book?</span>
+              <input class="pageCount" type="number"placeholder="Page Count"/>
+
+              <span class="questionLevel">Reading Rate: </span>
+              <input class="readingLevel" type="number" value="<%=App.user.attributes.wmp%>"/><span class="unit"> per minute</span>
+
+              <span class="question2">How many days do you want this book finished by?</span>
+              <input class="duration" type="number" placeholder="How many days?" /><span class="unitDays"> days</span>
+
+            </div>
+              <button class="addBookBtn">Add Book</button>
           </form>
         </div>
       </script>
 
-      <script type="text/template" id="testTemp">
-          Take a test
+
+
+      <script type="text/template" id="addSearchTemp">
+        <div>
+          <form class="bForm">
+          <div class="addSearchFrame">
+          </div>
+          <button class="addSearchBtn">Add Book</button>
+        </form>
+        </div>
       </script>
 
+
+
+
+
+      <script type="text/template" id="testTemp">
+          <center><h1>Take the Test</h1>
+            <p>This test will help you calculate your words per minute.
+            When you hit the start button, a readding template will appear. This is not scientific or
+            extremely accurate, this is just to give you an idea.
+            When you finish reading hit stop. Then you should see your reading
+            rate score at the bottom.</p>
+            <table class="formatted"><h2>Guildines Table</h2>
+            <caption>Table 8.1. Average rates for reading with understanding for students in Grades 2-12
+            </caption>
+            <tr>
+            <th style="text-align: center;"><strong>Grade equivalent</strong></th>
+            <th style="text-align: center;"><strong>Standard words per minute</strong></th>
+            </tr>
+            <tr>
+            <td valign="top"><div align="center">2.5<br />
+              3.5<br />
+              4.5<br />
+              5.5<br />
+              6.5<br />
+              7.5<br />
+              8.5<br />
+              9.5<br />
+              10.5<br />
+              11.5<br />
+              12.5</div></td>
+            <td valign="top"><div align="center">121<br />
+              135<br />
+              149<br />
+              163<br />
+              177<br />
+              191<br />
+              205<br />
+              219<br />
+              233<br />
+              247<br />
+              261</div></td>
+            </tr>
+            <tr>
+            <td colspan="2" valign="top"><p class="pagenote">Source: Carver (1990). A standard word is six letter spaces including punctuation and spacing.</p></td>
+            </tr>
+          </table>
+          </center>
+           <div class="testFrame">
+           <button class="retake">Retake the Test</button>
+            <h2 class="ready">Are You Ready?</h2>
+            <h3 class="inst">Hit the start button to begin...Good Luck!<h3>
+            <div class="btnFrame">
+              <button class="start">Start</button>
+            </div>
+            <div class="readingTest">
+              <div>Timer: <h2 class="timer"></h2> </div>
+              <div class="readingTemplate">
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>Justin was always prepared. His motto was &quot;Never throw
+                anything out, you never know when it might come in handy.&quot; His bedroom was
+                so full of flat bicycle tires, bent tennis rackets, deflated basketballs, and
+                games with missing pieces that you could barely get in the door. His parents
+                pleaded with him to clean out his room.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>&quot;What use is a fish tank with a hole in the bottom?&quot; his
+                father asked. But Justin simply smiled and repeated his motto, &quot;Never
+                throw anything out, you never know when it might come in handy.&quot;<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>When Justin was away from home, he always carried his blue
+                backpack. He liked to think of it as a smaller version of his bedroom&#8212;a
+                place to store the many objects that he collected. It was so worn and stretched
+                that it hardly resembled a backpack anymore. It was full of the kind of things
+                that seemed unimportant, but when used with a little imagination, might come in
+                handy.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>Justin had earned a reputation for figuring things out and getting
+                people out of otherwise hopeless situations. Many of his classmates and
+                neighbors sought him out when they needed help with a problem. On the first day
+                of school, his friend <span class=GramE>Kenny,</span> came looking for Justin.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>&quot;Do you think you have something in your bag that could help
+                me remember my locker combination?&quot; he asked. &quot;I lost the scrap of
+                paper it was written on. I have science class in two minutes and if I’m late on
+                the first day it’ll make me look bad for the rest of the year.&quot; Kenny
+                looked genuinely worried.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>&quot;Relax,&quot; Justin said, taking his backpack off and
+                unzipping the top. &quot;Remember how you borrowed my notebook in homeroom to
+                write the combination down? Well, I know how we can recover what you
+                wrote.&quot;<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>He took the notebook and a soft lead pencil out of his bag. The
+                page that Kenny had written on had left faint indentations on another page in
+                the notebook. Justin held the pencil on its side and rubbed it lightly over the
+                indentations. Slowly but surely the numbers of the locker combination appeared
+                in white, set off by the gray pencil rubbings.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>&quot;That’s amazing!&quot; Kenny said. &quot;I owe you one.&quot;
+                And he dashed off to open his locker.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>&quot;That’s amazing!&quot; Kenny said. &quot;I owe you one.&quot;
+                And he dashed off to open his locker.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>During science class, Mr. Tran was lecturing on the structure of
+                the solar system using a model. He made a sudden gesture and the model fell
+                apart. Planets and rings and connector rods went everywhere, rolling and
+                clattering and disappearing under desks. The students scrambled around on the
+                floor for ten minutes and were finally able to recover every piece except one&#8212;a
+                connector rod that was lodged in a crack between two lab stations.<o:p></o:p></span></b></p>
+
+                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
+                color:black'>&quot;If we had a magnet,&quot; said Mr. Tran, &quot;we could
+                easily coax it out that way. But I loaned all of the magnet kits to the
+                elementary school.&quot;<o:p></o:p></span></b></p>
+
+                <p class=MsoNormal><span style='font-family:"Times New Roman"'><o:p>&nbsp;</o:p></span></p>
+              </div><!--end of template-->
+              <button class="stop">Stop</button>
+              <h5 class="hint"> Click the stop button to calculate your reading time </h5>
+              <h5 class="score"></h5>
+              <button class="retake">Retake the Test</button>
+              <br><br>
+              <button class="saveScore">Save Your Score</button>
+          </div><!--end of test-->
+      </script>
+
+
+
+
       <script type="text/template" id="singleTemp">
-        <br></br>
-        <span>Go back to <a href="#/profile">My Profile</a></span>
-        <br></br>
-        <button class=editBtn>Edit</button>
-        <button class=deleteBtn>Delete</button>
-        <br></br>
-        <li class="singleBookTitle"> Book Title: <%=title%> </li>
-        <li class="singlePageCount"> Pages: <%=pageCount%> </li>
-        <li class="singleRadingLevel"> Reading Level: <%=readingLevel%> </li>
-        <li class="singleDuration"> Duration: <%= duration%> days </li>
-        <br></br>
-        <button class=calcBtn>Calculate</button>
+        <div class="singleBookContainer">
+          <br></br>
+          <span>Go back to <a href="#/profile">My Profile</a></span>
+          <br></br>
+          <button class="editBtn" onclick="location.href='#/edit/<%=objectId %>'">Edit</button>
+          <button class="deleteBtn">Delete</button>
+          <br></br>
+          <ul class="singleBookItems">
+            <div>Book Title: <span class="singleBookTitle"><%=title%> </span></div>
+            <div>Pages: <span class="singlePageCount"><%=pageCount%> </span></div>
+            <div>Reading Rate: <span class="singleRadingLevel"><%=readingLevel%> </span> words/minute</div>
+            <div>Duration: <span class="singleDuration"><%= duration%> days </span></div>
+          </ul>
+          <br></br>
+          <% if(d == null){ %>
+            <div class="bottomFrame">
+            <div class="instructions">Click the slay button to calculate your reading plan!</div>
+            <button class="slayBtn">Slay</button><img class="slayImage" text="hi" src="images/slay.png">
+            <div class="slayBook"><span class="slayTitle"><%=title%></span></div>
+            <div class="slayMessage"></div>
+            <div class="planFrame"></div>
+            </div>
+            <% } else { %>
+              <h4>Reading Plan: </h4>
+              <h5>Consistency - You will read everyday day</h5>
+              <h5>Duration - For <%=d %> days</h5>
+              <h5>Time Range - Between <%= tOne %> to <%=tTwo %> each day</h5>
+              <button class="finished">Finished</button><button class="unfinished">Unfinished</button>
+
+              <% } %>
+
+        </div>
     </script>
 
-      <script type="text/template" id="aboutTemp">
-        <div class="aboutInfo">About:
-        <p>This Application is suppose to make you
-        read better. It was created by Andrew El-Masry at the
-        The Iron Yard Academy!!!
-        </p></div>
-      </script><!--end of navbar template-->
+
+
+
+    <script type="text/template" id="editTemp">
+      <div>
+        <form class="bookForm">
+        <div class="addBookFrame">
+          <span class="bookTitleLabel">Book Title:</span>
+          <input type="text" class="bookTitle" value="<%=title%>"/>
+
+          <span class="question1">How many pages are in the book?</span>
+          <input class="pageCount" type="number" value="<%=pageCount%>"/><span class="unitPage"> pages</span>
+
+
+          <span class="questionLevel">Reading Rate: </span>
+          <input class="readingLevel" type="number" value="<%=readingLevel%>"/><span class="unitMin"> per minute</span>
+
+          <span class="question2">How many days do you want this book finished by?</span>
+          <input class="duration" type="number" value="<%=duration%>" /><span class="unitDays"> days</span>
+        </div><!--end of Frame-->
+        </form>
+      </div>
+      <button class="saveEdit">Save</button>
+      <button class="cancleBtn" onclick="location.href='#/single/<%=objectId %>'">Cancel</button>
+
+    </script>
+
+
+
+
+    <script type="text/template" id="aboutTemp">
+      <div class="aboutInfo">About:
+      <p>This Application is suppose to make you
+      read better. It was created by Andrew El-Masry at the
+      The Iron Yard Academy!!!
+      </p></div>
+    </script><!--end of navbar template-->
 
       <script type="text/template" id="contactTemp">
         <ul class="contactInfo">
@@ -228,7 +473,26 @@
           <li="github">GitHub: https://github.com/elmasrya</li>
           <br></br>
         </ul>
+      </script><!--end of about template-->
+
+      <script type="text/template" id="aboutTemp">
+        <div class="aboutInfo">About:
+        <p>This Application is suppose to make you
+        read better. It was created by Andrew El-Masry at the
+        The Iron Yard Academy!!!
+        </p></div>
       </script><!--end of navbar template-->
+
+        <script type="text/template" id="errorTemp">
+        <h1>Not found <span>:(</span></h1>
+          <p>Sorry, but the page you were trying to view does not exist.</p>
+          <p>It looks like this was the result of either:</p>
+          <ol>
+            <li>You are not signed in</li>
+            <li>a mistyped address</li>
+            <li>an out-of-date link</li>
+          </0l>
+        </script><!--end of about template-->
 
 
     <script src="scripts/vendor.js"></script>
