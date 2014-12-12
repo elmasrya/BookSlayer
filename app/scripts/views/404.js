@@ -1,12 +1,12 @@
 (function () {
 
 /*parse view*/
-  App.Views.CalculateBook = Parse.View.extend({
+  App.Views.Error = Parse.View.extend({
 
 
     el                : '#middle',
 
-    template          : _.template($('#calculateTemp').html()),
+    template          : _.template($('#errorTemp').html()),
 
     events: {
 

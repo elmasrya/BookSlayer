@@ -9,7 +9,7 @@
     template          : _.template($('#loginTemp').html()),
 
     events: {
-      'click .loginBtn' : 'goToAccount'
+      'click .loginBtn' : 'login'
     }, // end of events
 
 
@@ -26,26 +26,29 @@
       this.$el.html(this.template);
     },
 
-    goToAccount : function () {
-      // Log User into account
+    login : function (e) {
 
-      var username = $('.usernameVal').val();
-      var password = $('.passwordVal').val();
 
-      Parse.User.logIn(username, password, {
+      e.preventDefault();
+
+      var l = $('.usernameVal').val();
+      var p = $('.passwordVal').val();
+
+      Parse.User.logIn(l, p, {
         success: function (user) {
-          App.user=user;
-          location.reload();
+          App.user = user;
+          $('.logOutFrame').text('Logout');
           console.log('Login successful');
+            new App.Views.NavBar();
+            new App.Views.Home();
             App.router.navigate('', {trigger: true});
-
         },
-        error: function (user, error) {
-          location.reload();
-          alert('Invalid user login');
+        error: function (user) {
+          alert("Invalid Username and/or Password");
         }
-      }); // end of logIn
-    } // end of go to account
+      });
+
+    }
 
   });
 

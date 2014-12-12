@@ -6,10 +6,14 @@
 
     defaults: {
       title: '',
-      readingLevel:'',
-      pageCount: '',
+      readingLevel:0,
+      pageCount: 0,
       user: '',
-      duration:''
+      duration:0,
+      d: null,
+      tOne: null,
+      tTwo:null,
+      status: ''
     },
 
     initialize : function () {
