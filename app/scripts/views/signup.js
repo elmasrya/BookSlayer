@@ -40,8 +40,12 @@
         success: function(){
           Parse.User.logIn(l, p, {
             success: function (user) {
+              var comp=0;
+              var total=0;
               App.user = user;
+              App.user.save({c: comp, t:total})
               App.router.navigate('#/', {trigger: true});
+
             },
             error: function (user) {
               alert("Sign-in Not Valid.");

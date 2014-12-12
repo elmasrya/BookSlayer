@@ -5,7 +5,10 @@
 
 events: {
     'click .deleteBtn' : 'delete',
-    'click .slayBtn'   : 'slay'
+    'click .slayBtn'   : 'slay',
+    'click .cancelPlan': 'cancelP',
+    'click .finished'  : 'finished',
+    'click .unfinished': 'unfinished'
 
 }, // end of events
 
@@ -16,6 +19,11 @@ events: {
 
     initialize: function (options) {
       this.options=options;
+      var bookExist=this.options;
+      var plan=(this.options.book.attributes);
+      console.log(bookExist);
+
+
       this.render();
       $("#middle").html(this.$el);
     },
@@ -34,15 +42,17 @@ events: {
     delete : function (e) {
        e.preventDefault();
 
-      // Remove Coffee
-      this.options.book.destroy();
+      // Remove
+        this.options.book.destroy();
 
-      // Go home ET
       App.router.navigate('profile', {trigger: true});
 
     },
 
-    slay : function () {
+    slay : function (e) {
+      var b=this.options.book;
+
+      e.preventDefault();
       $('.slayMessage').empty();
 
       var bookTitle=$('.singleBookTitle').text();
@@ -78,11 +88,60 @@ events: {
 
 
       var messageString = "If you want to finish " + bookTitle + " in " + durationNum + " days, then you must read between " + answerOne.toTime() + " to "+ answerTwo.toTime() + " each day";
+      var days=durationNum;
+      var t1=answerOne.toTime();
+      var t2=answerTwo.toTime();
 
       $('.slayMessage').append(messageString);
       $('.planFrame').append("<button class='savePlan'>" + "Save QuickSlayer" + "</button>");
       $('.planFrame').append("<button class='cancelPlan'>" + "Cancel Plan"+ "</button>");
+
+      $('.savePlan').on('click', function(e){
+        e.preventDefault();
+        b.save({d: days, tOne: t1, tTwo:t2, status:'Slayer Phase'});
+        new App.Views.Profile({user: App.user});
+        App.router.navigate('profile', {trigger: true});
+        location.reload();
+    });
+    },
+
+    finished  : function (e) {
+      e.preventDefault();
+      var a=App.user.attributes.c;
+      var b=App.user.attributes.t;
+      a++;
+      b++;
+      console.log(b);
+      console.log(b);
+      App.user.save({c: a, t:b });
+      this.options.book.destroy();
+      new App.Views.Profile({user: App.user});
+      App.router.navigate('profile', {trigger: true});
+
+    },
+
+    unfinished  : function (e) {
+      e.preventDefault();
+      var p=App.user.attributes.c;
+      var q=App.user.attributes.t;
+      q++;
+      App.user.save({t: q, c: p });
+      console.log(p);
+      console.log(ans);
+      this.options.book.destroy();
+      new App.Views.Profile({user: App.user});
+      App.router.navigate('profile', {trigger: true});
+      location.reload();
+
+    },
+
+    cancelP   : function (e) {
+      e.preventDefault();
+      location.reload();
+
     }
+
+
 
 
 

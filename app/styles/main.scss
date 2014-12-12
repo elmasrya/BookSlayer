@@ -11,13 +11,26 @@ $blue1: rgb(88, 116, 153);
 
 $red1: rgb(203, 64, 83);
 
+$neon: rgba(160, 198, 46, 1);
+
+$darkg: RGBA(54, 92, 33, 1);
+
+
+$mainF: 'Kreon', serif;
+
+button{
+  background-color:$neon;
+}
 /*extenstions*/
 #container{
+  // color:$darkg;
+  font-family:$mainF;
+  font-weight:400;
   // margin:auto;
   // min-width:500px;
 #top{
   @include outer-container;
-  background-color:$gray1;
+  background-color:$neon;
   width:100%;
   .logoFrame{
     @include span-columns(2.75);
@@ -33,7 +46,9 @@ $red1: rgb(203, 64, 83);
     .title{
       width:100%;
       padding-top:50px;
-      font-size:35px;
+      font-family:$mainF;
+      font-weight:700;
+      font-size:70px;
       text-align:center;
       display:inline-block;
       }/*end of title*/
@@ -42,10 +57,15 @@ $red1: rgb(203, 64, 83);
         float:left;
         margin-top:50px;
         margin-left:20%;
+
       }
     }/*end of nav frame*/
 
   }/*end of title frame*/
+  .logOutFrame{
+    float:right;
+    margin-right:30px;
+  }
 
   .myBookFrame{
     @include span-columns(2.5);
@@ -61,17 +81,20 @@ $red1: rgb(203, 64, 83);
 #middle{
   // background-image:url("../images/logo.png");
   // background-repeat: no-repeat;
+  //border:solid $neon;
   @include outer-container;
   width:100%;
 
   #middleLeft{
     @include span-columns(3);
     border:solid;
+    border-color:$neon;
+    border-radius:6px;
+    padding:5px;
   }
 
   #middleRight{
     @include span-columns(9);
-    border:solid;
   }
 
   .heading{
@@ -151,7 +174,7 @@ $red1: rgb(203, 64, 83);
   @include outer-container;
   width:100%;
   height:100px;
-  background-color:rgb(186, 186, 196);
+  background-color:$neon;
 }
 }
 
@@ -248,10 +271,35 @@ $red1: rgb(203, 64, 83);
 
 #tools{
 
-  @include outer-container;
+
   width:100%;
 }
 
+
+.toolsFrame{
+  @include outer-container;
+  .addBookLink{
+    margin-top:10px;
+    margin-left:23%;
+    margin-bottom:10px;
+    @include span-columns(2);
+
+  }
+  .searchLink{
+
+    margin-top:10px;
+    margin-bottom:10px;
+    @include span-columns(2);
+
+  }
+  .testLink{
+    margin-top:10px;
+    margin-bottom:10px;
+    @include span-columns(2);
+
+  }
+
+}
 .addBookLink{
   margin-left:100px;
 
@@ -481,4 +529,14 @@ $red1: rgb(203, 64, 83);
 .addSearchBtn{
   margin-left:20px;
   margin-bottom:30px;
+}
+
+.status{
+  border:solid;
+  font-size:20px;
+  background-color:white;
+  margin-top:15px;
+  margin-left:3px;
+  border-radius:5px;
+  position:absolute;
 }

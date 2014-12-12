@@ -61,7 +61,11 @@
         b.save(null, {
           success: function () {
             App.books.add(b);
+            new App.Views.Profile({user: App.user});
             App.router.navigate('profile', { trigger: true });
+            location.reload();
+
+
           }
         });
 

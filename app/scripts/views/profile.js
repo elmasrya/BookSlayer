@@ -17,10 +17,12 @@
 
     initialize              : function (options) {
       this.options = options;
+      // console.log(this.options.user);
       this.render();
       }, // end of initialize
 
     render                  : function () {
+      
       $('#middle').html(this.middleFixerTemplate);
       $('#tools').html(this.templateTools);
       this.bookQuery();

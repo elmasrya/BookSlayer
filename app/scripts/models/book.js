@@ -9,7 +9,11 @@
       readingLevel:0,
       pageCount: 0,
       user: '',
-      duration:0
+      duration:0,
+      d: null,
+      tOne: null,
+      tTwo:null,
+      status: ''
     },
 
     initialize : function () {
