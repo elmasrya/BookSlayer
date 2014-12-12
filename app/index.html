@@ -31,12 +31,6 @@
       </div>
 
       <div id="middle">
-
-        <div id="middleLeft">
-        </div>
-
-        <div id="middleRight">
-        </div>
       </div><!--end of middle-->
 
       <div id="profileTools">
@@ -61,10 +55,10 @@
         <div class="titleFrame">
           <span class="title">BookSlayer</span>
             <div class="navFrame">
-              <a href="#/" class="homeBtn navB"><img src=images/home.png></a>
-              <a href="#/about" class="aboutBtn navB"><img src=images/about.png></a>
+              <a href="#/" class="homeBtn navB"><img src=images/home.png>Home</a>
+              <a href="#/about" class="aboutBtn navB"><img src=images/about.png>About</a>
               <a href="#/contact" class="contactBtn navB"><img class="contact"
-              src=images/contact.png></a>
+              src=images/contact.png><div>Contact</div></a>
             </div><!--end of nav frame-->
         </div><!--end of title frame-->
         <div class="myBookFrame">
@@ -83,6 +77,15 @@
       </script><!--end of navbar template-->
 
 
+      <script type="text/template" id="threeTemps">
+        <div id="middleLeft">
+          <div id="upperL"></div>
+          <div id="lowerL"></div>
+        </div>
+
+        <div id="middleRight">
+        </div>
+      </script>
 
 
       <script type="text/template" id="homeTemp">
@@ -153,11 +156,32 @@
 
 
 
-      <script type="text/template" id="profileTemp">
+      <script type="text/template" id="profileUpLeftTemp">
+        <% if(App.user.attributes.wmp == null){ %>
+        <h3>You don't have a test score</h3>
+        <% } else { %>
+          <h3>You can read at a rate of <%=App.user.attributes.wmp%> words per minute</h3>
+          <% } %>
+
+      </script>
+
+      <script type="text/template" id="profileLowLeftTemp">
+          <h2>HEY BABY!!!</h2>
+
+          </script>
+
+
+
+
+      <script type="text/template" id="profileRightTemp">
             <div style="cursor: pointer;" onclick="window.location='#/single/<%=objectId %>';" class="bookList">
               <span class="bookListTitle"><%=title%></span>
             </div>
       </script>
+
+
+
+
 
 
 
@@ -202,7 +226,7 @@
               <input class="pageCount" type="number"placeholder="Page Count"/>
 
               <span class="questionLevel">Reading Rate: </span>
-              <input class="readingLevel" type="number" placeholder="Number of words"/><span class="unit"> per minute</span>
+              <input class="readingLevel" type="number" value="<%=App.user.attributes.wmp%>"/><span class="unit"> per minute</span>
 
               <span class="question2">How many days do you want this book finished by?</span>
               <input class="duration" type="number" placeholder="How many days?" /><span class="unitDays"> days</span>
@@ -212,6 +236,19 @@
           </form>
         </div>
       </script>
+
+
+
+      <script type="text/template" id="addSearchTemp">
+        <div>
+          <form class="bForm">
+          <div class="addSearchFrame">
+          </div>
+          <button class="addSearchBtn">Add Book</button>
+        </form>
+        </div>
+      </script>
+
 
 
 
@@ -260,13 +297,14 @@
           </table>
           </center>
            <div class="testFrame">
-            <h2>Are You Ready?</h2>
-            <h3>Hit the start button to begin...Good Luck!<h3>
+           <button class="retake">Retake the Test</button>
+            <h2 class="ready">Are You Ready?</h2>
+            <h3 class="inst">Hit the start button to begin...Good Luck!<h3>
             <div class="btnFrame">
               <button class="start">Start</button>
             </div>
             <div class="readingTest">
-              <div>Timer: </div>
+              <div>Timer: <h2 class="timer"></h2> </div>
               <div class="readingTemplate">
                 <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
                 color:black'>Justin was always prepared. His motto was &quot;Never throw
@@ -339,6 +377,10 @@
               </div><!--end of template-->
               <button class="stop">Stop</button>
               <h5 class="hint"> Click the stop button to calculate your reading time </h5>
+              <h5 class="score"></h5>
+              <button class="retake">Retake the Test</button>
+              <br><br>
+              <button class="saveScore">Save Your Score</button>
           </div><!--end of test-->
       </script>
 
@@ -365,6 +407,7 @@
             <button class="slayBtn">Slay</button><img class="slayImage" text="hi" src="images/slay.png">
             <div class="slayBook"><span class="slayTitle"><%=title%></span></div>
             <div class="slayMessage"></div>
+            <div class="planFrame"></div>
           </div>
         </div>
     </script>
@@ -462,13 +505,14 @@
         <script src="scripts/models/book.js"></script>
         <script src="scripts/collections/books.js"></script>
         <script src="scripts/routes/app_router.js"></script>
+        <script src="scripts/views/addSearch.js"></script>
         <script src="scripts/views/404.js"></script>
+        <script src="scripts/views/searchBook.js"></script>
         <script src="scripts/views/editBook.js"></script>
         <script src="scripts/views/navBar.js"></script>
         <script src="scripts/views/singleBook.js"></script>
         <script src="scripts/views/readingTest.js"></script>
         <script src="scripts/views/addBook.js"></script>
-        <script src="scripts/views/profileTools.js"></script>
         <script src="scripts/views/profile.js"></script>
         <script src="scripts/views/contact.js"></script>
         <script src="scripts/views/about.js"></script>
@@ -478,7 +522,6 @@
         <script src="scripts/views/home.js"></script>
         <script src="scripts/views/footer.js"></script>
         <script src="scripts/core/main.js"></script>
-        <script src="scripts/views/searchBook.js"></script>
         <!-- endbuild -->
 
 </body>

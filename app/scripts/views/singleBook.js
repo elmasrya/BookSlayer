@@ -77,9 +77,11 @@ events: {
       }
 
 
-      console.log("If you want to finish " + bookTitle + " in " + durationNum + " days, then you must read between " + answerOne.toTime() + " to "+ answerTwo.toTime() + " each day");
-      $('.slayMessage').append("If you want to finish " + bookTitle + " in " + durationNum + " days, then you must read between " + answerOne.toTime() + " to "+ answerTwo.toTime() + " each day");
-      console.log("working!!!");
+      var messageString = "If you want to finish " + bookTitle + " in " + durationNum + " days, then you must read between " + answerOne.toTime() + " to "+ answerTwo.toTime() + " each day";
+
+      $('.slayMessage').append(messageString);
+      $('.planFrame').append("<button class='savePlan'>" + "Save QuickSlayer" + "</button>");
+      $('.planFrame').append("<button class='cancelPlan'>" + "Cancel Plan"+ "</button>");
     }
 
 

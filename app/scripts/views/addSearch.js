@@ -1,55 +1,56 @@
 (function(){
 
-  App.Views.AddBook = Parse.View.extend({
+  App.Views.AddSearch = Parse.View.extend({
+
+
 
     tagName: 'form',
-    className: 'createForm',
+    className: 'Search',
 
 
-    template        : _.template($('#addBookTemp').html()),
+    template        : _.template($('#addSearchTemp').html()),
 
     events: {
-      'click .addBookBtn': 'addBook',
+      'click .addSearchBtn': 'addSearch',
 
     },
 
-    initialize   : function (options) {
-      this.options=options;
+    initialize   : function () {
       this.render();
       $("#middle").html(this.$el);
 
     },
 
     render  : function () {
-    $("#middle").empty();
+      $("#middle").empty();
 
-      this.$el.html(this.template());
+      this.$el.html(this.template);
 
     },
 
-    addBook : function (e) {
+    addSearch : function (e) {
 
       e.preventDefault();
 
-      if($('.bookTitle').val() === ""){
+      if($('.bTitle').val() === ""){
         alert('Please add a book title.');
       }
-      else if($('.readingLevel').val() === ""){
+      else if($('.rLevel').val() === ""){
         alert("Please put in a number for words per minute");
       }
-      else if($('.pageCount').val() === ""){
+      else if($('.pCount').val() === ""){
         alert("please put in a number for pages");
       }
-      else if($('.duration').val() === ""){
+      else if($('.dur').val() === ""){
         alert("please put in a number for days");
       }
       else{
 
         var b = new App.Models.Book({
-          title: $('.bookTitle').val(),
-          readingLevel: $('.readingLevel').val(),
-          pageCount: $('.pageCount').val(),
-          duration: $('.duration').val(),
+          title: $('.bTitle').val(),
+          readingLevel: $('.rLevel').val(),
+          pageCount: $('.pCount').val(),
+          duration: $('.dur').val(),
           user: App.user,
         });
 
@@ -61,6 +62,7 @@
         b.save(null, {
           success: function () {
             App.books.add(b);
+            new App.Views.Profile({user: App.user});
             App.router.navigate('profile', { trigger: true });
           }
         });

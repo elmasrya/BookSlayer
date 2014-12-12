@@ -63,7 +63,7 @@
 
 
         $('.choices').on('click', function(){
-
+          console.log("click");
           var elemID = this.id;
           console.log(elemID);
 
@@ -72,29 +72,18 @@
           console.log(bookTitleSearch);
           /*If you dont instantiate elements may repaeat or pile up based up user*/
 
-          new App.Views.AddBook();
-          App.router.navigate('addBook', { trigger: true });
-          $('.bookTitleLabel').remove();
-          $('.bookTitle').remove();
-          $('.question1').remove();
-          $('.pageCount').remove();
-          $('.questionLevel').remove();
-          $('.readingLevel').remove();
-          $('.question2').remove();
-          $('.duration').remove();
-          $('.unitDays').remove();
-          $('.unitMin').remove();
-          $('.unit').remove();
+          new App.Views.AddSearch();
+          App.router.navigate('addSearch', { trigger: true });
 
-            $('.addBookFrame').append
-            ("<span class='bookTitleLabel'>Book Title: " + "</span>"
-             + "<input class='bookTitle' type='text' value='"+ bookTitleSearch + "'>"
-             + "<span class='question1'>How many pages are in the book? " + "</span>"
-             + "<input class='pageCount' type='number' value='"+ bookPageSearch + "'>"  + "<span class='unit'>" + " pages" + "</span>"
-             + "<span class='questionLevel'>Reading Rate: " + "</span>"
-             + "<input class='readingLevel' type='number' placeholder='Number of words'/>" + "<span class='unitMin'>" + " per minute" + "</span>"
-             + "<span class='question2'>How many days do you want this book finished by? " + "</span>"
-             + "<input class='duration' type='number' placeholder='How many days?' />" + "<span class='unitDays'>" + " days" + "</span>");
+          $('.addSearchFrame').append
+          ("<span class='bTitleLabel'>Book Title: " + "</span>"
+          + "<input class='bTitle' type='text' value='"+ bookTitleSearch + "'>"
+          + "<span class='q1'>How many pages are in the book? " + "</span>"
+          + "<input class='pCount' type='number' value='"+ bookPageSearch + "'>"  + "<span class='unit'>" + " pages" + "</span>"
+          + "<span class='qLevel'>Reading Rate: " + "</span>"
+          + "<input class='rLevel' type='number' value='" + App.user.attributes.wmp +"'/>" + "<span class='unitMin'>" + " per minute" + "</span>"
+          + "<span class='q2'>How many days do you want this book finished by? " + "</span>"
+          + "<input class='dur' type='number' placeholder='How many days?' />" + "<span class='unitDays'>" + " days" + "</span>");
 
         });
 
@@ -108,5 +97,7 @@
 
 
   });
+
+
 
 }());

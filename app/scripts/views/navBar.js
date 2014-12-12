@@ -47,6 +47,7 @@
       Parse.User.logOut();
       this.updateUser();
       this.initialize();
+      $('#tools').empty();
       new App.Views.Home();
 
 

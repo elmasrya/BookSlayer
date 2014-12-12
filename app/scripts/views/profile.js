@@ -9,34 +9,48 @@
     events: {
     }, // end of events
 
-    template                : _.template($('#profileTemp').html()),
+    templateOne                : _.template($('#profileUpLeftTemp').html()),
+    templateTwo                : _.template($('#profileLowLeftTemp').html()),
+    templateThree              : _.template($('#profileRightTemp').html()),
+    templateTools              : _.template($('#toolsTemp').html()),
+    middleFixerTemplate        : _.template($('#threeTemps').html()),
 
     initialize              : function (options) {
       this.options = options;
       this.render();
-      $('#middle').html(this.$el);
-
-
-
-    }, // end of initialize
+      }, // end of initialize
 
     render                  : function () {
-      $('#middle').html(this.$el);
-      new App.Views.ProfileTools();
+      $('#middle').html(this.middleFixerTemplate);
+      $('#tools').html(this.templateTools);
+      this.bookQuery();
+      this.sideRead();
+      this.sideScore();
+    },
 
+    sideScore    : function () {
       var self = this;
+      $('#upperL').html(self.templateOne(App.user));
+      },
 
+    sideRead    : function () {
+        var self = this;
+        $('#lowerL').html(self.templateTwo(App.user));
+      },
+
+    bookQuery : function () {
+      var self = this;
       var myBook_query = new Parse.Query(App.Models.Book);
       myBook_query.equalTo('user', this.options.user);
       myBook_query.descending("updatedAt");
       myBook_query.find({
         success: function(books){
           _.each(books, function(b) {
-            self.$el.append(self.template(b.toJSON()));
+            $('#middleRight').append(self.templateThree(b.toJSON()));
           });
         }
       });
-    },
+    }
 
   }); // end of view
 

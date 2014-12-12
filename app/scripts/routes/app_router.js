@@ -19,49 +19,47 @@
       'test'              : 'test',
       'single/:objectId'  : 'single',
       'edit/:objectId'    : 'editBook',
+      'addSearch'         : 'addSearch'
     },
 
     home: function () {
-        $('#tools').empty();
         new App.Views.Home();
         new App.Views.Footer();
 
       },
 
     contact: function () {
-      $('#tools').empty();
       new App.Views.Contact();
       new App.Views.Footer();
       },
 
     about: function () {
-      $('#tools').empty();
       new App.Views.About();
       new App.Views.Footer();
       },
 
     signup: function () {
-      $('#tools').empty();
       new App.Views.SignUp();
       new App.Views.Footer();
       },
 
     login: function () {
-      $('#tools').empty();
       new App.Views.Login({user: App.user});
       new App.Views.Footer();
       },
 
     addBook: function () {
-      $('#tools').empty();
-      new App.Views.AddBook();
+      new App.Views.AddBook({user: App.user});
       new App.Views.Footer();
       },
 
     profile: function () {
       if(App.user!==null) {
+        console.log('we got auser and stuff');
       new App.Views.Profile({user: App.user});
+        console.log('we rendered the profile');
       new App.Views.Footer();
+        console.log('and the footer we rock');
       }else{
       new App.Views.Error();
       }
@@ -70,7 +68,6 @@
 
     search: function () {
       if(App.user!==null) {
-      $('#tools').empty();
       new App.Views.Search();
       new App.Views.Footer();
       }else{
@@ -80,7 +77,6 @@
 
     test: function () {
       if(App.user!==null) {
-      $('#tools').empty();
       new App.Views.Test();
       new App.Views.Footer();
       }else{
@@ -101,12 +97,17 @@
     editBook: function(objectId){
       if(App.user!==null) {
       var updateBook= App.books.get(objectId);
-      new App.Views.EditBook({objectId: objectId, book: updateBook});
+      new App.Views.EditBook({objectId: objectId, book: updateBook, user: App.user});
       new App.Views.Footer();
       }else{
       new App.Views.Error();
       }
-    }
+    },
+
+    addSearch : function() {
+      new App.Views.AddSearch();
+      new App.Views.Footer();
+    },
 
 
 

@@ -64,6 +64,16 @@ $red1: rgb(203, 64, 83);
   @include outer-container;
   width:100%;
 
+  #middleLeft{
+    @include span-columns(3);
+    border:solid;
+  }
+
+  #middleRight{
+    @include span-columns(9);
+    border:solid;
+  }
+
   .heading{
     font-size:30px;
     padding-top:30px;
@@ -402,9 +412,73 @@ $red1: rgb(203, 64, 83);
 .readingTest{
   display:none;
 }
+
+.retake{
+  display:none;
+}
+.saveScore{
+  display:none;
+}
+
+
 .readingTemplate{
   border:solid;
   border-radius:10px;
   margin:30px;
   padding:20px;
+}
+
+
+.addSearchFrame{
+  margin-top:40px;
+}
+
+.bTitleLabel{
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.bTitle{
+  margin-top:10px;
+  display:block;
+  margin-left:20px;
+  margin-bottom:20px;
+}
+
+.q1{
+  display:block;
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.pCount{
+  margin-left:20px;
+  margin-bottom:30px;
+}
+
+.qLevel{
+  display:block;
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.rLevel{
+  margin-left:20px;
+  margin-bottom:30px;
+}
+
+.q2{
+  display:block;
+  margin-left:20px;
+  margin-bottom:10px;
+}
+
+.dur{
+  margin-left:20px;
+  margin-bottom:30px;
+}
+
+.addSearchBtn{
+  margin-left:20px;
+  margin-bottom:30px;
 }
