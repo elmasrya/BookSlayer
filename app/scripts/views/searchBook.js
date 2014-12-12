@@ -51,7 +51,7 @@
         // in production code, item.text should have the HTML entities escaped.
 
       $('.searchResults').append
-          ("<div class='resultsFrame'>"+ "<button class='choices' id='"+ i + "'> + </button>"
+          ("<div class='resultsFrame'>"+ "<div style='cursor: pointer;'class='choices' id='"+ i + "'><img class='connect' src='../images/bookPlus.png'></div>"
            + "<span class='googleBookTitle truncate' id='" +  i +"'>" + item.volumeInfo.title +"</span>"
            + "<center>" + "<img class='searchPic' src="+ item.volumeInfo.imageLinks.thumbnail + "/>"+ "</center>"
            +"<div class='preview'>" + "<a class='previewlink' href="+ item.volumeInfo.previewLink + ">Preview Book</a>" + "</div>"

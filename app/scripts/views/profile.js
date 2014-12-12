@@ -12,17 +12,17 @@
     templateOne                : _.template($('#profileUpLeftTemp').html()),
     templateTwo                : _.template($('#profileLowLeftTemp').html()),
     templateThree              : _.template($('#profileRightTemp').html()),
-    templateTools              : _.template($('#toolsTemp').html()),
     middleFixerTemplate        : _.template($('#threeTemps').html()),
 
     initialize              : function (options) {
       this.options = options;
+      $('#middle').empty();
       // console.log(this.options.user);
       this.render();
       }, // end of initialize
 
     render                  : function () {
-      
+
       $('#middle').html(this.middleFixerTemplate);
       $('#tools').html(this.templateTools);
       this.bookQuery();

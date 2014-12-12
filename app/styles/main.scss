@@ -1,4 +1,4 @@
- // Bourbon & Neat
+// Bourbon & Neat
 @import '../../bower_components/bourbon/dist/bourbon';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 // Custom Styles
@@ -19,8 +19,15 @@ $darkg: RGBA(54, 92, 33, 1);
 $mainF: 'Kreon', serif;
 
 button{
+  margin:5px;
+  border:solid;
+  border-radius:10px;
   background-color:$neon;
 }
+form{
+  margin-left:30px;
+}
+
 /*extenstions*/
 #container{
   // color:$darkg;
@@ -28,105 +35,177 @@ button{
   font-weight:400;
   // margin:auto;
   // min-width:500px;
-#top{
-  @include outer-container;
-  background-color:$neon;
-  width:100%;
-  .logoFrame{
-    @include span-columns(2.75);
-    height:100%;
-    overflow:hidden;
-    .logo{
-      width:100%;
-      float:left;
+  #top{
+
+    @include outer-container;
+    background-color:$neon;
+    width:100%;
+    .logoFrame{
+      @include span-columns(2.75);
+      height:100%;
+      overflow:hidden;
+      .logo{
+        width:100%;
+        float:left;
       }/*end of logo*/
     }/*end of logo frame*/
-  .titleFrame{
-    @include span-columns(6.75);
-    .title{
-      width:100%;
-      padding-top:50px;
-      font-family:$mainF;
-      font-weight:700;
-      font-size:70px;
-      text-align:center;
-      display:inline-block;
+    .titleFrame{
+      @include span-columns(6.75);
+      .title{
+        width:100%;
+        padding-top:50px;
+        font-family:$mainF;
+        font-weight:700;
+        font-size:70px;
+        text-align:center;
+        display:inline-block;
       }/*end of title*/
-    .navFrame{
-      .navB{
-        float:left;
-        margin-top:50px;
-        margin-left:20%;
+      .navFrame{
+        .navB{
+            margin-top:10px;
 
+        }
+      }/*end of nav frame*/
+
+    }/*end of title frame*/
+    .logOutFrame{
+      float:right;
+      margin-right:30px;
+      border:solid;
+      color:white;
+      padding:10px;
+      background-color: black;
+      border-weight:1px;
+      border-radius:5px;
+      margin-bottom:20px;
+    }
+
+    .myBookFrame{
+      @include span-columns(2.5);
+      .bookImg{
+        margin-left:-25px;
+        width:100%;
       }
-    }/*end of nav frame*/
-
-  }/*end of title frame*/
-  .logOutFrame{
-    float:right;
-    margin-right:30px;
-  }
-
-  .myBookFrame{
-    @include span-columns(2.5);
-    .bookImg{
-      margin-left:-25px;
-      width:100%;
     }
-}
 
-}/*.........end of top...............*/
+  }/*.........end of top...............*/
 
-
-#middle{
-  // background-image:url("../images/logo.png");
-  // background-repeat: no-repeat;
-  //border:solid $neon;
-  @include outer-container;
-  width:100%;
-
-  #middleLeft{
-    @include span-columns(3);
-    border:solid;
-    border-color:$neon;
-    border-radius:6px;
-    padding:5px;
-  }
-
-  #middleRight{
-    @include span-columns(9);
-  }
-
-  .heading{
-    font-size:30px;
-    padding-top:30px;
-    width:100%;
-    text-align:center;
-    @include span-columns(12);
-    }
-  .form{
-    @include span-columns(12);
+  .hdiv{
+    margin-top:50px;
     @include outer-container;
-    .searchBar{
-      @include span-columns(6);
-      margin-left:25%;
+    .hba{
+      @include span-columns(5.6);
+    }
+    .hbs{
+      @include span-columns(5.6);
+    }
+    .hbt{
+      @include span-columns(5.6);
+    }
+    .hbp{
+      @include span-columns(5.6);
+    }
+  }
+  .sh{
+    text-decoration:none;
+    font-size:40px;
+
+  }
+
+  .mybl{
+    text-decoration:underline;
+  }
+
+.lowD{
+
+}
+.you{
+  border:solid;
+  border-radius:100px;
+}
+  #middle{
+    // background-image:url("../images/logo.png");
+    // background-repeat: no-repeat;
+    //border:solid $neon;
+    @include outer-container;
+    width:100%;
+
+    #middleLeft{
+      @include span-columns(4);
+      border-color:$neon;
+      border-radius:6px;
       padding:5px;
-      border-radius:50px;
-      height:50px;
+    }
+    .up{
+      color:RGB(203, 65, 84);
+      margin-top:20px;
+      margin-left:50px;
+      padding:5px;
+      border-radius:10px;
+      border:solid;
+    }
+
+    .upH{
+      text-decoration:underline;
+    }
+    .lH{
+
+      text-decoration:underline;
+    }
+    .brick{
+
+
+    }
+
+    div.lowD{
+      margin-left:50px;
+
+    }
+
+    #middleRight{
+      margin-top:25px;
+      border-radius:10px;
+      border:solid;
+      @include span-columns(8);
+    }
+    .lowD{
+      margin-top:20px;
+      margin-left:20px;
+      padding:5px;
+      border-radius:10px;
+      border:solid;
+    }
+
+    .heading{
+      font-size:30px;
+      padding-top:30px;
+      width:100%;
+      text-align:center;
+      @include span-columns(12);
+    }
+    .form{
+      @include span-columns(12);
+      @include outer-container;
+      .searchBar{
+        @include span-columns(6);
+        margin-left:25%;
+        padding:5px;
+        border-radius:50px;
+        height:50px;
       }
 
 
-    .searchBtnFrame{
-      @include span-columns(6);
-      .searchBtn{
-        margin-left:90%;
-        margin-top:20px;
-        height:80px;
-        width:80px;
-        color:white;
-        background-color:black;
-        border-radius:60px;
-        padding:5px;
+      .searchBtnFrame{
+        @include span-columns(6);
+        .searchBtn{
+          margin-left:90%;
+          margin-top:20px;
+          height:80px;
+          width:80px;
+          color:white;
+          background-color:black;
+          border-radius:60px;
+          padding:5px;
         }
       }/*end of search button frame*/
     }/*end of form for the search*/
@@ -142,40 +221,40 @@ button{
         @include omega();
         text-align:center;
         height:300px;
-        }
+      }
 
       .choices{
         float:left;
-        }
+      }
 
       .googleBookTitle{
         float:left;
-        }
+      }
 
       .searchPic{
         clear:left;
         display:block;
-        }
+      }
 
       .preview{
 
-        }
+      }
 
       .googlePageCountSearch{
         clear:left;
-        }
+      }
     }
 
 
 
-}/*end of middle*/
+  }/*end of middle*/
 
-.footer{
-  @include outer-container;
-  width:100%;
-  height:100px;
-  background-color:$neon;
-}
+  .footer{
+    @include outer-container;
+    width:100%;
+    height:100px;
+    background-color:$neon;
+  }
 }
 
 .homeContainer{
@@ -214,14 +293,14 @@ button{
   margin-left:20px;
   .formTitle{
 
-    }
+  }
   .username{
     display:block;
-    }
+  }
   .password{
     margin-top:25px;
     display:block;
-    }
+  }
   .loginBtn{
     margin-top:25px;
     display:block;
@@ -232,18 +311,18 @@ button{
 .signUpForm{
   margin-left:20px;
   .formTitle{
-    }
+  }
   .email{
     display:block;
   }
   .createUsername{
     margin-top:25px;
     display:block;
-    }
+  }
   .createPassword{
     margin-top:25px;
     display:block;
-    }
+  }
   .signUpBtn{
     margin-top:25px;
     display:block;
@@ -314,22 +393,11 @@ button{
 }
 
 .deleteBtn{
-  margin-left:10px;
-  padding:5px;
-  border:solid;
-  background-color:red;
-  color:white;
-  border-radius:10px;
+
 }
 
 .editBtn{
-  margin-left:10px;
-  padding:5px;
-  border:solid;
-  width:65px;
-  background-color:blue;
-  color:white;
-  border-radius:10px;
+
 }
 
 .editWord{
@@ -539,4 +607,8 @@ button{
   margin-left:3px;
   border-radius:5px;
   position:absolute;
+}
+
+.timer{
+  color:red;
 }

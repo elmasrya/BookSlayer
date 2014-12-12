@@ -99,7 +99,6 @@ events: {
       $('.savePlan').on('click', function(e){
         e.preventDefault();
         b.save({d: days, tOne: t1, tTwo:t2, status:'Slayer Phase'});
-        new App.Views.Profile({user: App.user});
         App.router.navigate('profile', {trigger: true});
         location.reload();
     });

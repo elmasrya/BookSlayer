@@ -45,7 +45,8 @@
               App.user = user;
               App.user.save({c: comp, t:total})
               App.router.navigate('#/', {trigger: true});
-
+              location.reload();
+              
             },
             error: function (user) {
               alert("Sign-in Not Valid.");
