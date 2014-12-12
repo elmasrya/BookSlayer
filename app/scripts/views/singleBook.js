@@ -117,6 +117,7 @@ events: {
       this.options.book.destroy();
       new App.Views.Profile({user: App.user});
       App.router.navigate('profile', {trigger: true});
+      location.reload();
 
     },
 
