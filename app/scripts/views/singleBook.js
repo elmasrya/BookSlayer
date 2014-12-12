@@ -31,7 +31,6 @@ events: {
     render: function () {
       var self = this;
 
-      $("#middle").empty();
 
       this.$el.empty();
 
@@ -100,7 +99,6 @@ events: {
         e.preventDefault();
         b.save({d: days, tOne: t1, tTwo:t2, status:'Slayer Phase'});
         App.router.navigate('profile', {trigger: true});
-        location.reload();
     });
     },
 
@@ -116,7 +114,6 @@ events: {
       this.options.book.destroy();
       new App.Views.Profile({user: App.user});
       App.router.navigate('profile', {trigger: true});
-      location.reload();
 
     },
 
@@ -131,7 +128,6 @@ events: {
       this.options.book.destroy();
       new App.Views.Profile({user: App.user});
       App.router.navigate('profile', {trigger: true});
-      location.reload();
 
     },
 

@@ -120,8 +120,11 @@ form{
 
 }
 .you{
+  margin-top:30px;
   border:solid;
   border-radius:100px;
+  height:200px;
+  width:200px;
 }
   #middle{
     // background-image:url("../images/logo.png");
@@ -249,12 +252,21 @@ form{
 
   }/*end of middle*/
 
-  .footer{
+  #bottom{
     @include outer-container;
     width:100%;
     height:100px;
     background-color:$neon;
   }
+}
+.cr{
+  float:left;
+  height:100px;
+  width:100px;
+}
+.mb{
+  margin-top:50px;
+  float:left;
 }
 
 .homeContainer{
