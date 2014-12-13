@@ -81,6 +81,7 @@
           App.user.save({wmp: roundedScore});
           new App.Views.Profile({user: App.user});
           App.router.navigate('profile', { trigger: true });
+          
 
 
         });
