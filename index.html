@@ -44,15 +44,14 @@
 
       <script type="text/template" id="navBarTemp">
         <div class="logoFrame">
-          <img class="logo" src="images/logo.png">
+        <a href="#/about" class="aboutBtn navB">
+        <img class="logo" src="images/logo.png">
+        </a>
         </div><!--end of logo frame-->
         <div class="titleFrame">
           <span class="title">BookSlayer</span>
             <div class="navFrame">
-              <a href="#/" class="homeBtn navB"><img src=images/home.png></a>
-              <a href="#/about" class="aboutBtn navB"><img src=images/about.png></a>
-              <a href="#/contact" class="contactBtn navB"><img class="contact"
-              src=images/contact.png></a>
+              <center><a href="#/" class="homeBtn navB"><img src=images/setting.png></a></center>
             </div><!--end of nav frame-->
         </div><!--end of title frame-->
         <div class="myBookFrame">
@@ -78,7 +77,7 @@
         </div>
 
         <div id="middleRight">
-        <center><h2 class="mybl">My Book List:</h2></center>
+        <center><h1 class="mybl">My Book List:</h1></center>
         </div>
       </script>
 
@@ -86,20 +85,12 @@
       <script type="text/template" id="homeTemp">
         <div class="homeContainer">
         <% if(App.user !== null){ %>
-        <h2>New York Times Best Seller List</h2>
-          <li>HOPE TO DIE, by James Patterson</li>
-          <li>THE ESCAPE, by David Baldacci</li>
-          <li>GONE GIRL, by Gillian Flynn</li>
-          <li>RAY MOUNTAIN, by John Grisham</li>
-          <li>THE BURNING ROOM, by Michael Connelly</li>
-          <li>UNBROKEN, by Laura Hillenbrand</li>
-          <li>KILLING PATTON, by Bill O'Reilly and Martin Dugard</li>
-          <li>41, by George W. Bush</li>
-          <li>YES PLEASE, by Amy Poehler</li>
-          <li>WILD, by Cheryl Strayed</li>
-          <br>
-          <span>Go to <a href="#/profile">My Profile</a></span>
-          <br></br>
+          <center class="c"><div class="hdiv">
+          <a href="#/addBook" class="hba"><img src="../images/bigadd.png"><h5 class="sh">Add a Book</h5></a>
+          <a href="#/search" class="hbs"><img src="../images/bigBookIcon.png"><h5 class="sh">Search a Book</h5></a>
+          <a href="#/test"class="hbt"><img src="../images/BigTest.png"><h5 class="sh">Take A Reading Test</h5></a></a>
+          <a href="#/profile"class="hbp"><img src="../images/profile.png"><h5 class="sh">Your Profile</h5>/<a>
+          </div></center>
       <% } else { %>
           <a href="#/signup" class="signUpLink">
             <div class="signUp">Sign Up
@@ -145,6 +136,7 @@
 
 
       <script type="text/template" id="footerTemp">
+        <img class="cr" src="../images/Copyright.png"><span class="mb">BookSlayer.co All Rights Reserved</span>
         <div class="footer"></div>
       </script><!--end of footer template-->
 
@@ -152,20 +144,29 @@
 
 
       <script type="text/template" id="profileUpLeftTemp">
+      <div class="up">
+        <h2 class="upH">Test Score:</h2>
         <% if(App.user.attributes.wmp === undefined){ %>
-        <h3>You don't have a test score</h3>
+          <div class="upS">
+        <h3 class="brick">You don't have a test score</h3>
+        </div>
+
         <% } else { %>
+          <div class="upS">
           <h2>Reading Test Score:</h2>
           <h3>You can read at a rate of <%=App.user.attributes.wmp%> words per minute</h3>
+          </div>
+          </div>
           <% } %>
-
       </script>
 
       <script type="text/template" id="profileLowLeftTemp">
-          <h2>Slayer Logistics:</h3>
+        <div class="lowD">
+          <h2 class="lH">Slayer Logistics:</h3>
           <h3>You've Slayed: </h3>
           <h3><%=App.user.attributes.c%> out of </h3>
            <h3> <%=App.user.attributes.t%> Books attempted</h3>
+          </div>
           </script>
 
 
@@ -176,21 +177,6 @@
             <span class="bookListTitle"><%=title%></span>
             <span class="status"> <%= status %> </span>
           </div>
-      </script>
-
-
-
-
-
-
-
-
-      <script type="text/template" id="toolsTemp">
-        <div class="toolsFrame">
-          <a class="addBookLink" href="#/addBook"><img src="../images/bookPlus.png"></a>
-          <a class="searchLink" href="#/search"><img src="../images/searchB.png"></a>
-          <a class="testLink" href="#/test"><img src="../images/test.png"></a>
-        </div>
       </script>
 
 
@@ -294,7 +280,7 @@
               261</div></td>
             </tr>
             <tr>
-            <td colspan="2" valign="top"><p class="pagenote">Source: Carver (1990). A standard word is six letter spaces including punctuation and spacing.</p></td>
+            <td colspan="2" valign="top"><p class="pagenote">Source: Carver (2012). A standard word is six letter spaces including punctuation and spacing.</p></td>
             </tr>
           </table>
           </center>
@@ -306,7 +292,7 @@
               <button class="start">Start</button>
             </div>
             <div class="readingTest">
-              <div>Timer: <h2 class="timer"></h2> </div>
+              <div><center><h1>Timer: </h1><h2 class="timer"></h2></center></div>
               <div class="readingTemplate">
                 <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
                 color:black'>Justin was always prepared. His motto was &quot;Never throw
@@ -353,10 +339,6 @@
                 the notebook. Justin held the pencil on its side and rubbed it lightly over the
                 indentations. Slowly but surely the numbers of the locker combination appeared
                 in white, set off by the gray pencil rubbings.<o:p></o:p></span></b></p>
-
-                <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
-                color:black'>&quot;That’s amazing!&quot; Kenny said. &quot;I owe you one.&quot;
-                And he dashed off to open his locker.<o:p></o:p></span></b></p>
 
                 <p style='text-indent:.5in'><b><span style='font-size:12.0pt;font-family:"Times New Roman";
                 color:black'>&quot;That’s amazing!&quot; Kenny said. &quot;I owe you one.&quot;
@@ -455,33 +437,27 @@
 
 
     <script type="text/template" id="aboutTemp">
-      <div class="aboutInfo">About:
-      <p>This Application is suppose to make you
-      read better. It was created by Andrew El-Masry at the
-      The Iron Yard Academy!!!
-      </p></div>
+      <img class="you" src="../images/image.png">
+      <div class="aboutInfo">
+
+
+      </div>
+      <h2>
+
+      <ul class="contactInfo">
+      <li class="creator">App Creator: Andrew El-Masry</li>
+      <br></br>
+      <li class="appEmail">E-Mail: andrewelmasry@gmail.com</li>
+      <br></br>
+      <li class="blog">Blog: andrewelmasry.com</li>
+      <br></br>
+      <li>GitHub: https://github.com/elmasrya</li>
+      <br></br>
+      </ul></h2>
     </script><!--end of navbar template-->
 
-      <script type="text/template" id="contactTemp">
-        <ul class="contactInfo">
-          <li class="creator">App Creator: Andrew El-Masry</li>
-          <br></br>
-          <li class="appEmail">E-Mail: andrewelmasry@gmail.com</li>
-          <br></br>
-          <li class="blog">Blog: andrewelmasry.com</li>
-          <br></br>
-          <li="github">GitHub: https://github.com/elmasrya</li>
-          <br></br>
-        </ul>
-      </script><!--end of about template-->
 
-      <script type="text/template" id="aboutTemp">
-        <div class="aboutInfo">About:
-        <p>This Application is suppose to make you
-        read better. It was created by Andrew El-Masry at the
-        The Iron Yard Academy!!!
-        </p></div>
-      </script><!--end of navbar template-->
+
 
         <script type="text/template" id="errorTemp">
         <h1>Not found <span>:(</span></h1>
@@ -491,7 +467,7 @@
             <li>You are not signed in</li>
             <li>a mistyped address</li>
             <li>an out-of-date link</li>
-          </0l>
+          </ol>
         </script><!--end of about template-->
 
 
