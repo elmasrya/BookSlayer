@@ -48,7 +48,6 @@
     routes: {
       ''                  : 'home',
       'about'             : 'about',
-      'contact'           : 'contact',
       'signup'            : 'signup',
       'login'             : 'login',
       'profile'           : 'profile',
@@ -61,84 +60,79 @@
     },
 
     home: function () {
-        new App.Views.Home();
-        new App.Views.Footer();
-
-      },
-
-    contact: function () {
-      new App.Views.Contact();
+      new App.Views.Home();
       new App.Views.Footer();
-      },
+
+    },
 
     about: function () {
       new App.Views.About();
       new App.Views.Footer();
-      },
+    },
 
     signup: function () {
       new App.Views.SignUp();
       new App.Views.Footer();
-      },
+    },
 
     login: function () {
       new App.Views.Login({user: App.user});
       new App.Views.Footer();
-      },
+    },
 
     addBook: function () {
       new App.Views.AddBook({user: App.user});
       new App.Views.Footer();
-      },
+    },
 
     profile: function () {
       if(App.user!==null) {
         console.log('we got auser and stuff');
-      new App.Views.Profile({user: App.user});
+        new App.Views.Profile({user: App.user});
         console.log('we rendered the profile');
-      new App.Views.Footer();
+        new App.Views.Footer();
         console.log('and the footer we rock');
       }else{
-      new App.Views.Error();
+        new App.Views.Error();
       }
 
     },
 
     search: function () {
       if(App.user!==null) {
-      new App.Views.Search();
-      new App.Views.Footer();
+        new App.Views.Search();
+        new App.Views.Footer();
       }else{
-      new App.Views.Error();
+        new App.Views.Error();
       }
     },
 
     test: function () {
       if(App.user!==null) {
-      new App.Views.Test();
-      new App.Views.Footer();
+        new App.Views.Test();
+        new App.Views.Footer();
       }else{
-      new App.Views.Error();
+        new App.Views.Error();
       }
     },
 
     single: function (objectId) {
       if(App.user!==null) {
-      var singleBook = App.books.get(objectId);
-      new App.Views.SingleBook({book: singleBook, collection: App.books, user: App.user});
-      new App.Views.Footer();
+        var singleBook = App.books.get(objectId);
+        new App.Views.SingleBook({book: singleBook, collection: App.books, user: App.user});
+        new App.Views.Footer();
       }else{
-      new App.Views.Error();
+        new App.Views.Error();
       }
     },
 
     editBook: function(objectId){
       if(App.user!==null) {
-      var updateBook= App.books.get(objectId);
-      new App.Views.EditBook({objectId: objectId, book: updateBook, user: App.user});
-      new App.Views.Footer();
+        var updateBook= App.books.get(objectId);
+        new App.Views.EditBook({objectId: objectId, book: updateBook, user: App.user});
+        new App.Views.Footer();
       }else{
-      new App.Views.Error();
+        new App.Views.Error();
       }
     },
 
@@ -219,6 +213,8 @@
             App.books.add(b);
             new App.Views.Profile({user: App.user});
             App.router.navigate('profile', { trigger: true });
+            location.reload();
+            
           }
         });
 
@@ -318,7 +314,7 @@
         // in production code, item.text should have the HTML entities escaped.
 
       $('.searchResults').append
-          ("<div class='resultsFrame'>"+ "<button class='choices' id='"+ i + "'> + </button>"
+          ("<div class='resultsFrame'>"+ "<div style='cursor: pointer;'class='choices' id='"+ i + "'><img class='connect' src='../images/bookPlus.png'></div>"
            + "<span class='googleBookTitle truncate' id='" +  i +"'>" + item.volumeInfo.title +"</span>"
            + "<center>" + "<img class='searchPic' src="+ item.volumeInfo.imageLinks.thumbnail + "/>"+ "</center>"
            +"<div class='preview'>" + "<a class='previewlink' href="+ item.volumeInfo.previewLink + ">Preview Book</a>" + "</div>"
@@ -540,7 +536,6 @@ events: {
     render: function () {
       var self = this;
 
-      $("#middle").empty();
 
       this.$el.empty();
 
@@ -608,9 +603,7 @@ events: {
       $('.savePlan').on('click', function(e){
         e.preventDefault();
         b.save({d: days, tOne: t1, tTwo:t2, status:'Slayer Phase'});
-        new App.Views.Profile({user: App.user});
         App.router.navigate('profile', {trigger: true});
-        location.reload();
     });
     },
 
@@ -626,7 +619,6 @@ events: {
       this.options.book.destroy();
       new App.Views.Profile({user: App.user});
       App.router.navigate('profile', {trigger: true});
-      location.reload();
 
     },
 
@@ -641,7 +633,6 @@ events: {
       this.options.book.destroy();
       new App.Views.Profile({user: App.user});
       App.router.navigate('profile', {trigger: true});
-      location.reload();
 
     },
 
@@ -742,6 +733,7 @@ events: {
           App.user.save({wmp: roundedScore});
           new App.Views.Profile({user: App.user});
           App.router.navigate('profile', { trigger: true });
+          
 
 
         });
@@ -849,17 +841,17 @@ events: {
     templateOne                : _.template($('#profileUpLeftTemp').html()),
     templateTwo                : _.template($('#profileLowLeftTemp').html()),
     templateThree              : _.template($('#profileRightTemp').html()),
-    templateTools              : _.template($('#toolsTemp').html()),
     middleFixerTemplate        : _.template($('#threeTemps').html()),
 
     initialize              : function (options) {
       this.options = options;
+      $('#middle').empty();
       // console.log(this.options.user);
       this.render();
       }, // end of initialize
 
     render                  : function () {
-      
+
       $('#middle').html(this.middleFixerTemplate);
       $('#tools').html(this.templateTools);
       this.bookQuery();
@@ -895,39 +887,6 @@ events: {
 
 
 }()); // end of IIF
-
-(function () {
-
-
-  App.Views.Contact = Parse.View.extend({
-
-
-    el                : '#middle',
-
-    template          : _.template($('#contactTemp').html()),
-
-    events: {
-
-
-    }, // end of events
-
-
-    initialize: function () {
-      this.render();
-
-    },
-
-    render: function () {
-
-      this.$el.html(this.template);
-
-    },
-
-
-
-  });
-
-}());
 
 (function () {
 
@@ -1132,7 +1091,8 @@ events: {
               App.user = user;
               App.user.save({c: comp, t:total})
               App.router.navigate('#/', {trigger: true});
-
+              location.reload();
+              
             },
             error: function (user) {
               alert("Sign-in Not Valid.");
@@ -1242,11 +1202,12 @@ Parse.initialize("MCSNBPaOJowTLp0LZqcG2hPRLKsPlTqHeKT3CK3P","JRsBK5g0aam1H89lxIc
 
   new App.Views.NavBar({user: App.user});
 
+
   App.books.fetch().done(function () {
       App.router = new App.Routers.AppRouter();
       Parse.history.start();
   });
 
 
-
+  
 }());
