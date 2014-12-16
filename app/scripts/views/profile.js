@@ -17,7 +17,7 @@
     initialize              : function (options) {
       this.options = options;
       $('#middle').empty();
-      // console.log(this.options.user);
+      console.log(this.options.user);
       this.render();
       }, // end of initialize
 
@@ -31,14 +31,15 @@
     },
 
     sideScore    : function () {
+      console.log(this.options.user);
       var self = this;
       $('#upperL').html(self.templateOne(App.user));
-      },
+    },
 
     sideRead    : function () {
-        var self = this;
-        $('#lowerL').html(self.templateTwo(App.user));
-      },
+      var self = this;
+      $('#lowerL').html(self.templateTwo(App.user));
+    },
 
     bookQuery : function () {
       var self = this;
