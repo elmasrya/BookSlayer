@@ -609,30 +609,33 @@ events: {
 
     finished  : function (e) {
       e.preventDefault();
+      $('.finished').remove();
+      $('.unfinished').remove();
       var a=App.user.attributes.c;
       var b=App.user.attributes.t;
-      a++;
-      b++;
+      aNew=a+1;
+      bNew=b+1;
       console.log(b);
       console.log(b);
-      App.user.save({c: a, t:b });
+      App.user.save({c: aNew, t:bNew });
       this.options.book.destroy();
-      new App.Views.Profile({user: App.user});
       App.router.navigate('profile', {trigger: true});
-
+      new App.Views.Profile({user: App.user});
     },
 
     unfinished  : function (e) {
       e.preventDefault();
+      $('.finished').remove();
+      $('.unfinished').remove();
       var p=App.user.attributes.c;
       var q=App.user.attributes.t;
-      q++;
-      App.user.save({t: q, c: p });
+      qNew = q+1;
+      App.user.save({c: p, t: qNew });
       console.log(p);
       console.log(ans);
       this.options.book.destroy();
-      new App.Views.Profile({user: App.user});
       App.router.navigate('profile', {trigger: true});
+      new App.Views.Profile({user: App.user});
 
     },
 
@@ -846,7 +849,7 @@ events: {
     initialize              : function (options) {
       this.options = options;
       $('#middle').empty();
-      // console.log(this.options.user);
+      console.log(this.options.user);
       this.render();
       }, // end of initialize
 
@@ -860,14 +863,15 @@ events: {
     },
 
     sideScore    : function () {
+      console.log(this.options.user);
       var self = this;
       $('#upperL').html(self.templateOne(App.user));
-      },
+    },
 
     sideRead    : function () {
-        var self = this;
-        $('#lowerL').html(self.templateTwo(App.user));
-      },
+      var self = this;
+      $('#lowerL').html(self.templateTwo(App.user));
+    },
 
     bookQuery : function () {
       var self = this;
